@@ -1,24 +1,32 @@
-# README
+# Game
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tapioca & Sorbet
 
-Things you may want to cover:
+We love Sorbet so we use it in this repo.
 
-* Ruby version
+### Helpful commands and references
 
-* System dependencies
+Regenerate active record rbi files
 
-* Configuration
+```bash
+$ bin/tapioca dsl
+```
 
-* Database creation
+[Tapioca](https://github.com/Shopify/tapioca) - "The swiss army knife of RBI generation."
+[Sorbet](https://sorbet.org/) - "Sorbet is a fast, powerful type checker designed for Ruby."
 
-* Database initialization
+## Database setup
 
-* How to run the test suite
+Regenerate the seed database. Warning, this will delete existing records.
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+$ rails db:seed
+```
 
-* Deployment instructions
+## Tests
 
-* ...
+Run
+
+```bash
+$ rails test
+```
