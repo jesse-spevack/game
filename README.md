@@ -1,5 +1,9 @@
 # Game
 
+[![Ruby Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
+
+I'm building a game that will help kids build numerical automaticity.
+
 ## Tapioca & Sorbet
 
 We love Sorbet so we use it in this repo.
@@ -13,6 +17,7 @@ $ bin/tapioca dsl
 ```
 
 [Tapioca](https://github.com/Shopify/tapioca) - "The swiss army knife of RBI generation."
+
 [Sorbet](https://sorbet.org/) - "Sorbet is a fast, powerful type checker designed for Ruby."
 
 ## Database setup
