@@ -21,4 +21,9 @@ class Problem < ApplicationRecord
       message: "%{value} is not a supported operation. Supported operations are #{Problem.supported_operations}."
     }
   )
+
+  sig { returns(String) }
+  def operation_symbol
+    "+"
+  end
 end

@@ -54,6 +54,7 @@ group :development, :test do
   gem "standard"
   gem "standard-rails"
   gem "pry"
+  gem "htmlbeautifier"
 end
 
 group :development do

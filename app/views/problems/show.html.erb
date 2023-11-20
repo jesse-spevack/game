@@ -1,0 +1,14 @@
+<div class="grid grid-cols-3 grid-rows-3 gap-1 sm:text-9xl text-right text-7xl">
+  <div class="col-span-1 row-span-2 sm:ml-14 self-center">
+    <p><%= @problem.operation_symbol %></p>
+  </div>
+  <div class="col-span-1 row-span-1">
+    <p><%= @problem.x %></p>
+  </div>
+  <div class="col-span-1 col-start-2 row-span-1 row-start-2 border-b-8 border-black">
+    <p><%= @problem.y %></p>
+  </div>
+  <div class="col-span-1 col-start-2 row-span-1 row-start-3">
+    <%= link_to 'next', problem_url(@next_problem), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  </div>
+</div>
