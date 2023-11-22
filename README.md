@@ -36,6 +36,18 @@ Run
 $ rails test
 ```
 
+## Start the server
+
+Run
+
+```bash
+$ bin/dev
+```
+
+## Troubleshooting
+
+- If Tailwind is only partially working, it is likely because some Tailwind classes you are trying to apply have been purged. Run `rails assets:clobber` and make sure you are running `bin/dev` and not `rails s`.
+
 ## Next Steps
 
 - TBD
