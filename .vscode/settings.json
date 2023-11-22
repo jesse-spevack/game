@@ -1,5 +1,10 @@
 {
   "cSpell.words": [
     "tailwindcss"
-  ]
+  ],
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "html": "html",
+    "erb": "html"
+  },
 }
