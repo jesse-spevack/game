@@ -1,14 +1,35 @@
-<div class="grid grid-cols-3 grid-rows-3 gap-1 sm:text-9xl text-right text-7xl">
-  <div class="col-span-1 row-span-2 sm:ml-14 self-center">
-    <p><%= @problem.operation_symbol %></p>
+<div data-controller="hidden-input" class="container mx-auto">
+  <div class="grid grid-cols-3 grid-rows-3 gap-1 sm:text-9xl text-right text-7xl">
+    <div class="col-span-1 row-span-2 sm:ml-14 self-center">
+      <p><%= @problem.operation_symbol %></p>
+    </div>
+    <div class="col-span-1 row-span-1">
+      <p><%= @problem.x %></p>
+    </div>
+    <div class="col-span-1 col-start-2 row-span-1 row-start-2 border-b-8 border-black">
+      <p><%= @problem.y %></p>
+    </div>
+    <div class="col-span-1 col-start-2 row-span-1 row-start-3">
+      <div data-hidden-input-target="display" class="text-9xl"></div>
+    </div>
   </div>
-  <div class="col-span-1 row-span-1">
-    <p><%= @problem.x %></p>
-  </div>
-  <div class="col-span-1 col-start-2 row-span-1 row-start-2 border-b-8 border-black">
-    <p><%= @problem.y %></p>
-  </div>
-  <div class="col-span-1 col-start-2 row-span-1 row-start-3">
-    <%= render partial: "shared/button", locals: { path: game_path, text: "Next" } %>
-  </div>
+  <%= form_with(scope: :game, url: game_path, method: :post) do |form| %>
+    <%= form.hidden_field :problem_id, value: @problem.id %>
+    <%= form.hidden_field :started_at, value: Time.now.to_i %>
+    <%= form.hidden_field :response, data: { hidden_input_target: "field" } %>
+    <div class="grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center">
+      <%= render partial: "shared/key", locals: { number: 1, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 2, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 3, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 4, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 5, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 6, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 7, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 8, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 9, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: "⌫", operation: "delete" } %>
+      <%= render partial: "shared/key", locals: { number: 0, operation: "append" } %>
+      <%= form.submit "☑", class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-indigo-600 text-white text-4xl sm:text-5xl text-center shadow-sm active:bg-indigo-700 focus:outline-none focus:ring-0 active:ring-2 active:ring-indigo-500 active:ring-offset-2" %>
+    </div>
+  <% end %>
 </div>

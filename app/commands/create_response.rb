@@ -1,20 +1,20 @@
-# typed: strict
+# # typed: strict
 
 module Commands
   class CreateResponse < Commands::Base
     extend T::Sig
 
     sig do
-      params(problem: Problem, response: Integer, started_at: Integer, completed_at: Integer)
+      params(input: ResponseInput)
         .returns(Response)
     end
-    def call(problem:, response:, started_at:, completed_at:)
+    def call(input:)
       Response.create(
-        value: response,
-        correct: problem.solution == response,
-        problem: problem,
-        started_at: started_at,
-        completed_at: completed_at
+        value: input.response,
+        correct: input.solution == input.response,
+        problem: input.problem,
+        started_at: input.started_at,
+        completed_at: input.completed_at
       )
     end
   end

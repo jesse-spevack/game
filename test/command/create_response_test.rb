@@ -6,42 +6,53 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
   test "it creates a correct response" do
     problem = problems(:one_plus_one)
     started_at = Time.now.to_i
-    travel 30.seconds do
-      completed_at = Time.now.to_i
-      result = Commands::CreateResponse.call(
-        problem: problem,
-        response: 2,
-        started_at: started_at,
-        completed_at: completed_at
-      )
+    params = ActionController::Parameters.new(
+      game: {
+        problem_id: problem.id,
+        response: problem.solution.to_s,
+        started_at: started_at.to_s
+      }
+    )
+
+    simulated_delay = 30.seconds
+    travel simulated_delay do
+      input = ResponseInput.new_from_params(params: params.require(:game).permit(:problem_id, :response, :started_at))
+
+      result = Commands::CreateResponse.call(input: input)
 
       assert_kind_of(Response, result)
-      assert_equal(2, result.value)
+      assert_equal(problem.solution, result.value)
       assert(result.correct)
       assert_equal(problem, result.problem)
       assert_equal(started_at, result.started_at)
-      assert_equal(completed_at, result.completed_at)
+      assert_equal(started_at + simulated_delay.to_i, result.completed_at)
     end
   end
 
   test "it creates an incorrect response" do
     problem = problems(:one_plus_one)
     started_at = Time.now.to_i
-    travel 30.seconds do
-      completed_at = Time.now.to_i
-      result = Commands::CreateResponse.call(
-        problem: problem,
-        response: 3,
-        started_at: started_at,
-        completed_at: completed_at
-      )
+    incorrect_response = problem.solution + 1
+    params = ActionController::Parameters.new(
+      game: {
+        problem_id: problem.id,
+        response: incorrect_response.to_s,
+        started_at: started_at.to_s
+      }
+    )
+
+    simulated_delay = 30.seconds
+    travel simulated_delay do
+      input = ResponseInput.new_from_params(params: params.require(:game).permit(:problem_id, :response, :started_at))
+
+      result = Commands::CreateResponse.call(input: input)
 
       assert_kind_of(Response, result)
-      assert_equal(3, result.value)
+      assert_equal(incorrect_response, result.value)
       refute(result.correct)
       assert_equal(problem, result.problem)
       assert_equal(started_at, result.started_at)
-      assert_equal(completed_at, result.completed_at)
+      assert_equal(started_at + simulated_delay.to_i, result.completed_at)
     end
   end
 end

@@ -24,6 +24,8 @@ class Problem < ApplicationRecord
     }
   )
 
+  validates :solution, presence: true
+
   sig { returns(String) }
   def operation_symbol
     "+"

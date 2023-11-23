@@ -102,6 +102,9 @@ module GeneratedUrlHelpersModule
   def rails_storage_redirect_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def root_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
