@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 2
+  correct: true
+  started_at: (Time.now - 30.seconds).to_i
+  completed_at: Time.now.to_i
+  problem: one_plus_one
+
+two:
+  value: 3
+  correct: false
+  started_at: (Time.now - 30.seconds).to_i
+  completed_at: Time.now.to_i
+  problem: one_plus_one

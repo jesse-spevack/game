@@ -3,6 +3,8 @@
 class Problem < ApplicationRecord
   extend T::Sig
 
+  has_many :responses, dependent: :destroy
+
   class Operations < T::Enum
     enums do
       Addition = new

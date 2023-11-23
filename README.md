@@ -10,7 +10,7 @@ We love Sorbet so we use it in this repo.
 
 ### Helpful commands and references
 
-Regenerate active record rbi files
+Regenerate active record rbi files; You'll need to do this as you create new rails models.
 
 ```bash
 $ bin/tapioca dsl
