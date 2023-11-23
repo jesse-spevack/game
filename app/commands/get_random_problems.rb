@@ -5,11 +5,10 @@ module Commands
     extend T::Sig
 
     sig do
-      returns(T::Array[Problem])
+      returns(Problem)
     end
     def call
-      problems = Problem.order("RANDOM()").limit(2)
-      [problems.first, problems.last]
+      T.let(Problem.order("RANDOM()").limit(1).first, Problem)
     end
   end
 end

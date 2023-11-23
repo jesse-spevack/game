@@ -15,6 +15,7 @@
   </div>
   <%= form_with(scope: :game, url: game_path, method: :post) do |form| %>
     <%= form.hidden_field :problem_id, value: @problem.id %>
+    <%= form.hidden_field :player_id, value: @current_player.id %>
     <%= form.hidden_field :started_at, value: Time.now.to_i %>
     <%= form.hidden_field :response, data: { hidden_input_target: "field" } %>
     <div class="xl:mx-96 lg:mx-80 mx-auto grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center">
@@ -34,5 +35,5 @@
   <% end %>
 </div>
 <div class="prose pt-5">
-  Alpha 0.1.0
+  Alpha 0.2.0
 </div>

@@ -5,13 +5,14 @@ class GamesController < ApplicationController
   end
 
   def show
-    @problem, @next_problem = Commands::GetRandomProblems.call
+    @current_player = Player.find_or_create_by!(name: "Jesse")
+    @problem, _ = Commands::GetRandomProblems.call
   end
 
   private
 
   def response_input
-    response_params = params.require(:game).permit(:problem_id, :started_at, :response)
+    response_params = params.require(:game).permit(:problem_id, :player_id, :started_at, :response)
     ResponseInput.new_from_params(params: response_params)
   end
 end

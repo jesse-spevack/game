@@ -4,6 +4,7 @@ class Response < ApplicationRecord
   extend T::Sig
 
   belongs_to :problem
+  belongs_to :player
 
   validates :completed_at, presence: true
   validates :started_at, presence: true

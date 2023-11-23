@@ -8,6 +8,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "games#show"
 
-  resource :game, only: [:new, :create, :show]
-  resources :problems, only: [:show]
+  resource :game, only: [:create, :show]
 end

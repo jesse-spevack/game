@@ -13,6 +13,7 @@ module Commands
         value: input.response,
         correct: input.solution == input.response,
         problem: input.problem,
+        player: input.player,
         started_at: input.started_at,
         completed_at: input.completed_at
       )
