@@ -10,7 +10,7 @@
       <p><%= @problem.y %></p>
     </div>
     <div class="col-span-1 col-start-2 row-span-1 row-start-3">
-      <div data-hidden-input-target="display" class="text-9xl"></div>
+      <div data-hidden-input-target="display" class="sm:text-9xl text-7xl"></div>
     </div>
   </div>
   <%= form_with(scope: :game, url: game_path, method: :post) do |form| %>
@@ -33,3 +33,6 @@
     </div>
   <% end %>
 </div>
+<div class="prose pt-5">
+  Alpha: <%= %x{git rev-parse HEAD}.strip[0..6] %>
+</dic>
