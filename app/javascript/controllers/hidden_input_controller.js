@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="hidden-input"
 export default class extends Controller {
-  static targets = ["display", "field"]
+  static targets = ["display", "field", "submit"]
   static values = {
     response: { type: String, default: "" },
   }
@@ -21,8 +21,12 @@ export default class extends Controller {
       this.responseValue = this.responseValue.slice(0, -1);
       this.displayTarget.innerText = this.responseValue;
       this.fieldTarget.value = this.responseValue;
-    } else if (operation === "submit") {
+    }
 
+    if (this.responseValue.length === 0) {
+      this.submitTarget.disabled = true;
+    } else {
+      this.submitTarget.disabled = false;
     }
   }
 
