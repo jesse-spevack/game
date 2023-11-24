@@ -11,6 +11,9 @@
   </head>
   <body>
     <main class="mx-auto">
+      <% if @current_player %>
+        <%= @current_player.name %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

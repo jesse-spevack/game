@@ -46,9 +46,17 @@ $ bin/dev
 
 ## Troubleshooting
 
-- If Tailwind is only partially working, it is likely because some Tailwind classes you are trying to apply have been purged. Run `rails assets:clobber` and make sure you are running `bin/dev` and not `rails s`.
+### Tailwind
 
-## Troubleshooting
+If Tailwind is only partially working, it is likely because some Tailwind classes you are trying to apply have been purged. Run `rails assets:clobber` and make sure you are running `bin/dev` and not `rails s`.
+
+### Fly.io
+
+Right now we use 256mb of memory machines because 💰. Rails console requires more than this amoutn of memory. To scale the memory of the machine, run `fly scale memory 512`. Then to open rails console run: `fly ssh console --pty -C "/rails/bin/rails console"`
+
+## Squashed Bugs and Errors
+
+We added a `person_id` foreign key to the `Responses` table. Since `person_id` could not be null and there were existing `response` records in the DB, the deploy failed because the migration failed. The migration failed because of the existing `response` records not having an associated person. To fix, we opened production rails console and ran `Response.destroy_all`. In the future, either make the null constraint `false` or pre-emptively delete existing records that violate the constraint.
 
 Deploy
 
@@ -58,4 +66,6 @@ fly deploy
 
 ## Next Steps
 
-- TBD
+- Player crud
+- Player stats
+- User

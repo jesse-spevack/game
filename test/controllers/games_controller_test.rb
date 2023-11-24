@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GamesControllerTest < ActionController::TestCase
+class ResponsesControllerTest < ActionController::TestCase
   test "should create game" do
     assert_difference("Response.count", 1) do
       problem = problems(:one_plus_one)
