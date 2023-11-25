@@ -13,11 +13,11 @@ class Commands::GetStatisticsTest < ActiveSupport::TestCase
 
     statistic = result.first
 
-    assert_equal(statistic.display_problem, problem.display)
-    assert_equal(statistic.total_responses, 2)
-    assert_equal(statistic.percent_correct, 50)
-    assert_equal(statistic.min_time, 5)
-    assert_equal(statistic.max_time, 15)
-    assert_equal(statistic.average_time, 10)
+    assert_equal(problem.display, statistic.display_problem)
+    assert_equal(2, statistic.total_responses)
+    assert_equal(50, statistic.percent_correct)
+    assert_equal(5, statistic.min_time)
+    assert_equal(15, statistic.max_time)
+    assert_equal(10, statistic.average_time)
   end
 end

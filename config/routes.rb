@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resource :responses, only: [:create, :new], path: "game"
   resources :players
   resources :sessions, only: [:create, :destroy]
+  resources :scores, only: [:index]
 end
