@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  before_action :set_current_player
+
   def new
     Rails.logger.info("current_player = #{@current_player.inspect}")
     @problem = Commands::GetNextProblemForPlayer.call(player: @current_player)
