@@ -114,6 +114,9 @@ module GeneratedUrlHelpersModule
   def root_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def scores_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def session_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
