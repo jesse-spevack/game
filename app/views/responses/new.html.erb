@@ -13,12 +13,19 @@
       <div data-hidden-input-target="display" class="sm:text-9xl text-7xl"></div>
     </div>
   </div>
+  <div class="xl:mx-96 lg:mx-80 mx-auto mb-4 grid grid-cols-3 grid-rows-1 gap-1">
+    <div class="col-start-2 text-center h-6">
+      <% if @current_player.was_just_wrong? %>
+        <p class="mt-2 text-red-600" id="email-error">😢 Try again.</p>
+      <% end %>
+    </div>
+  </div>
   <%= form_with(scope: :game, url: responses_path, method: :post) do |form| %>
     <%= form.hidden_field :problem_id, value: @problem.id %>
     <%= form.hidden_field :player_id, value: @current_player.id %>
     <%= form.hidden_field :started_at, value: Time.now.to_i %>
     <%= form.hidden_field :response, data: { hidden_input_target: "field" } %>
-    <div class="xl:mx-96 lg:mx-80 mx-auto grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center">
+    <div class="xl:mx-96 lg:mx-80 mx-auto mb-4 grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center">
       <%= render partial: "key", locals: { number: 1, operation: "append" } %>
       <%= render partial: "key", locals: { number: 2, operation: "append" } %>
       <%= render partial: "key", locals: { number: 3, operation: "append" } %>
@@ -33,7 +40,4 @@
       <%= form.submit "☑", data: { hidden_input_target: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-indigo-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-indigo-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-indigo-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
     </div>
   <% end %>
-</div>
-<div class="prose pt-5">
-  Alpha 0.3.0
 </div>

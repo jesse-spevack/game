@@ -11,10 +11,9 @@
   </head>
   <body>
     <main class="mx-auto">
-      <% if @current_player %>
-        <%= @current_player.name %>
-      <% end %>
+      <%= render "shared/navbar" %>
       <%= yield %>
+      <%= render "shared/footer" %>
     </main>
   </body>
 </html>

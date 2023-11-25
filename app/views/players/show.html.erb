@@ -1,5 +1,5 @@
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-3xl">
+<div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
+  <div class="mt-8 px-4 sm:px-6 lg:px-8">
     <div class="md:flex md:items-center md:justify-between">
       <div class="min-w-0 flex-1">
         <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @player.name %></h2>
@@ -9,9 +9,7 @@
         <%= button_to "Play", sessions_path(player_id: @player.id), method: :post, class: 'ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
       </div>
     </div>
-  </div>
-  <div class="mt-8 px-4 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center">
+    <div class="sm:flex sm:items-center mt-4">
       <div class="sm:flex-auto">
         <h1 class="text-base font-semibold leading-6 text-gray-900">Statistics</h1>
         <p class="mt-2 text-sm text-gray-700">A list of of <%= @player.name %>'s statistics.</p>

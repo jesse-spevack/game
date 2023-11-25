@@ -1,8 +1,7 @@
 class ResponsesController < ApplicationController
   def new
-    @current_player = current_player
-    Rails.logger.info "Current player: #{@current_player.name}"
-    @problem, _ = Commands::GetRandomProblems.call
+    Rails.logger.info("current_player = #{@current_player.inspect}")
+    @problem = Commands::GetNextProblemForPlayer.call(player: @current_player)
   end
 
   def create
