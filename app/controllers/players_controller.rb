@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_by(id: params[:id])
+    @statistics = Commands::GetStatistics.call(player: @player)
   end
 
   def new

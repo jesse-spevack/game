@@ -4,7 +4,7 @@ one:
   value: 2
   correct: true
   started_at: 1700752121
-  completed_at: 1700752151
+  completed_at: 1700752126
   problem: one_plus_one
   player: jesse
 
@@ -12,6 +12,14 @@ two:
   value: 3
   correct: false
   started_at: 1700752151
-  completed_at: 1700752151
+  completed_at: 1700752166
   problem: one_plus_one
+  player: jesse
+
+three:
+  value: 3
+  correct: false
+  started_at: 1700752170
+  completed_at: 1700752180
+  problem: one_plus_two
   player: jesse

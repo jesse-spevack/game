@@ -30,4 +30,15 @@ class Problem < ApplicationRecord
   def operation_symbol
     "+"
   end
+
+  sig { returns(String) }
+  def display
+    x.to_s + " " + operation_symbol + " " + y.to_s
+  end
+
+  # TODO test me
+  sig { params(operation: String).returns(String) }
+  def self.operation_symbol(operation:)
+    T.let({"addition" => "+"}[operation], String)
+  end
 end

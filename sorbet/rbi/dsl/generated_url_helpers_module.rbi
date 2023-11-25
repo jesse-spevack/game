@@ -9,13 +9,25 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
-  def game_url(*args); end
+  def edit_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_player_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_source_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_rails_conductor_inbound_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_responses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def rails_blob_representation_proxy_url(*args); end
@@ -96,7 +108,16 @@ module GeneratedUrlHelpersModule
   def rails_storage_redirect_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def responses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def root_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def session_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def sessions_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end
