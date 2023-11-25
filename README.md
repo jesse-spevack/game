@@ -66,6 +66,4 @@ fly deploy
 
 ## Next Steps
 
-- Player crud
-- Player stats
 - User
