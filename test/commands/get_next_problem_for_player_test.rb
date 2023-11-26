@@ -59,4 +59,21 @@ class Commands::GetNextProblemForPlayerTest < ActiveSupport::TestCase
       assert_equal(problem, result)
     end
   end
+
+  test "it returns a level 2 problem for a level 2 player" do
+    problem_1 = problems(:four_plus_six)
+    problem_2 = problems(:seven_plus_three)
+    player = players(:level_two)
+    Response.create(
+      value: 10,
+      problem: problem_1,
+      correct: true,
+      player: player,
+      started_at: Time.now.to_i - 30,
+      completed_at: Time.now.to_i - 29
+    )
+    result = Commands::GetNextProblemForPlayer.call(player: player.reload)
+
+    assert_equal(problem_2, result)
+  end
 end

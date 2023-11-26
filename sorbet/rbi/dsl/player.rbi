@@ -560,6 +560,51 @@ class Player
     sig { void }
     def id_will_change!; end
 
+    sig { returns(T.nilable(::Integer)) }
+    def level; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def level=(value); end
+
+    sig { returns(T::Boolean) }
+    def level?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def level_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def level_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def level_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def level_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def level_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def level_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def level_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def level_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def level_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def level_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def level_was; end
+
+    sig { void }
+    def level_will_change!; end
+
     sig { returns(T.nilable(::String)) }
     def name; end
 
@@ -615,6 +660,9 @@ class Player
     def restore_id_value!; end
 
     sig { void }
+    def restore_level!; end
+
+    sig { void }
     def restore_name!; end
 
     sig { void }
@@ -637,6 +685,12 @@ class Player
 
     sig { returns(T::Boolean) }
     def saved_change_to_id_value?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_level; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_level?; end
 
     sig { returns(T.nilable([T.nilable(::String), T.nilable(::String)])) }
     def saved_change_to_name; end
@@ -703,6 +757,9 @@ class Player
 
     sig { returns(T::Boolean) }
     def will_save_change_to_id_value?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_level?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_name?; end

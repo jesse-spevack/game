@@ -9,12 +9,16 @@ module Commands
         .returns(Problem)
     end
     def call(player:)
-      GetRandomProblems.call unless player.has_played?
+      level = T.let(T.must(player.level), Integer)
+      return T.let(Problem.random_leveled(level).limit(1).first, Problem) unless player.has_played?
+
+      last_problem = T.must(T.let(player.responses.last, Response).problem)
 
       if player.was_just_wrong?
-        player.responses.last.problem
+        T.let(last_problem, Problem)
       else
-        GetRandomProblems.call
+        next_problem = Problem.random_leveled_excluding(level, last_problem).limit(1).first
+        T.let(next_problem, Problem)
       end
     end
   end

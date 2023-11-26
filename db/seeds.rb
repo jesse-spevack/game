@@ -10,6 +10,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# Clear existing responses
+Response.delete_all
 # Clear existing problems
 Problem.delete_all
 # Create addition problems
@@ -17,7 +19,13 @@ problems = []
 
 13.times do |x|
   13.times do |y|
-    problems << {x: x, y: y, solution: x + y, operation: "addition"}
+    problems << {
+      x: x,
+      y: y,
+      solution: x + y,
+      operation: "addition",
+      level: Commands::GetProblemLevel.call(x: x, y: y)
+    }
   end
 end
 

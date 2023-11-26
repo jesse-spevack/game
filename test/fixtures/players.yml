@@ -2,6 +2,12 @@
 
 jesse:
   name: Jesse
+  level: 1
 
 no_responses:
   name: NoResponses
+  level: 1
+
+level_two:
+  name: level_two_player
+  level: 2

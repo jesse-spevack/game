@@ -5,15 +5,32 @@ one_plus_one:
   x: 1
   y: 1
   solution: 2
+  level: 1
 
 one_plus_two:
   operation: "addition"
   x: 1
   y: 2
   solution: 3
+  level: 1
 
 two_plus_two:
   operation: "addition"
   x: 2
   y: 2
   solution: 4
+  level: 1
+
+four_plus_six:
+  operation: "addition"
+  x: 4
+  y: 6
+  solution: 10
+  level: 2
+
+seven_plus_three:
+  operation: "addition"
+  x: 7
+  y: 3
+  solution: 10
+  level: 2

@@ -3,7 +3,12 @@
 class Problem < ApplicationRecord
   extend T::Sig
 
+  include Levelable
+
   has_many :responses, dependent: :destroy
+
+  scope :random_leveled, ->(level) { where(level: level).order("RANDOM()") }
+  scope :random_leveled_excluding, ->(level, problem) { where(level: level).where.not(id: T.let(problem, Problem).id).order("RANDOM()") }
 
   class Operations < T::Enum
     enums do
