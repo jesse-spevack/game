@@ -15,6 +15,32 @@
         <p class="mt-2 text-sm text-gray-700">A list of of <%= @player.name %>'s statistics.</p>
       </div>
     </div>
+    <div class="border-b border-gray-200 pb-5 mb-2">
+      <div class="sm:flex sm:items-baseline sm:justify-between">
+        <div class="sm:w-0 sm:flex-1">
+          <h1 id="message-heading" class="text-base font-semibold leading-6 text-gray-900">Problems</h1>
+          <p class="mt-1 truncate text-sm text-gray-500">
+            <%= "#{@player.name}'s current practice problems" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-3">
+      <% @active_problem_groups.each do |grouping| %>
+        <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="px-4 py-5 sm:p-6">
+            <% grouping.each do |problem| %>
+              <span class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200">
+                <svg class="h-1.5 w-1.5 fill-yellow-500" viewBox="0 0 6 6" aria-hidden="true">
+                  <circle cx="3" cy="3" r="3" />
+                </svg>
+                <%= problem %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
     <div class="mt-8 flow-root">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

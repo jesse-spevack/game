@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find_by(id: params[:id])
     @statistics = Commands::GetStatistics.call(player: @player)
+    @active_problem_groups = Problem.where(level: @player.level).group_by(&:x).transform_values { |problems| problems.map(&:display) }.values
   end
 
   def new
@@ -13,7 +14,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.create(player_params)
+    @player = Commands::CreatePlayer.call(input: player_params)
     redirect_to player_path(@player)
   end
 
