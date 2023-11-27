@@ -5,11 +5,20 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_by(id: params[:id])
-    @statistics = Commands::GetStatistics.call(player: @player)
-    @active_problem_groups = Problem.where(level: @player.level).group_by(&:x).transform_values do |problems|
+    @active_problems = Problem.where(level: @player.level)
+    @aggregates = PlayerProblemAggregate.where(
+      player: @player,
+      problem: @active_problems
+    )
+
+    @active_problem_groups = @active_problems.group_by(&:x).transform_values do |problems|
       problems.map do |problem|
-        statistic = @statistics.find { |statistic| statistic.display_problem == problem.display }
-        PlayerProblem.new(player: @player, problem: problem, percent_correct: statistic&.percent_correct, times_seen: statistic&.total_responses.to_i)
+        aggregate = @aggregates.find { |aggregate| aggregate.problem == problem }
+        percent_correct = if aggregate
+          (aggregate.correct.to_f / aggregate.attempts) * 100
+        end
+
+        PlayerProblem.new(player: @player, problem: problem, percent_correct: percent_correct.to_i, times_seen: aggregate&.attempts || 0)
       end
     end.values
   end

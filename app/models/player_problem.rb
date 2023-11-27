@@ -24,7 +24,7 @@ class PlayerProblem < T::Struct
 
   sig { returns(String) }
   def color
-    color = if times_seen < 3
+    color = if times_seen < 2
       Color::GRAY
     else
       case percent_correct

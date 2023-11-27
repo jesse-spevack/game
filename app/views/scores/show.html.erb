@@ -1,0 +1,48 @@
+<div class="mx-auto max-w-7xl mt-4 px-4" >
+  <nav class="flex" aria-label="Breadcrumb">
+    <ol role="list" class="flex items-center space-x-4">
+      <li>
+        <div class="flex items-center">
+          <%= link_to "All problems", player_path(@current_player), class: "text-sm font-medium text-gray-500 hover:text-gray-700" %>
+        </div>
+      </li>
+      <li>
+        <div class="flex items-center">
+          <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+          </svg>
+          <%= link_to @aggregate.problem.display, score_path(@aggregate.problem_id), class: "text-sm font-medium text-gray-500 hover:text-gray-700" %>
+        </div>
+      </li>
+    </ol>
+  </nav>
+  <h3 class="mt-5 text-base font-semibold leading-6 text-gray-900">
+    <%= @aggregate.problem.display %>
+  </h3>
+  <dl class="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
+    <%= render "datum_display", title: "Attempts", number: @aggregate.attempts, subtitle: "Attempts at solving" %>
+    <%= render "datum_display", title: "Correct", number: @aggregate.correct, subtitle: "Correctly solved" %>
+    <%= render "datum_display", title: "Percent correct", number: @aggregate.percent_correct, subtitle: "% correct" do %>
+      <% if @aggregate.proficient? %>
+        <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+          <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path fill-rule="evenodd" d="M4.5 12.75l6 6 9-13.5" clip-rul="evenodd" />
+          </svg>
+          Proficient
+        </div>
+      <% end %>
+    <% end %>
+    <%= render "datum_display", title: "Minimum time", number: @aggregate.min_time, subtitle: "Seconds to solve" %>
+    <%= render "datum_display", title: "Maximum time", number: @aggregate.max_time, subtitle: "Seconds to solve" %>
+    <%= render "datum_display", title: "Average time", number: @aggregate.average_time, subtitle: "Seconds to solve" do %>
+      <% if @aggregate.fast? %>
+        <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+          <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path fill-rule="evenodd" d="M4.5 12.75l6 6 9-13.5" clip-rul="evenodd" />
+          </svg>
+          Fast
+        </div>
+      <% end %>
+    <% end %>
+  </dl>
+</div>

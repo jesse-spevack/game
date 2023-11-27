@@ -22,90 +22,16 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-3 gap-3 mb-5">
       <% @active_problem_groups.each do |grouping| %>
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <div class="px-4 py-5 sm:p-6">
             <% grouping.each do |player_problem| %>
-              <% if player_problem.color == 'red' %>
-                <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-red-100 text-red-800 md:mt-2 lg:mt-0">
-                    <%= player_problem.display %>
-                  </div>
-                </span>
-              <% elsif player_problem.color == 'yellow' %>
-                <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
-                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-yellow-100 text-yellow-800 md:mt-2 lg:mt-0">
-                    <%= player_problem.display %>
-                  </div>
-                </span>
-              <% elsif player_problem.color == 'green' %>
-                <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
-                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
-                    <%= player_problem.display %>
-                  </div>
-                </span>
-              <% else %>
-                <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
-                  <%= player_problem.display %>
-                </span>
-              <% end %>
+              <%= render partial: "problem_bubble", locals: { id: player_problem.problem.id, display: player_problem.display, color: player_problem.color } %>
             <% end %>
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="sm:flex sm:items-center mt-4">
-      <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold leading-6 text-gray-900">Statistics</h1>
-        <p class="mt-2 text-sm text-gray-700">A list of of <%= @player.name %>'s detailed statistics.</p>
-      </div>
-    </div>
-    <div class="mt-8 flow-root">
-      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead>
-              <tr>
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Problem</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Times seen</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Percent correct</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Minimum seconds to answer</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Maximum seconds to answer</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Average seconds to answer</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <% @statistics.each do |statistic| %>
-                <tr>
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                    <%= statistic.display_problem %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <%= statistic.total_responses %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <%= statistic.percent_correct.to_s + " %" %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <%= statistic.min_time %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <%= statistic.max_time %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <%= statistic.average_time %>
-                  </td>
-                  <td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                    <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
-                  </td>
-                </tr>
-              <% end%>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   </div>
 </div>

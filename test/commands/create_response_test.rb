@@ -20,8 +20,11 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
     travel simulated_delay do
       input = ResponseInput.new_from_params(params: params.require(:game).permit(:problem_id, :response, :started_at, :player_id))
 
+      assert_equal(1, PlayerProblemAggregate.count)
+
       result = Commands::CreateResponse.call(input: input)
 
+      assert_equal(2, PlayerProblemAggregate.count)
       assert_kind_of(Response, result)
       assert_equal(problem.solution, result.value)
       assert(result.correct)
@@ -49,8 +52,11 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
     travel simulated_delay do
       input = ResponseInput.new_from_params(params: params.require(:game).permit(:problem_id, :response, :started_at, :player_id))
 
+      assert_equal(1, PlayerProblemAggregate.count)
+
       result = Commands::CreateResponse.call(input: input)
 
+      assert_equal(2, PlayerProblemAggregate.count)
       assert_kind_of(Response, result)
       assert_equal(incorrect_response, result.value)
       refute(result.correct)

@@ -1,0 +1,25 @@
+<%= link_to score_path(id) do %>
+  <% if color == 'red' %>
+    <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-1 mb-1 text-xs font-medium text-red-700">
+      <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-red-100 text-red-800 md:mt-2 lg:mt-0">
+        <%= display %>
+      </div>
+    </span>
+  <% elsif color == 'yellow' %>
+    <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
+      <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-yellow-100 text-yellow-800 md:mt-2 lg:mt-0">
+        <%= display %>
+      </div>
+    </span>
+  <% elsif color == 'green' %>
+    <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+      <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+        <%= display %>
+      </div>
+    </span>
+  <% else %>
+    <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+      <%= display %>
+    </span>
+  <% end %>
+<% end %>

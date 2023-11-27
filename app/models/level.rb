@@ -9,6 +9,7 @@ class Level < T::Enum
     THREE = new
     FOUR = new
     FIVE = new
+    BIGBOY = new
 
     sig { returns(Integer) }
     def to_i
@@ -19,14 +20,12 @@ class Level < T::Enum
       when FOUR then 4
       when FIVE then 5
       else
-        T.absurd(self)
+        5
       end
     end
 
     sig { params(integer: Integer).returns(Level) }
     def self.from(integer)
-      T.absurd(integer) if integer > 5
-
       case integer
       when 1 then ONE
       when 2 then TWO
@@ -34,7 +33,7 @@ class Level < T::Enum
       when 4 then FOUR
       when 5 then FIVE
       else
-        T.absurd(integer)
+        FIVE
       end
     end
   end
