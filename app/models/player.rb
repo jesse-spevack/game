@@ -4,6 +4,7 @@ class Player < ApplicationRecord
   extend T::Sig
 
   include Levelable
+  include Logable
 
   has_many :responses
 
@@ -18,5 +19,10 @@ class Player < ApplicationRecord
 
     last_response = T.let(responses.last, Response)
     !last_response.correct && T.let(Time.at(last_response.completed_at), Time) >= T.let(30.seconds, ActiveSupport::Duration).ago
+  end
+
+  sig { returns(String) }
+  def display
+    T.must(name)
   end
 end
