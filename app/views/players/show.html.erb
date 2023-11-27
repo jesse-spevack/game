@@ -26,10 +26,30 @@
       <% @active_problem_groups.each do |grouping| %>
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <div class="px-4 py-5 sm:p-6">
-            <% grouping.each do |problem| %>
-              <span class="inline-flex items-center gap-x-1.5 rounded-full px-2 py-1 text-xs font-medium text-gray-900 ring-1 ring-inset ring-gray-200">
-                <%= problem %>
-              </span>
+            <% grouping.each do |player_problem| %>
+              <% if player_problem.color == 'red' %>
+                <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-red-100 text-red-800 md:mt-2 lg:mt-0">
+                    <%= player_problem.display %>
+                  </div>
+                </span>
+              <% elsif player_problem.color == 'yellow' %>
+                <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
+                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-yellow-100 text-yellow-800 md:mt-2 lg:mt-0">
+                    <%= player_problem.display %>
+                  </div>
+                </span>
+              <% elsif player_problem.color == 'green' %>
+                <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-700">
+                  <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
+                    <%= player_problem.display %>
+                  </div>
+                </span>
+              <% else %>
+                <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+                  <%= player_problem.display %>
+                </span>
+              <% end %>
             <% end %>
           </div>
         </div>

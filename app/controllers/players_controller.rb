@@ -6,7 +6,12 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find_by(id: params[:id])
     @statistics = Commands::GetStatistics.call(player: @player)
-    @active_problem_groups = Problem.where(level: @player.level).group_by(&:x).transform_values { |problems| problems.map(&:display) }.values
+    @active_problem_groups = Problem.where(level: @player.level).group_by(&:x).transform_values do |problems|
+      problems.map do |problem|
+        statistic = @statistics.find { |statistic| statistic.display_problem == problem.display }
+        PlayerProblem.new(player: @player, problem: problem, percent_correct: statistic&.percent_correct, times_seen: statistic&.total_responses.to_i)
+      end
+    end.values
   end
 
   def new
