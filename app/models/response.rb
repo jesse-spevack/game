@@ -9,8 +9,15 @@ class Response < ApplicationRecord
   validates :completed_at, presence: true
   validates :started_at, presence: true
 
+  after_commit :reaggregate
+
   sig { returns(Integer) }
   def time
     T.must(completed_at) - T.must(started_at)
+  end
+
+  sig { void }
+  def reaggregate
+    Commands::CreateOrUpdatePlayerProblemAggregate.call(player: player, problem: problem)
   end
 end

@@ -10,9 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_26_173804) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_015948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "player_problem_aggregates", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "problem_id", null: false
+    t.integer "attempts", default: 0, null: false
+    t.integer "correct", default: 0, null: false
+    t.integer "min_time", default: 0, null: false
+    t.integer "max_time", default: 0, null: false
+    t.integer "average_time", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id", "problem_id"], name: "index_player_problem_aggregates_on_player_id_and_problem_id", unique: true
+    t.index ["player_id"], name: "index_player_problem_aggregates_on_player_id"
+    t.index ["problem_id"], name: "index_player_problem_aggregates_on_problem_id"
+  end
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -47,6 +62,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_26_173804) do
     t.index ["problem_id"], name: "index_responses_on_problem_id"
   end
 
+  add_foreign_key "player_problem_aggregates", "players"
+  add_foreign_key "player_problem_aggregates", "problems"
   add_foreign_key "responses", "players"
   add_foreign_key "responses", "problems"
 end

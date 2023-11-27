@@ -6,6 +6,9 @@
 
 class ActiveSupport::TestCase
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
+  def player_problem_aggregates(*fixture_names); end
+
+  sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
   def players(*fixture_names); end
 
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }

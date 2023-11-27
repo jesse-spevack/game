@@ -36,19 +36,11 @@ five:
   value: 10
   correct: true
   started_at: 1700752190
-  completed_at: 1700752200
-  problem: four_plus_six
-  player: many_responses
-
-six:
-  value: 10
-  correct: true
-  started_at: 1700752200
   completed_at: 1700752210
   problem: four_plus_six
   player: many_responses
 
-seven:
+six:
   value: 10
   correct: true
   started_at: 1700752210
@@ -60,6 +52,14 @@ seven:
   value: 10
   correct: true
   started_at: 1700752220
-  completed_at: 1700752210
+  completed_at: 1700752230
+  problem: four_plus_six
+  player: many_responses
+
+eight:
+  value: 10
+  correct: true
+  started_at: 1700752230
+  completed_at: 1700752235
   problem: four_plus_six
   player: many_responses
