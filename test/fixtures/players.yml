@@ -5,9 +5,13 @@ jesse:
   level: 1
 
 no_responses:
-  name: NoResponses
+  name: player_with_no_responses
   level: 1
 
 level_two:
   name: level_two_player
+  level: 2
+
+many_responses:
+  name: player_with_many_responses
   level: 2
