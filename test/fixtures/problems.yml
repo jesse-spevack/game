@@ -34,3 +34,17 @@ seven_plus_three:
   y: 3
   solution: 10
   level: 2
+
+one_hundred_plus_one_hundred:
+  operation: "addition"
+  x: 100
+  y: 100
+  solution: 200
+  level: 100
+
+one_hundred_plus_one_hundred_and_one:
+  operation: "addition"
+  x: 100
+  y: 101
+  solution: 200
+  level: 100

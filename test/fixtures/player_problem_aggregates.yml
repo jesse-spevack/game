@@ -2,9 +2,36 @@
 
 one:
   player: jesse
+  problem: one_plus_one
+  attempts: 5
+  correct: 4
+  min_time: 5
+  max_time: 20
+  average_time: 9
+
+two:
+  player: jesse
   problem: one_plus_two
   attempts: 5
   correct: 4
   min_time: 5
   max_time: 20
   average_time: 9
+
+get_player_problem_aggregates_grouped_by_problem_test_aggregate1:
+  player: get_player_problem_grouped_by_problem_test
+  problem: one_hundred_plus_one_hundred
+  attempts: 5
+  correct: 4
+  min_time: 5
+  max_time: 20
+  average_time: 9
+
+get_player_problem_aggregates_grouped_by_problem_test_aggregate2:
+  player: get_player_problem_grouped_by_problem_test
+  problem: one_hundred_plus_one_hundred_and_one
+  attempts: 6
+  correct: 4
+  min_time: 3
+  max_time: 21
+  average_time: 5

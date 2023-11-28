@@ -15,7 +15,7 @@ class PlayerProblem < T::Struct
   const :player, Player
   const :problem, Problem
   const :percent_correct, T.nilable(Integer)
-  const :times_seen, Integer
+  const :attempts, Integer
 
   sig { returns(String) }
   def display
@@ -24,7 +24,7 @@ class PlayerProblem < T::Struct
 
   sig { returns(String) }
   def color
-    color = if times_seen < 2
+    color = if attempts < 2
       Color::GRAY
     else
       case percent_correct

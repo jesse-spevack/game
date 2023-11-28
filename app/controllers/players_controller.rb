@@ -5,22 +5,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find_by(id: params[:id])
-    @active_problems = Problem.where(level: @player.level)
-    @aggregates = PlayerProblemAggregate.where(
-      player: @player,
-      problem: @active_problems
-    )
-
-    @active_problem_groups = @active_problems.group_by(&:x).transform_values do |problems|
-      problems.map do |problem|
-        aggregate = @aggregates.find { |aggregate| aggregate.problem == problem }
-        percent_correct = if aggregate
-          (aggregate.correct.to_f / aggregate.attempts) * 100
-        end
-
-        PlayerProblem.new(player: @player, problem: problem, percent_correct: percent_correct.to_i, times_seen: aggregate&.attempts || 0)
-      end
-    end.values
+    @active_problem_groups = Commands::GetActiveProblemGroupings.call(player: @player)
   end
 
   def new

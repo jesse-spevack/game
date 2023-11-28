@@ -1,6 +1,7 @@
 # typed: strict
 
 module Commands
+  # Responsible for getting the player's score.
   class GetPlayerScore < Commands::Base
     extend T::Sig
 

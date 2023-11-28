@@ -68,3 +68,4 @@ fly deploy
 
 - Bias problem selection algo to less seen problems
 - User
+- User timezone :/ - see `get_consecutive_days_played.rb`

@@ -15,3 +15,7 @@ level_two:
 many_responses:
   name: player_with_many_responses
   level: 2
+
+get_player_problem_grouped_by_problem_test:
+  name: get_player_problem_grouped_by_problem_test
+  level: 100

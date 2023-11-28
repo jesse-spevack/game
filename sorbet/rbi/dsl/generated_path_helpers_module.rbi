@@ -114,6 +114,9 @@ module GeneratedPathHelpersModule
   def root_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def score_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def scores_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }

@@ -1,6 +1,10 @@
 # # typed: strict
 
 module Commands
+  # Responsible for creating a response.
+  # A response belongs to a player and a problem.
+  # After creating a new response, we need to update the player's aggregate.
+  # This is in lieu of an after_commit hook on the response model.
   class CreateResponse < Commands::Base
     extend T::Sig
 

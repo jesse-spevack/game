@@ -1,6 +1,7 @@
 # typed: strict
 
 module Commands
+  # Gets the total number of problems solved by a player.
   class GetTotalProblemsSolved < Commands::Base
     extend T::Sig
 

@@ -1,6 +1,7 @@
 # typed: strict
 
 module Commands
+  # Responsible for getting the next problem for a player.
   class GetNextProblemForPlayer < Commands::Base
     extend T::Sig
 
@@ -13,15 +14,12 @@ module Commands
       return T.let(Problem.random_leveled(level).limit(1).first, Problem) unless player.has_played?
 
       responses = player.responses
-
-      last_problem = T.must(T.let(responses.last, Response).problem)
+      last_repsonse = T.let(responses.last, Response)
+      last_problem = T.must(last_repsonse.problem)
 
       if player.was_just_wrong?
         Rails.logger.info("Player was just wrong, returning last problem")
-        T.let(last_problem, Problem)
-      elsif T.let(responses.count, Integer) < 10
-        Rails.logger.info("Player was less than 10 responses, returning random leveled problem")
-        T.let(Problem.random_leveled_excluding(level, last_problem).limit(1).first, Problem)
+        last_problem
       else
         start = Time.now.to_f
 
@@ -29,27 +27,36 @@ module Commands
 
         next_problem = T.let(available_problems.first, Problem)
         aggregates = PlayerProblemAggregate.where(player: player, problem: available_problems)
-        available_problems.each do |problem|
+
+        available_problems.each do |ambiguously_typed_problem|
+          problem = T.let(ambiguously_typed_problem, Problem)
           aggregate = aggregates.find_by(problem: problem)
+
+          Rails.logger.info("Analyzed #{problem.to_log}")
+          Rails.logger.info(player.to_log)
+
+          # TODO encapsulate this in a command that takes in an aggregate and returns a boolean
           if aggregate.nil?
-            Rails.logger.info("Analyzed #{next_problem.to_log} for #{player.to_log} and found player has not seen this problem")
-            Rails.logger.info("FINISHED FINDING PROBLEM do to inexperience #{next_problem.to_log}")
+            Rails.logger.info("FINISHED FINDING PROBLEM do to player inexperience with #{next_problem.to_log}")
             next_problem = problem
             break
-          elsif !aggregate.proficient? || !aggregate.fast?
-            Rails.logger.info("PROFICIENCY || SPEED")
-            Rails.logger.info("Analyzed #{problem.to_log}")
-            Rails.logger.info(player.to_log)
-            Rails.logger.info("Proficient: #{aggregate.proficient?}")
+          elsif !aggregate.proficient?
             Rails.logger.info("Fast: #{aggregate.fast?}")
-            Rails.logger.info("FINISHED FINDING PROBLEM do to fit #{next_problem.to_log}")
+            Rails.logger.info("FINISHED FINDING PROBLEM. Player is not yet proficient at #{next_problem.to_log}")
+            next_problem = problem
+            break
+          elsif !aggregate.fast?
+            Rails.logger.info("Fast: #{aggregate.fast?}")
+            Rails.logger.info("FINISHED FINDING PROBLEM. Player is not yet fast at #{next_problem.to_log}")
             next_problem = problem
             break
           end
+
           now = Time.now.to_f
           if now - start > 0.15
             Rails.logger.info("Too much time elapsed: #{now - start} SECONDS - returning random problem #{next_problem.to_log}")
             Rails.logger.info("FINISHED FINDING PROBLEM do to time #{next_problem.to_log}")
+            next_problem = problem
             break
           end
         end
