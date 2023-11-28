@@ -1,4 +1,4 @@
-<div data-controller="hidden-input" class="container mx-auto">
+<div data-controller="hidden-input sfx" data-sfx-correct-value="<%= !!@correct %>" class="container mx-auto">
   <div class="xl:mx-96 lg:mx-80 mx-auto grid grid-cols-3 grid-rows-3 gap-1 sm:text-9xl text-right text-7xl">
     <div class="col-span-1 row-span-2 sm:ml-14 self-center">
       <p><%= @problem.operation_symbol %></p>
@@ -40,4 +40,5 @@
       <%= form.submit "☑", data: { hidden_input_target: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-indigo-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-indigo-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-indigo-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
     </div>
   <% end %>
+  <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>
 </div>

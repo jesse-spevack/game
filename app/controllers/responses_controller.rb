@@ -4,10 +4,13 @@ class ResponsesController < ApplicationController
   def new
     Rails.logger.info("current_player = #{@current_player.inspect}")
     @problem = Commands::GetNextProblemForPlayer.call(player: @current_player)
+    @correct = session[:correct]
+    session[:correct] = nil
   end
 
   def create
-    Commands::CreateResponse.call(input: response_input)
+    response = Commands::CreateResponse.call(input: response_input)
+    session[:correct] = response.correct?
     redirect_to new_responses_path
   end
 
