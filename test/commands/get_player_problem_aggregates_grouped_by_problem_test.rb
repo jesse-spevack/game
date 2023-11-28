@@ -11,9 +11,7 @@ class Commands::GetPlayerProblemAggregatesGroupedByProblemTest < ActiveSupport::
 
     result = Commands::GetPlayerProblemAggregatesGroupedByProblem.call(player: player, problems: problems)
 
-    assert_equal(2, result.length)
-    assert_equal(problems.to_a, result.keys)
-    assert_equal(aggregate1, result[aggregate1.problem])
-    assert_equal(aggregate2, result[aggregate2.problem])
+    assert_equal(result.get(problem: aggregate1.problem), aggregate1)
+    assert_equal(result.get(problem: aggregate2.problem), aggregate2)
   end
 end

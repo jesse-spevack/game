@@ -7,12 +7,13 @@ module Commands
     extend T::Sig
 
     # { Problem => PlayerProblemAggregate }
-    sig { params(player: Player, problems: ActiveRecord::Relation).returns(T.nilable(T::Hash[Problem, PlayerProblemAggregate])) }
+    sig { params(player: Player, problems: ActiveRecord::Relation).returns(PlayerProblemAggregatesGroupedByProblem) }
     def call(player:, problems:)
-      active_problems = Problem.level(player.level)
-
-      PlayerProblemAggregate.where(player: player, problem: active_problems).each_with_object({}) do |player_problem_aggregate, hash|
-        hash[player_problem_aggregate.problem] = player_problem_aggregate
+      PlayerProblemAggregate.where(player: player, problem: problems).each_with_object(PlayerProblemAggregatesGroupedByProblem.new) do |player_problem_aggregate, grouping|
+        grouping.set(
+          problem: T.must(player_problem_aggregate.problem),
+          player_problem_aggregate: player_problem_aggregate
+        )
       end
     end
   end
