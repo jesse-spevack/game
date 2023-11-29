@@ -1,3 +1,4 @@
+# A concern for models that have a level attribute
 module Levelable
   extend ActiveSupport::Concern
 

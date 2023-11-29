@@ -1,5 +1,6 @@
 # typed: strict
 
+# An object that encapsultes the input needed to create a response from a request.
 class ResponseInput < T::Struct
   extend T::Sig
 

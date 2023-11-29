@@ -1,10 +1,12 @@
 class PlayersController < ApplicationController
   def index
     @players = Player.all
+    session[:player_id] = nil
   end
 
   def show
     @player = Player.find_by(id: params[:id])
+    session[:player_id] = @player.id
     @active_problem_groups = Commands::GetActiveProblemGroupings.call(player: @player)
   end
 

@@ -1,5 +1,6 @@
 # typed: strict
 
+# A model that represents a player's response to a problem.
 class Response < ApplicationRecord
   extend T::Sig
 

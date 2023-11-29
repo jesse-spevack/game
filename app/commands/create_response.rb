@@ -24,6 +24,10 @@ module Commands
 
       Commands::CreateOrUpdatePlayerProblemAggregate.call(player: input.player, problem: input.problem)
 
+      if Commands::IsLevelComplete.call(player: input.player)
+        Commands::LevelUpPlayer.call(player: input.player)
+      end
+
       response
     end
   end

@@ -1,5 +1,6 @@
 # typed: strict
 
+# An object that represents a player's performance on a problem for views.
 class PlayerProblem < T::Struct
   extend T::Sig
 
@@ -37,10 +38,5 @@ class PlayerProblem < T::Struct
     end
 
     color.serialize
-  end
-
-  sig { returns(String) }
-  def tailwind_classes
-    "inline-flex items-center rounded-full bg-#{color}-100 px-2 py-1 text-xs font-medium text-#{color}-700"
   end
 end

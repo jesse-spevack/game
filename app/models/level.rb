@@ -1,5 +1,6 @@
 # typed: strict
 
+# All supported levels of the game.
 class Level < T::Enum
   extend T::Sig
 
@@ -35,6 +36,11 @@ class Level < T::Enum
       else
         FIVE
       end
+    end
+
+    sig { params(player: Player).returns(Integer) }
+    def self.next_level(player:)
+      from(player.level.to_i + 1).to_i
     end
   end
 end

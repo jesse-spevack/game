@@ -1,5 +1,6 @@
 # typed: strict
 
+# A player of the game.
 class Player < ApplicationRecord
   extend T::Sig
 

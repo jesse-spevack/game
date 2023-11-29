@@ -1,5 +1,6 @@
 # typed: strict
 
+# A model that represents a problem.
 class Problem < ApplicationRecord
   extend T::Sig
 
