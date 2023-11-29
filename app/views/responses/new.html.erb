@@ -41,4 +41,5 @@
     </div>
   <% end %>
   <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>
+  <div data-action="keydown@document->hidden-input#handleKeyboardInput" class="hidden"></div>
 </div>

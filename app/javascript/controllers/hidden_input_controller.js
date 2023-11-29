@@ -11,10 +11,17 @@ export default class extends Controller {
     this.displayTarget.innerText = this.responseValue
   }
 
-  keyPress(event) {
-    const userInput = event.target.innerText;
-    const operation = event.target.dataset.operation;
-  
+  handleKeyboardInput(event) {
+    if (/^\d$/.test(event.key)) {
+      this.updateDisplay(parseInt(event.key), "append");
+    } else if (event.key === "Backspace") {
+      this.updateDisplay(null, "delete");
+    } else if (event.key === "Enter") {
+      this.submitTarget.click();
+    }
+  }
+
+  updateDisplay(userInput, operation) {
     if (operation === "append") {
       this.appendInput(this.responseValue, userInput);
     } else if (operation === "delete") {
@@ -28,6 +35,14 @@ export default class extends Controller {
     } else {
       this.submitTarget.disabled = false;
     }
+
+  }
+
+  keyPress(event) {
+    const userInput = event.target.innerText;
+    const operation = event.target.dataset.operation;
+  
+    this.updateDisplay(userInput, operation);
   }
 
   appendInput(currentResponse, userInput) {

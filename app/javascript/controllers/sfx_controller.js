@@ -13,7 +13,6 @@ export default class extends Controller {
     }
   }
 
-
   playCorrectSound() {
     try {
       const url = this.soundTarget.src;
