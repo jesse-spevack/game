@@ -1,6 +1,7 @@
 # typed: strict
 
 module Commands
+  # Admin command to reset a player's progress
   class ResetPlayer < Commands::Base
     sig { params(player: Player).void }
     def call(player:)

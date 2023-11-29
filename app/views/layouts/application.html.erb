@@ -12,7 +12,9 @@
   <body>
     <main class="mx-auto">
       <%= render "shared/navbar" %>
-      <%= yield %>
+      <div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
+        <%= yield %>
+      </div>
       <%= render "shared/footer" %>
     </main>
   </body>

@@ -1,0 +1,45 @@
+<div data-controller="hidden-input sfx" data-sfx-correct-value="<%= !!@correct %>" class="container mx-auto">
+  <div class="xl:mx-96 lg:mx-80 mx-auto grid grid-cols-3 grid-rows-3 gap-1 sm:text-9xl text-right text-7xl">
+    <div class="col-span-1 row-span-2 sm:ml-14 self-center">
+      <p><%= @problem.operation_symbol %></p>
+    </div>
+    <div class="col-span-1 row-span-1">
+      <p><%= @problem.x %></p>
+    </div>
+    <div class="col-span-1 col-start-2 row-span-1 row-start-2 border-b-8 border-black">
+      <p><%= @problem.y %></p>
+    </div>
+    <div class="col-span-1 col-start-2 row-span-1 row-start-3">
+      <div data-hidden-input-target="display" class="sm:text-9xl text-7xl"></div>
+    </div>
+  </div>
+  <div class="xl:mx-96 lg:mx-80 mx-auto mb-4 grid grid-cols-3 grid-rows-1 gap-1">
+    <div class="col-start-2 text-center h-6">
+      <% if @current_player.was_just_wrong? %>
+        <p class="mt-2 text-red-600" id="email-error">💪 Try again.</p>
+      <% end %>
+    </div>
+  </div>
+  <%= form_with(scope: :game, url: responses_path, method: :post) do |form| %>
+    <%= form.hidden_field :problem_id, value: @problem.id %>
+    <%= form.hidden_field :player_id, value: @current_player.id %>
+    <%= form.hidden_field :started_at, value: Time.now.to_i %>
+    <%= form.hidden_field :response, data: { hidden_input_target: "field" } %>
+    <div class="xl:mx-96 lg:mx-80 mx-auto mb-4 grid grid-cols-3 gap-y-2 gap-x-2 justify-items-center">
+      <%= render partial: "shared/key", locals: { number: 1, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 2, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 3, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 4, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 5, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 6, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 7, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 8, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: 9, operation: "append" } %>
+      <%= render partial: "shared/key", locals: { number: "⌫", operation: "delete" } %>
+      <%= render partial: "shared/key", locals: { number: 0, operation: "append" } %>
+      <%= form.submit "☑", data: { hidden_input_target: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-indigo-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-indigo-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-indigo-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
+    </div>
+  <% end %>
+  <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>
+  <div data-action="keydown@document->hidden-input#handleKeyboardInput" class="hidden"></div>
+</div>

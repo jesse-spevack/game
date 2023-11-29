@@ -1,20 +1,23 @@
-<div class="mx-auto max-w-7xl mt-4 px-4" >
-  <h3 class="text-base font-semibold leading-6 text-gray-900"><%= @current_player.name %>'s Score</h3>
+<div class="pb-5 my-5">
+  <h3 class="text-base font-semibold leading-6 text-gray-900">Score</h3>
+  <p class="mt-1 truncate text-sm text-gray-500">
+    <%= "#{name}'s progress" %>
+  </p>
   <dl class="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-2 md:divide-x md:divide-y-0">
     <div class="px-4 py-5 sm:p-6">
       <dt class="text-base font-normal text-gray-900">Total</dt>
       <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
         <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
-          <%= @score.total_problems_solved %>
+          <%= score.total_problems_solved %>
           <span class="ml-2 text-sm font-medium text-gray-500">problems solved</span>
         </div>
-        <% if @score.problems_solved_since_yesterday.positive? %>
+        <% if score.problems_solved_since_yesterday.positive? %>
           <div class="inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium bg-green-100 text-green-800 md:mt-2 lg:mt-0">
             <svg class="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z" clip-rule="evenodd" />
             </svg>
             <span class="sr-only"> Increased by </span>
-            <%= @score.problems_solved_since_yesterday %> since yesterday
+            <%= score.problems_solved_since_yesterday %> since yesterday
           </div>
         <% end %>
       </dd>

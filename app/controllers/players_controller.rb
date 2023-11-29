@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
     @player = Player.find_by(id: params[:id])
     session[:player_id] = @player.id
     @active_problem_groups = Commands::GetActiveProblemGroupings.call(player: @player)
+    @score = Commands::GetPlayerScore.call(player: @player)
   end
 
   def new

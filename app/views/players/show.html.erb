@@ -1,37 +1,36 @@
-<div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
-  <div class="mt-8 px-4 sm:px-6 lg:px-8">
-    <div class="md:flex md:items-center md:justify-between">
-      <div class="min-w-0 flex-1">
-        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @player.name %></h2>
-      </div>
-      <div class="mt-4 flex md:ml-4 md:mt-0">
-        <%= link_to "Edit", edit_player_path(@player), class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
-        <%= button_to "Play", sessions_path(player_id: @player.id), method: :post, class: 'ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+<div class="mt-8 px-4 sm:px-6 lg:px-8">
+  <div class="md:flex md:items-center md:justify-between">
+    <div class="min-w-0 flex-1">
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @player.name %></h2>
+    </div>
+    <div class="mt-4 flex md:ml-4 md:mt-0">
+      <%= link_to "Edit", edit_player_path(@player), class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+      <%= button_to "Play", sessions_path(player_id: @player.id), method: :post, class: 'ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+    </div>
+  </div>
+  <%= render "scores/summary", score: @score, name: @player.name  %>
+  <div class="pb-5 my-5">
+    <div class="sm:flex sm:items-baseline sm:justify-between">
+      <div class="sm:w-0 sm:flex-1">
+        <div class="flex justify-start gap-2">
+          <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
+          <h1 id="message-heading" class="text-base font-semibold leading-6 text-gray-900">Problems</h1>
+        </div>
+        <p class="mt-1 truncate text-sm text-gray-500">
+          <%= "#{@player.name}'s current practice problems" %>
+        </p>
       </div>
     </div>
-    <div class="border-b border-gray-200 pb-5 my-5">
-      <div class="sm:flex sm:items-baseline sm:justify-between">
-        <div class="sm:w-0 sm:flex-1">
-          <div class="flex justify-start gap-2">
-            <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Active</span>
-            <h1 id="message-heading" class="text-base font-semibold leading-6 text-gray-900">Problems</h1>
-          </div>
-          <p class="mt-1 truncate text-sm text-gray-500">
-            <%= "#{@player.name}'s current practice problems" %>
-          </p>
+  </div>
+  <div class="grid grid-cols-3 gap-3 mb-5">
+    <% @active_problem_groups.each do |grouping| %>
+      <div class="overflow-hidden rounded-lg bg-white shadow">
+        <div class="px-4 py-5 sm:p-6">
+          <% grouping.each do |player_problem| %>
+            <%= render partial: "problem_bubble", locals: { id: player_problem.problem.id, display: player_problem.display, color: player_problem.color } %>
+          <% end %>
         </div>
       </div>
-    </div>
-    <div class="grid grid-cols-3 gap-3 mb-5">
-      <% @active_problem_groups.each do |grouping| %>
-        <div class="overflow-hidden rounded-lg bg-white shadow">
-          <div class="px-4 py-5 sm:p-6">
-            <% grouping.each do |player_problem| %>
-              <%= render partial: "problem_bubble", locals: { id: player_problem.problem.id, display: player_problem.display, color: player_problem.color } %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
