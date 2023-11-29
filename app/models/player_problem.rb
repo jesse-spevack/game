@@ -25,16 +25,16 @@ class PlayerProblem < T::Struct
 
   sig { returns(String) }
   def color
-    color = if attempts < 2
+    color = if attempts < PlayerProblemAggregate::MINIMUM_ATTEMPT_THRESHOLD
       Color::GRAY
+    elsif percent_correct.to_i >= PlayerProblemAggregate::PROFICIENCY_THRESHOLD
+      Color::GREEN
+    elsif percent_correct.to_i >= PlayerProblemAggregate::PROFICIENCY_THRESHOLD - 20
+      Color::YELLOW
+    elsif percent_correct.to_i > 0
+      Color::RED
     else
-      case percent_correct
-      when 0..75 then Color::RED
-      when 76..85 then Color::YELLOW
-      when 86..100 then Color::GREEN
-      else
-        Color::GRAY
-      end
+      Color::GRAY
     end
 
     color.serialize

@@ -30,6 +30,9 @@ module GeneratedPathHelpersModule
   def players_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def problem_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def rails_blob_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -115,9 +118,6 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def score_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def scores_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def session_path(*args); end

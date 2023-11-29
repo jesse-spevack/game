@@ -30,6 +30,9 @@ module GeneratedUrlHelpersModule
   def players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def problem_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def rails_blob_representation_proxy_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -115,9 +118,6 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def score_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def scores_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def session_url(*args); end
