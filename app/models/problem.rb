@@ -16,6 +16,8 @@ class Problem < ApplicationRecord
   class Operations < T::Enum
     enums do
       Addition = new
+      Subtraction = new
+      Multiplication = new
     end
   end
 
@@ -36,7 +38,16 @@ class Problem < ApplicationRecord
 
   sig { returns(String) }
   def operation_symbol
-    "+"
+    case operation
+    when Operations::Addition.serialize
+      "+"
+    when Operations::Subtraction.serialize
+      "-"
+    when Operations::Multiplication.serialize
+      "x"
+    else
+      ""
+    end
   end
 
   sig { returns(String) }
@@ -44,9 +55,15 @@ class Problem < ApplicationRecord
     x.to_s + " " + operation_symbol + " " + y.to_s
   end
 
-  # TODO test me
   sig { params(operation: String).returns(String) }
   def self.operation_symbol(operation:)
-    T.let({"addition" => "+"}[operation], String)
+    T.let(
+      {
+        "addition" => "+",
+        "subtraction" => "-",
+        "multiplication" => "x"
+      }[operation],
+      String
+    )
   end
 end

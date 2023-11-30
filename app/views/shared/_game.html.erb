@@ -37,7 +37,7 @@
       <%= render partial: "shared/key", locals: { number: 9, operation: "append" } %>
       <%= render partial: "shared/key", locals: { number: "⌫", operation: "delete" } %>
       <%= render partial: "shared/key", locals: { number: 0, operation: "append" } %>
-      <%= form.submit "☑", data: { hidden_input_target: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-indigo-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-indigo-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-indigo-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
+      <%= form.submit "☑", data: { hidden_input_target: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-cyan-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-cyan-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-cyan-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
     </div>
   <% end %>
   <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>

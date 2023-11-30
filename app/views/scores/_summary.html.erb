@@ -7,7 +7,7 @@
     <div class="px-4 py-5 sm:p-6">
       <dt class="text-base font-normal text-gray-900">Total</dt>
       <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
-        <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
+        <div class="flex items-baseline text-2xl font-semibold text-cyan-600">
           <%= score.total_problems_solved %>
           <span class="ml-2 text-sm font-medium text-gray-500">problems solved</span>
         </div>
@@ -25,7 +25,7 @@
     <div class="px-4 py-5 sm:p-6">
       <dt class="text-base font-normal text-gray-900">Streak</dt>
       <dd class="mt-1 flex items-baseline justify-between md:block lg:flex">
-        <div class="flex items-baseline text-2xl font-semibold text-indigo-600">
+        <div class="flex items-baseline text-2xl font-semibold text-cyan-600">
           <%= @score.consecutive_days_played %>
           <span class="ml-2 text-sm font-medium text-gray-500">
             <% if @score.consecutive_days_played == 1 %>

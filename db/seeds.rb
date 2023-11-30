@@ -24,7 +24,34 @@ problems = []
       y: y,
       solution: x + y,
       operation: "addition",
-      level: Commands::GetProblemLevel.call(x: x, y: y)
+      level: Commands::GetAdditionProblemLevel.call(x: x, y: y)
+    }
+  end
+end
+
+13.times do |x|
+  13.times do |y|
+    difference = x - y
+    if !difference.negative?
+      subtraction_problems << {
+        x: x,
+        y: y,
+        solution: difference,
+        operation: "subtraction",
+        level: Commands::GetSubtractionProblemLevel.call(x: x, y: y)
+      }
+    end
+  end
+end
+
+13.times do |x|
+  13.times do |y|
+    problems << {
+      x: x,
+      y: y,
+      solution: x * y,
+      operation: "multiplication",
+      level: Commands::GetMultiplicationProblemLevel.call(x: x, y: y)
     }
   end
 end
