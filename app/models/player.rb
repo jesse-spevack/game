@@ -4,7 +4,6 @@
 class Player < ApplicationRecord
   extend T::Sig
 
-  include Levelable
   include Logable
 
   has_many :responses

@@ -12,7 +12,7 @@ module Commands
     def call(player:)
       level = player.level
       player_problem_aggregates = T.let(
-        Commands::GetPlayerProblemAggregatesForLevel.call(player: player, level: Level.from(level)),
+        Commands::GetPlayerProblemAggregatesForLevel.call(player: player, level: level),
         ActiveRecord::Relation
       )
 

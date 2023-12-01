@@ -9,8 +9,7 @@ module Commands
         .returns(T::Boolean)
     end
     def call(player:)
-      next_level = Level.next_level(player: player)
-      T.let(player.update(level: next_level), T::Boolean)
+      T.let(player.update(level: player.level + 1), T::Boolean)
     end
   end
 end

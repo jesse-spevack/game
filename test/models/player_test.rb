@@ -58,13 +58,4 @@ class PlayerTest < ActiveSupport::TestCase
       refute(player.was_just_wrong?)
     end
   end
-
-  test "level must be valid" do
-    player = Player.create(
-      name: "hello",
-      level: 1_000_000
-    )
-
-    refute(player.valid?)
-  end
 end

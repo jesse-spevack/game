@@ -6,13 +6,11 @@ module Commands
     extend T::Sig
 
     sig do
-      params(player: Player, level: T.nilable(Level))
+      params(player: Player, level: T.nilable(Integer))
         .returns(ActiveRecord::Relation)
     end
     def call(player:, level: nil)
-      level = level.nil? ? player.level : level.to_i
-
-      PlayerProblemAggregate.where(player: player, problem: Problem.level(level))
+      PlayerProblemAggregate.where(player: player, problem: Problem.level(level || player.level))
     end
   end
 end

@@ -3,7 +3,7 @@
 require "test_helper"
 
 class ProblemTest < ActiveSupport::TestCase
-  test "type must be addition" do
+  test "type must be supported" do
     problem = Problem.create(
       x: 100,
       y: 200,
@@ -22,18 +22,22 @@ class ProblemTest < ActiveSupport::TestCase
         operation: Problem::Operations::Addition.serialize,
         level: 1
       )
+
+      Problem.create!(
+        x: 200,
+        y: 100,
+        solution: 100,
+        operation: Problem::Operations::Subtraction.serialize,
+        level: 1
+      )
+
+      Problem.create!(
+        x: 20,
+        y: 101,
+        solution: 100,
+        operation: Problem::Operations::Multiplication.serialize,
+        level: 1
+      )
     end
-  end
-
-  test "level must be valid" do
-    problem = Problem.create(
-      x: 100,
-      y: 200,
-      solution: 300,
-      operation: Problem::Operations::Addition.serialize,
-      level: 1_000_000
-    )
-
-    refute(problem.valid?)
   end
 end

@@ -4,7 +4,6 @@
 class Problem < ApplicationRecord
   extend T::Sig
 
-  include Levelable
   include Logable
 
   has_many :responses, dependent: :destroy
@@ -12,6 +11,7 @@ class Problem < ApplicationRecord
   scope :level, ->(level) { where(level: level) }
   scope :random_leveled, ->(level) { where(level: level).order("RANDOM()") }
   scope :random_leveled_excluding, ->(level, problem) { where(level: level).where.not(id: T.let(problem, Problem).id).order("RANDOM()") }
+  scope :display_by_level, -> { all.group_by(&:level).transform_values { |problems| problems.map(&:display) } }
 
   class Operations < T::Enum
     enums do

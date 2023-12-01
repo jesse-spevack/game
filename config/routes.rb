@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "players#index"
 
+  get "admin" => "admin#index", :as => :admin
+
   resources :players
   resources :problems, only: [:show]
   resource :responses, only: [:create, :new], path: "game"
