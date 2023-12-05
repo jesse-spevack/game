@@ -27,7 +27,17 @@
       <div class="overflow-hidden rounded-lg bg-white shadow">
         <div class="px-4 py-5 sm:p-6">
           <% grouping.each do |player_problem| %>
-            <%= render partial: "problem_bubble", locals: { id: player_problem.problem.id, display: player_problem.display, color: player_problem.color } %>
+            <%= link_to score_path(player_problem.problem.id) do %>
+              <% if player_problem.color == 'red' %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "red", text_level: "800" %>
+              <% elsif player_problem.color == 'yellow' %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "yellow", text_level: "800" %>
+              <% elsif player_problem.color == 'green' %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "green", text_level: "800" %>
+              <% else %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "gray", text_level: "600" %>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       </div>

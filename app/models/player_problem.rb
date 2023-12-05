@@ -31,7 +31,7 @@ class PlayerProblem < T::Struct
       Color::GREEN
     elsif percent_correct.to_i >= PlayerProblemAggregate::PROFICIENCY_THRESHOLD - 20
       Color::YELLOW
-    elsif percent_correct.to_i > 0
+    elsif attempts > 0 && percent_correct.to_i >= 0
       Color::RED
     else
       Color::GRAY

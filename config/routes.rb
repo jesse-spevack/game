@@ -10,6 +10,13 @@ Rails.application.routes.draw do
 
   get "admin" => "admin#index", :as => :admin
 
+  namespace :admin do
+    resources :problems, only: [:index, :create]
+    resources :responses, only: [:destroy]
+
+    resource :relevels, only: [:update]
+  end
+
   resources :players
   resources :problems, only: [:show]
   resource :responses, only: [:create, :new], path: "game"
