@@ -8,27 +8,27 @@ module Commands
       # Work in progress
       # This will need to be expanded as we add more levels
       if x <= 5
-        22
+        21
       elsif x <= 10 && y <= 5
-        23
+        22
       elsif x <= 10
-        24
+        23
       elsif x <= 15 && y <= 5
-        25
+        24
       elsif x <= 15 && y <= 10
-        26
+        25
       elsif x <= 15
-        27
+        26
       elsif x <= 20 && y <= 5
-        28
+        27
       elsif x <= 20 && y <= 10
-        29
+        28
       elsif x <= 20 && y <= 15
-        30
+        29
       elsif x <= 20
-        31
+        30
       else
-        32
+        raise "No level found for x: #{x}, y: #{y}"
       end
     end
   end

@@ -6,43 +6,43 @@ module Commands
     sig { params(x: Integer, y: Integer).returns(Integer) }
     def call(x:, y:)
       if [0, 1, 2].include?(x) && y <= 5
-        32
+        31
       elsif [0, 1, 2].include?(x) && y < 10
-        33
+        32
       elsif [0, 1, 2].include?(x)
-        34
+        33
       elsif x == 4
-        35
+        34
       elsif x == 5
-        36
+        35
       elsif x == 6 && y <= 5
-        37
+        36
       elsif x == 6
-        38
+        37
       elsif x == 8 && y <= 5
-        39
+        38
       elsif x == 8
-        40
+        39
       elsif x == 10
-        41
+        40
       elsif x == 11
-        42
+        41
       elsif x == 3 && y <= 5
-        43
+        42
       elsif x == 3
-        44
+        43
       elsif x == 7 && y <= 5
-        45
+        44
       elsif x == 7
-        46
+        45
       elsif x == 9 && y <= 5
-        47
+        46
       elsif x == 9
-        48
+        47
       elsif x == 12 && y <= 5
-        49
+        48
       else
-        50
+        49
       end
     end
   end

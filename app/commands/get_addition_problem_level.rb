@@ -16,35 +16,35 @@ module Commands
       elsif x + y <= 15 && x < 10
         5
       elsif x + y <= 15 && x < 15
-        7
+        6
       elsif x + y <= 20 && x < 5
-        8
+        7
       elsif x + y <= 20 && x < 10
-        9
+        8
       elsif x + y <= 20 && x < 15
-        10
+        9
       elsif x + y <= 20 && x < 20
-        11
+        10
       elsif x + y <= 25 && x < 5
-        12
+        11
       elsif x + y <= 25 && x < 10
-        13
+        12
       elsif x + y <= 25 && x < 15
-        14
+        13
       elsif x + y <= 25 && x < 20
-        15
+        14
       elsif x + y <= 30 && x < 12
-        16
+        15
       elsif x + y <= 30 && x < 15
-        17
+        16
       elsif x + y <= 30 && x < 20
-        18
+        17
       elsif x + y <= 35 && x <= 17
-        19
+        18
       elsif x + y <= 35 && x <= 20
-        20
+        19
       else
-        21
+        20
       end
     end
   end

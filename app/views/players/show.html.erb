@@ -29,13 +29,13 @@
           <% grouping.each do |player_problem| %>
             <%= link_to score_path(player_problem.problem.id) do %>
               <% if player_problem.color == 'red' %>
-                <%= render "shared/problem_bubble", text: player_problem.display, color: "red", text_level: "800" %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "red" %>
               <% elsif player_problem.color == 'yellow' %>
-                <%= render "shared/problem_bubble", text: player_problem.display, color: "yellow", text_level: "800" %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "yellow" %>
               <% elsif player_problem.color == 'green' %>
-                <%= render "shared/problem_bubble", text: player_problem.display, color: "green", text_level: "800" %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "green" %>
               <% else %>
-                <%= render "shared/problem_bubble", text: player_problem.display, color: "gray", text_level: "600" %>
+                <%= render "shared/problem_bubble", text: player_problem.display, color: "gray" %>
               <% end %>
             <% end %>
           <% end %>

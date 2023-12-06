@@ -1,3 +1,17 @@
-<span class="inline-flex items-center rounded-full bg-<%= "#{color}" %>-100 px-2 py-1 text-xs font-medium text-<%= "#{color}" %>-<%= "#{text_level}" %>">
-  <%= text %>
-</span>
+<% if color == "red" %>
+  <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-800">
+    <%= text %>
+  </span>
+<% elsif color == "green" %>
+  <span class="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
+    <%= text %>
+  </span>
+<% elsif color == "yellow" %>
+  <span class="inline-flex items-center rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">
+    <%= text %>
+  </span>
+<% else %>
+  <span class="inline-flex items-center rounded-full bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600">
+    <%= text %>
+  </span>
+<% end %>
