@@ -19,7 +19,7 @@ module Commands
       )
 
       # { x => [PlayerProblem] }
-      retired_problems.group_by(&:x).transform_values do |problems|
+      retired_problems.group_by(&:level).transform_values do |problems|
         problems.map do |problem|
           # Get existing aggregate or initialize a blank one.
           player_problem_aggregate = player_problem_aggregates.get(problem: problem)

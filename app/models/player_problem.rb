@@ -23,6 +23,11 @@ class PlayerProblem < T::Struct
     problem.display
   end
 
+  sig { returns(Integer) }
+  def level
+    problem.level
+  end
+
   sig { returns(String) }
   def color
     color = if attempts < PlayerProblemAggregate::MINIMUM_ATTEMPT_THRESHOLD

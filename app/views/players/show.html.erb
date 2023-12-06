@@ -48,7 +48,7 @@
       <div class="sm:flex sm:items-baseline sm:justify-between">
         <div class="sm:w-0 sm:flex-1">
           <div class="flex justify-start gap-2">
-            <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">Completed</span>
+            <span class="inline-flex items-center rounded-md bg-cyan-50 px-2 py-1 text-xs font-medium text-cyan-700 ring-1 ring-inset ring-cyan-600/20">Completed</span>
             <h1 id="message-heading" class="text-base font-semibold leading-6 text-gray-900">Problems</h1>
           </div>
           <p class="mt-1 truncate text-sm text-gray-500">
@@ -60,6 +60,16 @@
     <div class="grid grid-cols-3 gap-3 mb-5">
       <% @retired_problem_groups.each do |grouping| %>
         <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="px-4 sm:px-6">
+            <div class="border-b border-gray-200 bg-white py-5">
+              <h3 class="text-base font-semibold text-gray-900">
+                Level: <%= grouping.first.level %>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500">
+                <%= grouping.count %> problems
+              </p>
+            </div>
+          </div>
           <div class="px-4 py-5 sm:p-6 grid lg:grid-cols-5 gap-3">
             <% grouping.each do |player_problem| %>
               <%= link_to score_path(player_problem.problem.id) do %>
