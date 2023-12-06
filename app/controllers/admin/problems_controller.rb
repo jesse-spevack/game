@@ -1,6 +1,6 @@
 class Admin::ProblemsController < ApplicationController
   def index
-    @problems_displayed_by_level = Problem.display_by_level
+    @problems_displayed_by_level = Problem.order(:level).display_by_level
   end
 
   def create
