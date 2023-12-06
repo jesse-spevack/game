@@ -43,4 +43,40 @@
       </div>
     <% end %>
   </div>
+  <% if @retired_problem_groups.present? %>
+    <div class="pb-5 my-5">
+      <div class="sm:flex sm:items-baseline sm:justify-between">
+        <div class="sm:w-0 sm:flex-1">
+          <div class="flex justify-start gap-2">
+            <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20">Completed</span>
+            <h1 id="message-heading" class="text-base font-semibold leading-6 text-gray-900">Problems</h1>
+          </div>
+          <p class="mt-1 truncate text-sm text-gray-500">
+            <%= "#{@player.name}'s retired practice problems" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 gap-3 mb-5">
+      <% @retired_problem_groups.each do |grouping| %>
+        <div class="overflow-hidden rounded-lg bg-white shadow">
+          <div class="px-4 py-5 sm:p-6 grid lg:grid-cols-5 gap-3">
+            <% grouping.each do |player_problem| %>
+              <%= link_to score_path(player_problem.problem.id) do %>
+                <% if player_problem.color == 'red' %>
+                  <%= render "shared/problem_bubble", text: player_problem.display, color: "red" %>
+                <% elsif player_problem.color == 'yellow' %>
+                  <%= render "shared/problem_bubble", text: player_problem.display, color: "yellow" %>
+                <% elsif player_problem.color == 'green' %>
+                  <%= render "shared/problem_bubble", text: player_problem.display, color: "green" %>
+                <% else %>
+                  <%= render "shared/problem_bubble", text: player_problem.display, color: "gray" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

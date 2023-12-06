@@ -66,6 +66,7 @@ fly deploy
 
 ## Next Steps
 
+- Player show should show "retired" problems
 - Bias problem selection algo to less seen problems
 - User
 - User timezone :/ - see `get_consecutive_days_played.rb`

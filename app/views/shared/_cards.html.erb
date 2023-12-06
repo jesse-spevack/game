@@ -10,7 +10,7 @@
             <%= grouping.last.count %> problems
           </p>
         </div>
-        <div class="grid grid-cols-4 gap-3 mb-5 justify-items-center">
+        <div class="grid lg:grid-cols-4 gap-3 mb-5 justify-items-center">
           <% grouping.last.each do |item| %>
             <%= render "shared/problem_bubble", text: item, color: "gray" %>
           <% end %>
