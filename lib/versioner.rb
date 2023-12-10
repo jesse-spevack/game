@@ -21,6 +21,7 @@ class Versioner
 
   def update_git
     @version_data["version_info"]["git"] = `git rev-parse --short HEAD`
+    File.write(@yaml, @version_data.to_yaml)
   end
 
   def self.get_version
