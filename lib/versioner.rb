@@ -1,7 +1,7 @@
 require "yaml"
 
 class Versioner
-  attr_reader :yaml, :version_data, :major, :minor, :patch, :pre_release, :build_metadata
+  attr_reader :yaml, :version_data, :major, :minor, :patch, :pre_release, :git
 
   def initialize
     @yaml = "./version.yaml"
@@ -9,8 +9,8 @@ class Versioner
     @major = @version_data["version_info"]["major"]
     @minor = @version_data["version_info"]["minor"]
     @patch = @version_data["version_info"]["patch"]
+    @git = @version_data["version_info"]["git"]
     @pre_release = @version_data["version_info"]["pre_release"]
-    @build_metadata = @version_data["version_info"]["build_metadata"]
   end
 
   def increment_minor
@@ -19,12 +19,12 @@ class Versioner
     File.write(@yaml, @version_data.to_yaml)
   end
 
-  def self.get_version
-    version = Versioner.new
-    "#{version.pre_release} - #{version.major}.#{version.minor}.#{version.patch} - #{version.latest_git_commit_hash}"
+  def update_git
+    @version_data["version_info"]["git"] = latest_git_commit_hash
   end
 
-  def latest_git_commit_hash
-    `git rev-parse --short HEAD`.strip
+  def self.get_version
+    version = Versioner.new
+    "#{version.pre_release} - #{version.major}.#{version.minor}.#{version.patch} - #{version.git}"
   end
 end
