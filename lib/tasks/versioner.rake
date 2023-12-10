@@ -8,5 +8,7 @@ task :increment_minor do
   `git add .`
   puts "All changes added to git."
   `git commit -m "Increment minor version to #{versioner.minor}"`
-  `git push origin master`
+  puts "Commit message: Increment minor version to #{versioner.minor}"
+  `git push`
+  puts "Changes pushed to github."
 end
