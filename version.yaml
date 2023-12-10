@@ -4,4 +4,4 @@ version_info:
   minor: 14
   patch: 0
   pre_release: alpha
-  git:
+  git: 2646fdb
