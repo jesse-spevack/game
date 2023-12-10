@@ -1,4 +1,4 @@
-require "versioner"
+require_relative "../versioner"
 
 desc "Increment minor version"
 task :increment_minor do
