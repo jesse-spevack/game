@@ -20,7 +20,7 @@ class Versioner
   end
 
   def update_git
-    @version_data["version_info"]["git"] = `git rev-parse --short HEAD`
+    @version_data["version_info"]["git"] = `git rev-parse --short HEAD`.strip
     File.write(@yaml, @version_data.to_yaml)
   end
 
