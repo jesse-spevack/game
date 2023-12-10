@@ -20,7 +20,7 @@ class Versioner
   end
 
   def update_git
-    @version_data["version_info"]["git"] = latest_git_commit_hash
+    @version_data["version_info"]["git"] = `git rev-parse --short HEAD`
   end
 
   def self.get_version
