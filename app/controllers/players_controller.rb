@@ -26,7 +26,8 @@ class PlayersController < ApplicationController
   end
 
   def update
-    @player = Player.update(player_params)
+    @player = Player.find_by(id: params[:id])
+    @player.update(player_params)
     redirect_to player_path(@player)
   end
 
