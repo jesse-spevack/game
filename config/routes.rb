@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "admin" => "admin#index", :as => :admin
 
+  resource :login, only: [:new, :show, :create, :destroy]
+
   namespace :admin do
     resources :problems, only: [:index, :create]
     resources :responses, only: [:destroy]

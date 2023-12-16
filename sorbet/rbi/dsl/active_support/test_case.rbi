@@ -16,4 +16,10 @@ class ActiveSupport::TestCase
 
   sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
   def responses(*fixture_names); end
+
+  sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
+  def teams(*fixture_names); end
+
+  sig { params(fixture_names: T.any(String, Symbol)).returns(T.untyped) }
+  def users(*fixture_names); end
 end

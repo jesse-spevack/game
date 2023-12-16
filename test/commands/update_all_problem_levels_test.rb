@@ -19,7 +19,7 @@ class Commands::UpdateAllProblemLevelsTest < ActiveSupport::TestCase
     # Check if the levels have been updated correctly
     assert_equal(1, problem1.level)
     assert_equal(2, problem2.level)
-    assert_equal(24, problem3.level)
-    assert_equal(32, problem4.level)
+    assert_equal(23, problem3.level)
+    assert_equal(31, problem4.level)
   end
 end

@@ -9,10 +9,34 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_players_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_problems_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_relevels_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_reset_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_response_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_login_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_email_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_login_email_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_url(*args); end

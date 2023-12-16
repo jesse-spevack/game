@@ -67,8 +67,7 @@ fly deploy
 ## Next Steps
 
 - P1 Bias problem selection algo to less seen problems
-- P0 User
-- P0 Magic Link auth
+- P1 Flash messages
 - P1 Marketing
 - P1 User Settings table
 - P1 User timezone :/ - see `get_consecutive_days_played.rb`

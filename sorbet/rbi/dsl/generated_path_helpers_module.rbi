@@ -12,7 +12,31 @@ module GeneratedPathHelpersModule
   def admin_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_players_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_problems_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_relevels_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_reset_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_response_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_login_email_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_email_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_login_email_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_path(*args); end
