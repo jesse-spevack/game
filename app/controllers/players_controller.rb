@@ -1,11 +1,11 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.all
+    @players = Player.user(@current_user)
     session[:player_id] = nil
   end
 
   def show
-    @player = Player.find_by(id: params[:id])
+    @player = user_players.find_by(id: params[:id])
     session[:player_id] = @player.id
     @active_problem_groups = Commands::GetActiveProblemGroupings.call(player: @player)
     @retired_problem_groups = Commands::GetRetiredProblemGroupings.call(player: @player)
@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   end
 
   def new
-    @player = Player.new
+    @player = Player.new(user: @current_user)
   end
 
   def create
@@ -22,17 +22,17 @@ class PlayersController < ApplicationController
   end
 
   def edit
-    @player = Player.find_by(id: params[:id])
+    @player = user_player
   end
 
   def update
-    @player = Player.find_by(id: params[:id])
+    @player = user_player
     @player.update(player_params)
     redirect_to player_path(@player)
   end
 
   def destroy
-    @player = Player.find_by(id: params[:id])
+    @player = user_player
     @player.destroy
     redirect_to new_player_path
   end
@@ -40,6 +40,14 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name)
+    params.require(:player).permit(:name, :user_id)
+  end
+
+  def user_players
+    Player.for_user(@current_user)
+  end
+
+  def user_player
+    user_players.find_by(id: params[:id])
   end
 end

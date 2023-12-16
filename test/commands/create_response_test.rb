@@ -5,7 +5,7 @@ require "test_helper"
 class Commands::CreateResponseTest < ActiveSupport::TestCase
   test "it creates a correct response" do
     problem = problems(:one_plus_one)
-    player = Player.create(name: "hello", level: 1)
+    player = Player.create(name: "hello", level: 1, user: users(:one))
     started_at = Time.now.to_i
     params = ActionController::Parameters.new(
       game: {
@@ -35,7 +35,7 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
 
   test "it creates an incorrect response" do
     problem = problems(:one_plus_one)
-    player = Player.create(name: "hello", level: 1)
+    player = Player.create(name: "hello", level: 1, user: users(:one))
     started_at = Time.now.to_i
     incorrect_response = problem.solution + 1
     params = ActionController::Parameters.new(

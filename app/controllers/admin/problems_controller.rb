@@ -1,4 +1,4 @@
-class Admin::ProblemsController < ApplicationController
+class Admin::ProblemsController < AdminBaseController
   def index
     @problems_displayed_by_level = Problem.order(:level).display_by_level
   end

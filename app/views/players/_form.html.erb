@@ -5,6 +5,7 @@
       <p class="mt-1 text-sm leading-6 text-gray-600">All stats and settings are player specific.</p>
       <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
         <div class="sm:col-span-3">
+          <%= f.hidden_field :user_id, @current_user.id %>
           <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
           <div class="relative mt-2 rounded-md shadow-sm">
             <% if @player.errors.any? %>

@@ -7,6 +7,9 @@ class Player < ApplicationRecord
   include Logable
 
   has_many :responses
+  belongs_to :user
+
+  scope :for_user, ->(user) { where(user: user) }
 
   sig { returns(T::Boolean) }
   def has_played?
