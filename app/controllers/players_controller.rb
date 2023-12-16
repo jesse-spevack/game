@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.user(@current_user)
+    @players = user_players
     session[:player_id] = nil
   end
 
