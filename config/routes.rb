@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :players, only: [:index]
 
     resource :relevels, only: [:update]
+    resource :claim_players, only: [:update]
     put "reset_players/:id", to: "reset_players#update", as: :reset_player
   end
 
