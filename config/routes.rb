@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "admin" => "admin#index", :as => :admin
 
   resource :login, only: [:new, :show, :create, :destroy]
+  resource :login_request, only: [:show]
 
   namespace :admin do
     resources :problems, only: [:index, :create]
@@ -18,7 +19,6 @@ Rails.application.routes.draw do
     resources :players, only: [:index]
 
     resource :relevels, only: [:update]
-    resource :claim_players, only: [:update]
     put "reset_players/:id", to: "reset_players#update", as: :reset_player
   end
 

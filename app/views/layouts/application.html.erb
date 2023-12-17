@@ -12,6 +12,10 @@
   <body>
     <main class="mx-auto">
       <%= render "shared/navbar" %>
+      <section>
+        <%= render partial: "shared/flash", locals: {category: :notice} %>
+        <%= render partial: "shared/flash", locals: {category: :error} %>
+      </section>
       <div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
         <%= yield %>
       </div>

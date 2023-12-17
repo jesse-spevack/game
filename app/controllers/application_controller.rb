@@ -25,10 +25,10 @@ class ApplicationController < ActionController::Base
     reset_session
     @current_user = nil
     @current_player = nil
-    flash[:notice] = "Your account has been successfully logged out."
   end
 
   def login(user)
+    user.update!(last_sign_in_at: Time.now)
     reset_session
     session[:user_id] = user.id
     flash[:notice] = "Welcome #{user.email}"

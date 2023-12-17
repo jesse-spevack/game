@@ -66,9 +66,10 @@ fly deploy
 
 ## Next Steps
 
+- P0 Add teams to player
 - P1 Bias problem selection algo to less seen problems
-- P1 Flash messages
 - P1 Marketing
 - P1 User Settings table
 - P1 User timezone :/ - see `get_consecutive_days_played.rb`
 - P1 Stripe Integration - https://stripe.com/payments/checkout
+- P2 Force re-login after x days since last sign in

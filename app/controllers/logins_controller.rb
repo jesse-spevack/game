@@ -8,7 +8,7 @@ class LoginsController < ApplicationController
   def create
     Commands::EmailAuth::SendLoginEmail.call(email: params[:email], redirect_path: params[:redirect_path])
     flash[:notice] = "We've sent a login link to #{params[:email]}. Please check your email."
-    redirect_to login_path
+    redirect_to login_request_path(email: params[:email])
   end
 
   def show
@@ -24,6 +24,7 @@ class LoginsController < ApplicationController
 
   def destroy
     logout
+    flash[:notice] = "Your account has been successfully logged out."
     redirect_to root_path
   end
 end
