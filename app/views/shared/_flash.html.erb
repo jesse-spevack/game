@@ -5,14 +5,14 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex">
             <div class="flex-shrink-0">
-              <div class="ml-3 flex-1 md:flex md:justify-between">
-                <% if category == :error %>
-                  <%= render "shared/flash_error_icon" %>
-                <% else %>
-                  <%= render "shared/flash_notice_icon" %>
-                <% end %>
-                <p class="ml-1 text-sm"><%= flash[category] %></p>
-              </div>
+              <% if category == :error %>
+                <%= render "shared/flash_error_icon" %>
+              <% else %>
+                <%= render "shared/flash_notice_icon" %>
+              <% end %>
+            </div>
+            <div class="ml-3 flex-1 md:flex md:justify-between">
+              <p class="ml-1 text-sm"><%= flash[category] %></p>
             </div>
           </div>
         </div>
@@ -22,16 +22,16 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex">
             <div class="flex-shrink-0">
-              <div class="ml-3 flex-1 md:flex md:justify-between">
-                <% if category == :error %>
-                  <%= render "shared/flash_error_icon" %>
-                <% else %>
-                  <%= render "shared/flash_notice_icon" %>
-                <% end %>
-                <h3 class="ml-1 text-sm font-medium">
-                  There were <%= Array.wrap(flash[category]).size %> <%= category %> with your submission
-                </h3>
-              </div>
+              <% if category == :error %>
+                <%= render "shared/flash_error_icon" %>
+              <% else %>
+                <%= render "shared/flash_notice_icon" %>
+              <% end %>
+            </div>
+            <div class="ml-3 flex-1 md:flex md:justify-between">
+              <h3 class="ml-1 text-sm font-medium">
+                There were <%= Array.wrap(flash[category]).size %> <%= category %> with your submission
+              </h3>
               <div class="mt-2 ml-3 text-sm">
                 <ul class="list-disc space-y-1 pl-5">
                   <% Array.wrap(flash[category]).each do |flash| %>
