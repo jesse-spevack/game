@@ -3,7 +3,7 @@ require "test_helper"
 class GetUserPlayersTest < ActiveSupport::TestCase
   test "returns players belonging to the user's team" do
     user = users(:one)
-    team = teams(:one)
+    team = teams(:two)
     player1 = players(:jesse)
     player2 = players(:no_responses)
 

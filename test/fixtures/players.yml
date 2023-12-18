@@ -3,19 +3,24 @@
 jesse:
   name: Jesse
   level: 1
+  team: one
 
 no_responses:
   name: player_with_no_responses
   level: 1
+  team: one
 
 level_two:
   name: level_two_player
   level: 2
+  team: one
 
 many_responses:
   name: player_with_many_responses
   level: 2
+  team: one
 
 get_player_problem_grouped_by_problem_test:
   name: get_player_problem_grouped_by_problem_test
   level: 100
+  team: one

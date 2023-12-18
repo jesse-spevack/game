@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_18_024735) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_18_040338) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,11 +42,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_024735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", null: false
-    t.bigint "user_id"
-    t.bigint "team_id"
+    t.bigint "team_id", null: false
     t.index ["level"], name: "index_players_on_level"
     t.index ["team_id"], name: "index_players_on_team_id"
-    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "problems", force: :cascade do |t|
@@ -83,7 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_024735) do
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "last_sign_in_at"
-    t.bigint "team_id"
+    t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -94,7 +92,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_024735) do
   add_foreign_key "player_problem_aggregates", "players"
   add_foreign_key "player_problem_aggregates", "problems"
   add_foreign_key "players", "teams"
-  add_foreign_key "players", "users"
   add_foreign_key "responses", "players"
   add_foreign_key "responses", "problems"
   add_foreign_key "users", "teams"
