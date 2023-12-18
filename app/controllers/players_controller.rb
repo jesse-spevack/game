@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   end
 
   def new
-    @player = Player.new(user: @current_user)
+    @player = Player.new(team: @current_user.team)
   end
 
   def create
@@ -40,11 +40,11 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name, :user_id)
+    params.require(:player).permit(:name).merge(team_id: @current_user.team_id)
   end
 
   def user_players
-    Player.for_user(@current_user)
+    Commands::GetUserPlayers.call(user: @current_user)
   end
 
   def user_player

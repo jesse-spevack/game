@@ -11,7 +11,7 @@ module Commands
         .returns(Player)
     end
     def call(input:)
-      Player.create(user_id: input[:user_id], name: input[:name], level: STARTING_LEVEL)
+      Player.create(team_id: input[:team_id], name: input[:name], level: STARTING_LEVEL)
     end
   end
 end

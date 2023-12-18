@@ -27,16 +27,28 @@ module GeneratedUrlHelpersModule
   def admin_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def edit_login_email_url(*args); end
+  def edit_invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def login_email_url(*args); end
+  def invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def new_login_email_url(*args); end
+  def invites_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_request_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_invite_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_login_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_url(*args); end
@@ -151,6 +163,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def sessions_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def settings_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end

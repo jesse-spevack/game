@@ -13,13 +13,17 @@ Rails.application.routes.draw do
   resource :login, only: [:new, :show, :create, :destroy]
   resource :login_request, only: [:show]
 
+  resources :settings, only: [:index]
+  resources :invites
+
   namespace :admin do
     resources :problems, only: [:index, :create]
-    resources :responses, only: [:destroy]
     resources :players, only: [:index]
 
     resource :relevels, only: [:update]
     put "reset_players/:id", to: "reset_players#update", as: :reset_player
+    # todo delete this.
+    post "set_player_teams", to: "set_player_teams#create"
   end
 
   resources :players

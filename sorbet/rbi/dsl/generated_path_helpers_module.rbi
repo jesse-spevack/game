@@ -27,16 +27,28 @@ module GeneratedPathHelpersModule
   def admin_response_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def edit_login_email_path(*args); end
+  def edit_invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def login_email_path(*args); end
+  def invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def new_login_email_path(*args); end
+  def invites_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def login_request_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_invite_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_login_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_path(*args); end
@@ -151,6 +163,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def sessions_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def settings_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end

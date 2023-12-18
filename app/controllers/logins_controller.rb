@@ -15,7 +15,7 @@ class LoginsController < ApplicationController
     user = User.find_by_token_for(:magic_link, params[:token])
     if user
       login(user)
-      redirect_to params[:redirect_path]
+      redirect_to params[:redirect_path] || root_path
     else
       flash[:error] = "We were not abel to log you in with that link. Try again?"
       redirect_to new_login_path(redirect_path: params[:redirect_path])

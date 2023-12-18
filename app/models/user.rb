@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :team, optional: true
+  include Teamable
+
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
 
   generates_token_for :magic_link, expires_in: 15.minutes do
