@@ -49,7 +49,6 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     teammate_email = "jessica@domath.io"
     click_on "Settings"
     click_on "Invite teammate"
-    # TODO implement this:
     # fill_in "Email", with: teammate_email
     # click_on "Send invite"
 
