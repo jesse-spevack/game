@@ -1,7 +1,7 @@
-<div class="mx-auto grid max-w-2xl items-center px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
-  <div>
-    <h2 class="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">Check your email</h2>
-    <p class="mt-4 text-gray-500 prose">
+<div class="mx-auto grid max-w-2xl items-center px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+  <div class="prose lg:prose-xl">
+    <h2>Check your email</h2>
+    <p>
       We just sent an email to <span class="font-medium"><%= @email %></span> (no gaurantees 😉) with a link that will log you in!
       You can try again <%= link_to "here", login_path, class: "font-medium text-cyan-600 hover:text-cyan-500" %> if you think something went wrong or just close this tab like an absolute boss.
     </p>
