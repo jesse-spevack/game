@@ -1,11 +1,6 @@
 require "application_system_test_case"
 
 class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
-  # test "visiting the index" do
-  #   visit sign_up_play_invite_teammates_url
-  #
-  #   assert_selector "h1", text: "SignUpPlayInviteTeammate"
-  # end
   test "a new user can sign up, setup a player, play, and invite a new teammate" do
     # Create a new user
     visit root_url
@@ -18,7 +13,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     user = User.last
     assert_equal(email, user.email)
-    assert_nil(user.last_sign_in_at)
+    assert(user.last_sign_in_at)
     assert(user.team_id)
 
     token = user.generate_token_for(:magic_link)

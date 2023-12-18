@@ -72,4 +72,3 @@ fly deploy
 - P1 User Settings table
 - P1 User timezone :/ - see `get_consecutive_days_played.rb`
 - P1 Stripe Integration - https://stripe.com/payments/checkout
-- P2 Force re-login after x days since last sign in

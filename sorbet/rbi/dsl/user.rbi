@@ -715,7 +715,7 @@ class User
     sig { returns(T::Boolean) }
     def saved_change_to_last_sign_in_at?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_team_id; end
 
     sig { returns(T::Boolean) }
@@ -727,10 +727,10 @@ class User
     sig { returns(T::Boolean) }
     def saved_change_to_updated_at?; end
 
-    sig { returns(T.nilable(::Integer)) }
+    sig { returns(::Integer) }
     def team_id; end
 
-    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    sig { params(value: ::Integer).returns(::Integer) }
     def team_id=(value); end
 
     sig { returns(T::Boolean) }
@@ -745,22 +745,22 @@ class User
     sig { returns(T::Boolean) }
     def team_id_came_from_user?; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([::Integer, ::Integer])) }
     def team_id_change; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([::Integer, ::Integer])) }
     def team_id_change_to_be_saved; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
     def team_id_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { returns(T.nilable(::Integer)) }
     def team_id_in_database; end
 
-    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    sig { returns(T.nilable([::Integer, ::Integer])) }
     def team_id_previous_change; end
 
-    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    sig { params(from: ::Integer, to: ::Integer).returns(T::Boolean) }
     def team_id_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
 
     sig { returns(T.nilable(::Integer)) }

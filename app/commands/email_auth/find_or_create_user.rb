@@ -12,7 +12,7 @@ module Commands::EmailAuth
 
       team = Team.create(name: email.split("@").first)
 
-      user = User.new(email: email, team: team)
+      user = User.new(email: email, team: team, last_sign_in_at: Time.current)
 
       if T.let(user.save, T::Boolean)
         user

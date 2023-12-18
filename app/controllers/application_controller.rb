@@ -3,9 +3,13 @@ class ApplicationController < ActionController::Base
 
   def require_login
     @current_user = User.find_by(id: session[:user_id])
-    return if @current_user.present?
-
-    redirect_to new_login_path(redirect_path: request.original_fullpath)
+    if @current_user.nil?
+      redirect_to new_login_path(redirect_path: request.original_fullpath)
+    elsif Commands::IsReloginRequired.call(user: @current_user)
+      logout
+      flash[:notice] = "It has been a while since you logged in. Please log in again."
+      redirect_to new_login_path(redirect_path: request.original_fullpath)
+    end
   end
 
   def self.logged_out_users_welcome!

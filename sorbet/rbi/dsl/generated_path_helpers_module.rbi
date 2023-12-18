@@ -24,9 +24,6 @@ module GeneratedPathHelpersModule
   def admin_reset_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def admin_response_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
   def edit_invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
