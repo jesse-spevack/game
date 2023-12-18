@@ -66,12 +66,6 @@ fly deploy
 
 ## Next Steps
 
-- P0 Add teams to player
-  - add team_id to player ✅
-  - add admin command to change all players to my team ✅
-  - deploy and run command to change all players to my team ✅
-  - drop user_id from player ✅
-  - make team_id required on player and user ✅
 - P0 invites
 - P1 Bias problem selection algo to less seen problems
 - P1 Marketing

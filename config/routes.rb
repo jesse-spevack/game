@@ -22,8 +22,6 @@ Rails.application.routes.draw do
 
     resource :relevels, only: [:update]
     put "reset_players/:id", to: "reset_players#update", as: :reset_player
-    # todo delete this.
-    post "set_player_teams", to: "set_player_teams#create"
   end
 
   resources :players
