@@ -9,6 +9,9 @@ module GeneratedPathHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
+  def accept_invite_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -22,9 +25,6 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def admin_reset_player_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def edit_invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end

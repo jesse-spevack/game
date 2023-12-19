@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   resource :login, only: [:new, :show, :create, :destroy]
   resource :login_request, only: [:show]
 
-  resources :settings, only: [:index]
-  resources :invites
+  resources :invites, only: [:index, :new, :create, :show, :destroy]
+  resource :accept_invite, only: [:show]
 
   namespace :admin do
     resources :problems, only: [:index, :create]

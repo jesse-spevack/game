@@ -5,6 +5,7 @@
 # Please instead update this file by running `bin/tapioca dsl Team`.
 
 class Team
+  include GeneratedAssociationMethods
   include GeneratedAttributeMethods
   extend CommonRelationMethods
   extend GeneratedRelationMethods
@@ -216,6 +217,22 @@ class Team
 
     sig { returns(::Team) }
     def third_to_last!; end
+  end
+
+  module GeneratedAssociationMethods
+    sig { returns(T::Array[T.untyped]) }
+    def user_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def user_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Team` class because it declared `has_many :users`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::User::PrivateCollectionProxy) }
+    def users; end
+
+    sig { params(value: T::Enumerable[::User]).void }
+    def users=(value); end
   end
 
   module GeneratedAssociationRelationMethods

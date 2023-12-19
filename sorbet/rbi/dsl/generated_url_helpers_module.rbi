@@ -9,6 +9,9 @@ module GeneratedUrlHelpersModule
   include ::ActionDispatch::Routing::PolymorphicRoutes
 
   sig { params(args: T.untyped).returns(String) }
+  def accept_invite_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -22,9 +25,6 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def admin_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def edit_invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end

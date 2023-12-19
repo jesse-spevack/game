@@ -45,26 +45,40 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     assert_text("1\nproblems solved")
     assert_text("1\nday in a row")
 
+    assert_equal(0, Invite.count)
+
     # Invite a teammate
     teammate_email = "jessica@domath.io"
-    click_on "Settings"
-    click_on "Invite teammate"
-    # fill_in "Email", with: teammate_email
-    # click_on "Send invite"
+    click_on "Team"
+    click_on "Invite"
+    fill_in "Email", with: teammate_email
+    click_on "Send invite"
 
-    # assert_text("We've sent an invite to #{teammate_email}.")
-    # team = user.team
-    # assert_equal(2, team.users.count)
+    assert_text("We've sent an invite to #{teammate_email}.")
+    assert_equal(1, Invite.count)
+    assert_text("Team #{user.team.name} invites")
 
-    # click_on "Logout"
+    invite = Invite.first
+    assert_equal(teammate_email, invite.email)
+    assert_equal(user, invite.user)
+    assert_equal(user.team, invite.team)
+
+    click_on "Logout"
+    assert_text("Your account has been successfully logged out.")
 
     # Accept an invite
-    # token = user.generate_token_for(:invite_link)
-    # visit invite_path(token: token)
-    # assert_text("Logout")
-    # assert_text("Players")
-    # assert_text("Jesse")
+    token = invite.generate_token_for(:magic_link)
+    visit accept_invite_path(token: token)
+    assert_text("Logout")
+    assert_text("Players")
+    assert_text("Jesse")
 
-    # take_screenshot
+    # Invites can't be accepted more than once
+    click_on "Logout"
+    visit accept_invite_path(token: token)
+    assert_text("We were unable to accept your invite. Please try again.")
+    assert_text("Login or create an account")
+
+    take_screenshot
   end
 end

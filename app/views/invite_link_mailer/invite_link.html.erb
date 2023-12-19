@@ -5,7 +5,7 @@
   </head>
   <body class="prose lg:prose-xl">
     <p>
-      Here is your ✨ <%= link_to "link", login_url(token: @token, redirect_path: @redirect_path) %> ✨ to login to domath.io. It will expire in 15 minutes.
+      Here is your ✨ <%= link_to "link", accept_invite_url(token: @token) %> ✨ to join to domath.io. It will expire in 1 day.
     </p>
   </body>
 </html>

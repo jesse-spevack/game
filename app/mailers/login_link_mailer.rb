@@ -6,6 +6,6 @@ class LoginLinkMailer < ApplicationMailer
     @token = params[:token]
     @redirect_path = params[:redirect_path]
 
-    mail(to: "jspevack@gmail.com", subject: "Your magic link to domath.io")
+    mail(to: @user.email, subject: "Your ✨ magic link ✨ to DoMath.io")
   end
 end

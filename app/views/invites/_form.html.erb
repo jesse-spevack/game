@@ -1,42 +1,11 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= form_for @invite do |f| %>
+  <%= form_with model: @invite do |form| %>
     <div class="space-y-4">
-      <h2 class="mt-4 text-base font-semibold leading-7 text-gray-900">Invite</h2>
-      <p class="mt-1 text-sm leading-6 text-gray-600">Invite a friend or family member to join your team. Teammates have access to all the same players.</p>
-      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
-        <div class="sm:col-span-3">
-          <%= f.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="relative mt-2 rounded-md shadow-sm">
-            <% if @invite.errors.any? %>
-              <%= f.email_field :email, class: "block w-full rounded-md border-0 py-1.5 pr-10 text-red-900 ring-1 ring-inset ring-red-300 placeholder:text-red-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6" %>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                <svg class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            <% else %>
-              <%= f.text_field :name, placeholder: "Player name", class: "block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6" %>
-            <% end %>
-          </div>
-          <% if @invite.errors.any? %>
-            <% @invite.errors.full_messages.each do |message| %>
-              <p class="mt-2 text-sm text-red-600" id="email-error"><%= message %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "shared/form_header", title: "Invite a teammate", description: "Add your spouse, grandparent, or other cellphone wielding adult in your child's life to your team. Your players will be able to play and make progress on their goals logged in as another user on your team." %>
+      <%= render "shared/email_field", form: form, model: @invite, placeholder: "teammate@example.com", description: "Add your spouse, grandparent or other cellphone wielding adult in your child's life." %>
       <div class="mt-6 flex items-center justify-end gap-x-6">
-        <%= link_to "Cancel", players_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-        <%= f.submit "Submit", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+        <%= form.submit "Send invite", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
       </div>
     <% end %>
   </div>
 </div>
-<!--
-  form input with errors
-  https://tailwindui.com/components/application-ui/forms/input-groups#component-7a5297f99a5ed22df80939dd1986de5f
-  form layout
-  https://tailwindui.com/components/application-ui/forms/form-layouts#component-1c3f9860d66ce5cd9fb35ba7fde6721a
-  outer container
-  https://tailwindui.com/components/application-ui/layout/containers#component-19e43f3ad1f1f984ec0c02bdb305353f
--->
