@@ -27,6 +27,9 @@ module GeneratedUrlHelpersModule
   def admin_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def alpha_announcement_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -46,6 +49,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_login_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_order_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_url(*args); end
@@ -162,7 +168,7 @@ module GeneratedUrlHelpersModule
   def sessions_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def settings_url(*args); end
+  def success_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end
@@ -175,4 +181,7 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def update_rails_disk_service_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def webhook_url(*args); end
 end

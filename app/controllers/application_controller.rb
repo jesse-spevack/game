@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :require_login
+  before_action :require_login, :verify_debts_are_satisfied
 
   def require_login
     @current_user = User.find_by(id: session[:user_id])
@@ -12,8 +12,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def verify_debts_are_satisfied
+    if @current_user.nil?
+      require_login
+    elsif !pending_order_exists? && Commands::IsPaymentRequired.call(user: @current_user)
+      redirect_to new_order_path
+    end
+  end
+
+  def pending_order_exists?
+    pending_order_at = session[:pending_order_at]
+    pending_order_at && (Time.at(pending_order_at) + 5.minutes).future?
+  end
+
   def self.logged_out_users_welcome!
     skip_before_action :require_login
+  end
+
+  def self.free_loaders_welcome!
+    skip_before_action :verify_debts_are_satisfied
   end
 
   def set_current_player

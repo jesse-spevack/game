@@ -13,7 +13,14 @@ We love Sorbet so we use it in this repo.
 Regenerate active record rbi files; You'll need to do this as you create new rails models.
 
 ```bash
+# https://github.com/Shopify/tapioca?tab=readme-ov-file#generating-rbi-files-for-rails-and-other-dsls
 $ bin/tapioca dsl
+
+# https://github.com/Shopify/tapioca?tab=readme-ov-file#pulling-rbi-annotations-from-remote-sources
+$ bin/tapioca gems
+
+# https://github.com/Shopify/tapioca?tab=readme-ov-file#pulling-rbi-annotations-from-remote-sources
+$ bin/tapioca annotations
 ```
 
 [Tapioca](https://github.com/Shopify/tapioca) - "The swiss army knife of RBI generation."

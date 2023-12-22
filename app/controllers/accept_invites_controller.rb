@@ -1,5 +1,6 @@
 class AcceptInvitesController < ApplicationController
   logged_out_users_welcome!
+  free_loaders_welcome!
 
   def show
     @user = Commands::AcceptInvite.call(token: params[:token])

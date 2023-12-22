@@ -1,10 +1,14 @@
 require "application_system_test_case"
 
 class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
+  Result = Struct.new(:url)
   test "a new user can sign up, setup a player, play, and invite a new teammate" do
+    email = "jesse@domath.io"
+
     # Create a new user
     visit root_url
-    email = "jesse@domath.io"
+    click_on "Get started"
+
     fill_in "email", with: email
     click_on "Send Login Link"
 
@@ -16,21 +20,31 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     assert(user.last_sign_in_at)
     assert(user.team_id)
 
+    # Pay
+    Order.create(user: user, team: user.team, customer_token: "cust_123", amount_total: 1000, invoice_token: "in_123", hosted_invoice_url: "https://stripe.com/invoice", payment_intent_token: "pi_123", payment_status: "paid")
+
     token = user.generate_token_for(:magic_link)
     visit login_path(token: token)
     assert_text("Logout")
 
     # Create a new player
-    name = "Jesse"
+    name = "Jessssssseeeeeee"
     click_on "Add player"
     fill_in "Name", with: name
     click_on "Submit"
+
+    assert_text("#{name}'s progress")
 
     player = Player.last
     assert_equal(name, player.name)
     assert_equal(user.team, player.team)
 
-    assert_text("Jesse's progress")
+    # Edit player
+    click_on "Edit"
+    fill_in "Name", with: name + "!"
+    click_on "Submit"
+
+    assert_text("#{name}!'s progress")
 
     # Play a game
     click_link "1 + 1"
@@ -41,7 +55,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     click_button "☑"
 
     # Check score
-    click_on "Jesse's scores"
+    click_on "#{name}!'s scores"
     assert_text("1\nproblems solved")
     assert_text("1\nday in a row")
 
@@ -69,15 +83,33 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     # Accept an invite
     token = invite.generate_token_for(:magic_link)
     visit accept_invite_path(token: token)
+
     assert_text("Logout")
     assert_text("Players")
-    assert_text("Jesse")
+    assert_text("#{name}!")
 
     # Invites can't be accepted more than once
     click_on "Logout"
     visit accept_invite_path(token: token)
     assert_text("We were unable to accept your invite. Please try again.")
     assert_text("Login or create an account")
+
+    # Invites show accepted status
+    token = user.reload.generate_token_for(:magic_link)
+    visit login_path(token: token)
+    assert_text("Logout")
+
+    click_on "Team"
+    assert_text("Accepted")
+
+    click_on "Logout"
+
+    invited_user = User.find_by(email: teammate_email)
+    token = invited_user.generate_token_for(:magic_link)
+    visit login_path(token: token)
+
+    assert_text("Logout")
+    assert_text("Players")
 
     take_screenshot
   end

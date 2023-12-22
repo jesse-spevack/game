@@ -1,0 +1,111 @@
+{
+  "id": "evt_1OPRklFpHCKdcdes2QCjNEdd",
+  "object": "event",
+  "api_version": "2023-10-16",
+  "created": 1703086331,
+  "data": {
+    "object": {
+      "id": "cs_test_a1sAV1eawDsxLj94JdFteEONx5SkUoXXTGilpssr3RGbfhw1W2kRlFLeYy",
+      "object": "checkout.session",
+      "after_expiration": null,
+      "allow_promotion_codes": false,
+      "amount_subtotal": 2500,
+      "amount_total": 2500,
+      "automatic_tax": {
+        "enabled": true,
+        "status": "complete"
+      },
+      "billing_address_collection": null,
+      "cancel_url": "http://localhost:3000/cancel",
+      "client_reference_id": null,
+      "client_secret": null,
+      "consent": null,
+      "consent_collection": {
+        "payment_method_reuse_agreement": null,
+        "promotions": "none",
+        "terms_of_service": "none"
+      },
+      "created": 1703086223,
+      "currency": "usd",
+      "currency_conversion": null,
+      "custom_fields": [],
+      "custom_text": {
+        "after_submit": null,
+        "shipping_address": null,
+        "submit": null,
+        "terms_of_service_acceptance": null
+      },
+      "customer": "cus_PDtXrdCGQmikrV",
+      "customer_creation": "always",
+      "customer_details": {
+        "address": {
+          "city": "Denver",
+          "country": "US",
+          "line1": "4423 East 7th Avenue",
+          "line2": null,
+          "postal_code": "80220",
+          "state": "CO"
+        },
+        "email": "jspevack@gmail.com",
+        "name": "Essica Spevack",
+        "phone": null,
+        "tax_exempt": "none",
+        "tax_ids": []
+      },
+      "customer_email": "jspevack@gmail.com",
+      "expires_at": 1703172623,
+      "invoice": "in_1OPRkkFpHCKdcdesRj3NiRHG",
+      "invoice_creation": {
+        "enabled": true,
+        "invoice_data": {
+          "account_tax_ids": null,
+          "custom_fields": null,
+          "description": "DoMath.io annual access.",
+          "footer": null,
+          "metadata": {},
+          "rendering_options": null
+        }
+      },
+      "livemode": false,
+      "locale": null,
+      "metadata": {},
+      "mode": "payment",
+      "payment_intent": "pi_3OPRkiFpHCKdcdes1cdaZyyi",
+      "payment_link": null,
+      "payment_method_collection": "if_required",
+      "payment_method_configuration_details": null,
+      "payment_method_options": {},
+      "payment_method_types": [
+        "card"
+      ],
+      "payment_status": "paid",
+      "phone_number_collection": {
+        "enabled": false
+      },
+      "recovered_from": null,
+      "setup_intent": null,
+      "shipping_address_collection": null,
+      "shipping_cost": null,
+      "shipping_details": null,
+      "shipping_options": [],
+      "status": "complete",
+      "submit_type": null,
+      "subscription": null,
+      "success_url": "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}",
+      "total_details": {
+        "amount_discount": 0,
+        "amount_shipping": 0,
+        "amount_tax": 0
+      },
+      "ui_mode": "hosted",
+      "url": null
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 2,
+  "request": {
+    "id": null,
+    "idempotency_key": null
+  },
+  "type": "checkout.session.completed"
+}

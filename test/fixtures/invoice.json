@@ -1,0 +1,185 @@
+{
+  "id": "in_1OPRkkFpHCKdcdesRj3NiRHG",
+  "object": "invoice",
+  "account_country": "US",
+  "account_name": "DoMath.io",
+  "account_tax_ids": null,
+  "amount_due": 2500,
+  "amount_paid": 2500,
+  "amount_remaining": 0,
+  "amount_shipping": 0,
+  "application": null,
+  "application_fee_amount": null,
+  "attempt_count": 1,
+  "attempted": true,
+  "auto_advance": false,
+  "automatic_tax": {
+    "enabled": true,
+    "status": "complete"
+  },
+  "billing_reason": "manual",
+  "charge": "ch_3OPRkiFpHCKdcdes1tsSmGM8",
+  "collection_method": "send_invoice",
+  "created": 1703086329,
+  "currency": "usd",
+  "custom_fields": null,
+  "customer": "cus_PDtXrdCGQmikrV",
+  "customer_address": {
+    "city": "Denver",
+    "country": "US",
+    "line1": "4423 East 7th Avenue",
+    "line2": null,
+    "postal_code": "80220",
+    "state": "CO"
+  },
+  "customer_email": "jspevack@gmail.com",
+  "customer_name": "Essica Spevack",
+  "customer_phone": null,
+  "customer_shipping": null,
+  "customer_tax_exempt": "none",
+  "customer_tax_ids": [],
+  "default_payment_method": null,
+  "default_source": null,
+  "default_tax_rates": [],
+  "description": "DoMath.io annual access.",
+  "discount": null,
+  "discounts": [],
+  "due_date": 1703086329,
+  "effective_at": 1703086329,
+  "ending_balance": 0,
+  "footer": null,
+  "from_invoice": null,
+  "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1OPBJ7FpHCKdcdes/test_YWNjdF8xT1BCSjdGcEhDS2RjZGVzLF9QRHRYZkRmbno5d01IeXhYRUxrbWdvWXJadFpNaFI2LDkzNjM2MDY502005PnwZQud?s=ap",
+  "invoice_pdf": "https://pay.stripe.com/invoice/acct_1OPBJ7FpHCKdcdes/test_YWNjdF8xT1BCSjdGcEhDS2RjZGVzLF9QRHRYZkRmbno5d01IeXhYRUxrbWdvWXJadFpNaFI2LDkzNjM2MDY502005PnwZQud/pdf?s=ap",
+  "last_finalization_error": null,
+  "latest_revision": null,
+  "lines": {
+    "object": "list",
+    "data": [
+      {
+        "id": "il_1OPRkkFpHCKdcdesGdAWc76i",
+        "object": "line_item",
+        "amount": 2500,
+        "amount_excluding_tax": 2500,
+        "currency": "usd",
+        "description": "Math Fluency Game",
+        "discount_amounts": [],
+        "discountable": true,
+        "discounts": [],
+        "invoice_item": "ii_1OPRkkFpHCKdcdesFpxgazeR",
+        "livemode": false,
+        "metadata": {},
+        "period": {
+          "end": 1703086330,
+          "start": 1703086330
+        },
+        "plan": null,
+        "price": {
+          "id": "price_1OPBwjFpHCKdcdesO03DzPhL",
+          "object": "price",
+          "active": true,
+          "billing_scheme": "per_unit",
+          "created": 1703025569,
+          "currency": "usd",
+          "custom_unit_amount": {
+            "maximum": null,
+            "minimum": null,
+            "preset": 2100
+          },
+          "livemode": false,
+          "lookup_key": null,
+          "metadata": {},
+          "nickname": null,
+          "product": "prod_PDd62ydIJn8IJd",
+          "recurring": null,
+          "tax_behavior": "unspecified",
+          "tiers_mode": null,
+          "transform_quantity": null,
+          "type": "one_time",
+          "unit_amount": null,
+          "unit_amount_decimal": null
+        },
+        "proration": false,
+        "proration_details": {
+          "credited_items": null
+        },
+        "quantity": 1,
+        "subscription": null,
+        "tax_amounts": [
+          {
+            "amount": 0,
+            "inclusive": false,
+            "tax_rate": "txr_1OPGcfFpHCKdcdes1U15PdaL",
+            "taxability_reason": null,
+            "taxable_amount": 0
+          }
+        ],
+        "tax_rates": [],
+        "type": "invoiceitem",
+        "unit_amount_excluding_tax": "2500"
+      }
+    ],
+    "has_more": false,
+    "total_count": 1,
+    "url": "/v1/invoices/in_1OPRkkFpHCKdcdesRj3NiRHG/lines"
+  },
+  "livemode": false,
+  "metadata": {},
+  "next_payment_attempt": null,
+  "number": "9EFC95C2-0001",
+  "on_behalf_of": null,
+  "paid": true,
+  "paid_out_of_band": false,
+  "payment_intent": "pi_3OPRkiFpHCKdcdes1cdaZyyi",
+  "payment_settings": {
+    "default_mandate": null,
+    "payment_method_options": null,
+    "payment_method_types": null
+  },
+  "period_end": 1703086329,
+  "period_start": 1703086329,
+  "post_payment_credit_notes_amount": 0,
+  "pre_payment_credit_notes_amount": 0,
+  "quote": null,
+  "receipt_number": null,
+  "rendering": {
+    "amount_tax_display": null,
+    "pdf": {
+      "page_size": "letter"
+    }
+  },
+  "rendering_options": null,
+  "shipping_cost": null,
+  "shipping_details": null,
+  "starting_balance": 0,
+  "statement_descriptor": null,
+  "status": "paid",
+  "status_transitions": {
+    "finalized_at": 1703086329,
+    "marked_uncollectible_at": null,
+    "paid_at": 1703086329,
+    "voided_at": null
+  },
+  "subscription": null,
+  "subscription_details": {
+    "metadata": null
+  },
+  "subtotal": 2500,
+  "subtotal_excluding_tax": 2500,
+  "tax": 0,
+  "test_clock": null,
+  "total": 2500,
+  "total_discount_amounts": [],
+  "total_excluding_tax": 2500,
+  "total_tax_amounts": [
+    {
+      "amount": 0,
+      "inclusive": false,
+      "tax_rate": "txr_1OPGcfFpHCKdcdes1U15PdaL",
+      "taxability_reason": null,
+      "taxable_amount": 0
+    }
+  ],
+  "transfer_data": null,
+  "webhooks_delivered_at": 1703086332
+}

@@ -5,16 +5,22 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", :as => :rails_health_check
 
+  # Marketing
   # Defines the root path route ("/")
-  root to: "players#index"
+  root to: "home#index"
+  get "alpha_announcement" => "home#alpha_announcement", :as => :alpha_announcement
+  get "learn-more" => "home#learn_more", :as => :learn_more
 
-  get "admin" => "admin#index", :as => :admin
-
+  # Authentication
   resource :login, only: [:new, :show, :create, :destroy]
   resource :login_request, only: [:show]
 
+  # Invites
   resources :invites, only: [:index, :new, :create, :show, :destroy]
   resource :accept_invite, only: [:show]
+
+  # Admin
+  get "admin" => "admin#index", :as => :admin
 
   namespace :admin do
     resources :problems, only: [:index, :create]
@@ -24,9 +30,15 @@ Rails.application.routes.draw do
     put "reset_players/:id", to: "reset_players#update", as: :reset_player
   end
 
+  # Game
   resources :players
   resources :problems, only: [:show]
   resource :responses, only: [:create, :new], path: "game"
   resources :sessions, only: [:create, :destroy]
   resources :scores, only: [:show]
+
+  # Stripe
+  resources :orders, only: [:new]
+  get "success" => "checkout_successes#show"
+  post "webhook" => "webhooks#create"
 end

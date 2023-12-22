@@ -1,5 +1,6 @@
 class LoginsController < ApplicationController
   logged_out_users_welcome!
+  free_loaders_welcome!
 
   def new
     @redirect_path = params[:redirect_path]
@@ -15,9 +16,13 @@ class LoginsController < ApplicationController
     user = User.find_by_token_for(:magic_link, params[:token])
     if user
       login(user)
-      redirect_to params[:redirect_path] || root_path
+      if Commands::IsPaymentRequired.call(user: @current_user)
+        redirect_to new_order_path
+      else
+        redirect_to players_path
+      end
     else
-      flash[:error] = "We were not abel to log you in with that link. Try again?"
+      flash[:error] = "We were not able to log you in with that link. Try again?"
       redirect_to new_login_path(redirect_path: params[:redirect_path])
     end
   end

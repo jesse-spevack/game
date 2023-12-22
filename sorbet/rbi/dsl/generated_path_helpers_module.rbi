@@ -27,6 +27,9 @@ module GeneratedPathHelpersModule
   def admin_reset_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def alpha_announcement_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -46,6 +49,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_login_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_order_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_player_path(*args); end
@@ -162,7 +168,7 @@ module GeneratedPathHelpersModule
   def sessions_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def settings_path(*args); end
+  def success_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end
@@ -175,4 +181,7 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def update_rails_disk_service_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def webhook_path(*args); end
 end

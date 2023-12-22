@@ -44,8 +44,12 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "solid_queue"
+
 gem "sorbet", group: :development
 gem "sorbet-runtime"
+
+gem "stripe"
 
 group :development, :test do
   gem "tapioca", require: false
@@ -74,6 +78,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "mocktail", require: "mocktail/sorbet"
 end
 
 gem "tailwindcss-rails", "~> 2.0"

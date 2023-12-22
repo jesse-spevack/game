@@ -12,4 +12,13 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
   end
+
+  class Minitest::Test
+    include Mocktail::DSL
+
+    def teardown
+      super
+      Mocktail.reset
+    end
+  end
 end
