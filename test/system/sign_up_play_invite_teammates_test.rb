@@ -7,8 +7,9 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     # Create a new user
     visit root_url
-    click_on "Get started"
+    assert_text("Get started")
 
+    click_on "Login"
     fill_in "email", with: email
     click_on "Send Login Link"
 
@@ -33,6 +34,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     fill_in "Name", with: name
     click_on "Submit"
 
+    assert_text("Player #{name} created")
     assert_text("#{name}'s progress")
 
     player = Player.last

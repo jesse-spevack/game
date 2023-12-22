@@ -18,7 +18,7 @@ class PlayersController < ApplicationController
 
   def create
     @player = Commands::CreatePlayer.call(input: player_params)
-    redirect_to player_path(@player)
+    redirect_to player_path(@player), notice: "Player #{@player.name} created."
   end
 
   def edit
@@ -28,13 +28,13 @@ class PlayersController < ApplicationController
   def update
     @player = user_player
     @player.update(player_params)
-    redirect_to player_path(@player)
+    redirect_to player_path(@player), notice: "Player #{@player.name} updated."
   end
 
   def destroy
     @player = user_player
     @player.destroy
-    redirect_to new_player_path
+    redirect_to players_path, notice: "Player #{@player.name} removed."
   end
 
   private
