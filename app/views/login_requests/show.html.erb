@@ -1,9 +1,6 @@
-<div class="mx-auto grid max-w-2xl items-center px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-  <div class="prose lg:prose-xl">
-    <h2 class="tracking-tight text-gray-900">Check your email</h2>
-    <p class="text-gray-500">
-      We just sent an email to <span class="font-medium"><%= @email %></span> (no gaurantees 😉) with a link that will log you in!
-      You can try again <%= link_to "here", login_path, class: "font-medium text-cyan-600 hover:text-cyan-500" %> if you think something went wrong or just close this tab like an absolute boss.
-    </p>
+<div class="bg-white px-6 py-24 sm:py-32 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Check your email</h2>
+    <p class="mt-6 text-lg leading-8 text-gray-600">We just sent an email to <span class="font-medium"><%= @email %></span> (no gaurantees 😉) with a link that will log you in! You can close this window like an absolute boss.</p>
   </div>
 </div>
