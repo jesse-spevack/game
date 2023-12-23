@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_action :require_login, :verify_debts_are_satisfied
+  before_action :set_current_user, :require_login, :verify_debts_are_satisfied
+
+  def set_current_user
+    return unless session[:user_id]
+    @current_user = User.find_by(id: session[:user_id])
+  end
+
+  def no_current_user?
+    @current_user.nil?
+  end
 
   def require_login
-    @current_user = User.find_by(id: session[:user_id])
-    if @current_user.nil?
+    if no_current_user?
       redirect_to new_login_path(redirect_path: request.original_fullpath)
     elsif Commands::IsReloginRequired.call(user: @current_user)
       logout
@@ -13,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_debts_are_satisfied
-    if @current_user.nil?
+    if no_current_user?
       require_login
     elsif !pending_order_exists? && Commands::IsPaymentRequired.call(user: @current_user)
       redirect_to new_order_path

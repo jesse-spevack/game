@@ -3,13 +3,13 @@
     <div class="relative flex h-16 justify-between">
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="sm:ml-6 sm:flex sm:space-x-8">
-          <% if @current_player %>
-            <%= link_to "#{@current_player.name}'s scores", player_path(@current_player), class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
-          <% end %>
           <% if @current_user %>
             <%= link_to "Players", players_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
             <%= link_to "Team", invites_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
             <%= link_to "Logout", login_path, data: { "turbo-method": :delete }, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+            <% if @current_player %>
+              <%= link_to "#{@current_player.name}'s scores", player_path(@current_player), class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+            <% end %>
           <% else %>
             <%= link_to "Home", root_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
             <%= link_to "Login", new_login_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
