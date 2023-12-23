@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def admin?
     email == "jspevack@gmail.com"
   end
+
+  def temp_user?
+    email == "temp_user@example.com"
+  end
 end

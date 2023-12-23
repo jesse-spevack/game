@@ -9,14 +9,18 @@ class InvitesController < ApplicationController
   end
 
   def create
-    @invite = Invite.new(invite_params)
-    if @invite.save
-      Commands::SendInvite.call(invite: @invite)
-      flash[:notice] = "We've sent an invite to #{invite_params[:email]}."
-      redirect_to invites_path
+    # Todo get rid of this after the event is over.
+    if @current_user.temp_user?
+      redirect_to invites_path, notice: "Sorry, only real users get to send invites."
     else
-      flash[:error] = @invite.errors.to_s
-      redirect_to new_invite_path
+
+      @invite = Invite.new(invite_params)
+      if @invite.save
+        Commands::SendInvite.call(invite: @invite)
+        redirect_to invites_path, notice: "We've sent an invite to #{invite_params[:email]}."
+      else
+        redirect_to new_invite_path, error: @invite.errors.to_s
+      end
     end
   end
 
