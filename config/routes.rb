@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   # Authentication
   resource :login, only: [:new, :show, :create, :destroy]
   resource :login_request, only: [:show]
-  # Temporary backdoor login for Stripe
-  get "stripe-login" => "backdoor_logins#create", :as => :backdoor_login
 
   # Invites
   resources :invites, only: [:new, :create, :destroy]
