@@ -62,6 +62,7 @@ group :development, :test do
   gem "pry"
   gem "pry-byebug"
   gem "htmlbeautifier"
+  gem "dotenv-rails"
 end
 
 group :development do

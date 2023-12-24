@@ -28,6 +28,18 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     visit login_path(token: token)
     assert_text("Logout")
 
+    click_on "Settings"
+    assert_text("Invoice")
+    assert_text("Paid")
+
+    click_on "Edit"
+    select("Pacific Time (US & Canada)", from: "Time zone")
+    click_on "Update"
+
+    assert_text("Your settings have been updated.")
+
+    click_on "Players"
+
     # Create a new player
     name = "Jessssssseeeeeee"
     click_on "Add player"
