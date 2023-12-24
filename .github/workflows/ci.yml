@@ -19,18 +19,18 @@ jobs:
           POSTGRES_PASSWORD: password
         ports: ["5432:5432"]
 
-  steps:
-    - uses: actions/checkout@v4
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-    - name: Run tests
-      env:
-        DATABASE_URL: postgres://postgres:password@localhost:5432/test
-        RAILS_ENV: test
-      run: |
-        bin/rails test:prepare
-        bin/rails db:test:prepare
-        bin/rails test
-        bin/rails test:system
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:password@localhost:5432/test
+          RAILS_ENV: test
+        run: |
+          bin/rails test:prepare
+          bin/rails db:test:prepare
+          bin/rails test
+          bin/rails test:system
