@@ -1,15 +1,21 @@
 name: Fly Deploy
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Run Tests]
+    types: [completed]
+    branches: [main]
 jobs:
-  deploy:
-    name: Deploy app
+  on_success:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  on_failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The tests failed, so we will not deploy.'
