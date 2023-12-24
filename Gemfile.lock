@@ -104,6 +104,10 @@ GEM
       reline (>= 0.3.1)
     dockerfile-rails (1.5.12)
       rails (>= 3.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
@@ -362,6 +366,7 @@ DEPENDENCIES
   capybara
   debug
   dockerfile-rails (>= 1.5)
+  dotenv-rails
   htmlbeautifier
   importmap-rails
   jbuilder
