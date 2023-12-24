@@ -6,24 +6,33 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 
+  def require_login
+    redirect_to_login if no_current_user?
+    relogin_if_required if logged_in?
+  end
+
   def no_current_user?
     @current_user.nil?
   end
 
-  def require_login
-    if no_current_user?
-      redirect_to new_login_path(redirect_path: request.original_fullpath)
-    elsif Commands::IsReloginRequired.call(user: @current_user)
-      logout
-      flash[:notice] = "It has been a while since you logged in. Please log in again."
-      redirect_to new_login_path(redirect_path: request.original_fullpath)
-    end
+  def logged_in?
+    !no_current_user?
+  end
+
+  def redirect_to_login
+    redirect_to new_login_path(redirect_path: request.original_fullpath)
+  end
+
+  def relogin_if_required
+    return unless Commands::IsReloginRequired.call(user: @current_user)
+
+    logout
+    flash[:notice] = "It has been a while since you logged in. Please log in again."
+    redirect_to_login
   end
 
   def verify_debts_are_satisfied
-    if no_current_user?
-      require_login
-    elsif !pending_order_exists? && Commands::IsPaymentRequired.call(user: @current_user)
+    if !pending_order_exists? && Commands::IsPaymentRequired.call(user: @current_user)
       redirect_to new_order_path
     end
   end
@@ -43,7 +52,6 @@ class ApplicationController < ActionController::Base
 
   def set_current_player
     @current_player ||= if session[:player_id]
-      Rails.logger.info("session[:player_id] = #{session[:player_id]}")
       Player.find_by(id: session[:player_id])
     else
       redirect_to players_path

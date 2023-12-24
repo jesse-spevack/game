@@ -3,11 +3,11 @@ class LoginsController < ApplicationController
   free_loaders_welcome!
 
   def new
-    @redirect_path = params[:redirect_path]
+    @redirect_path = redirect_path
   end
 
   def create
-    Commands::EmailAuth::SendLoginEmail.call(email: params[:email], redirect_path: params[:redirect_path])
+    Commands::EmailAuth::SendLoginEmail.call(email: params[:email], redirect_path: redirect_path)
     flash[:notice] = "We've sent a login link to #{params[:email]}. Please check your email."
     redirect_to login_request_path(email: params[:email])
   end
@@ -31,5 +31,11 @@ class LoginsController < ApplicationController
     logout
     flash[:notice] = "Your account has been successfully logged out."
     redirect_to root_path
+  end
+
+  private
+
+  def redirect_path
+    params[:redirect_path] || players_path
   end
 end
