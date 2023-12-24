@@ -1,6 +1,7 @@
 class Admin::ResetPlayersController < AdminBaseController
   def update
-    Commands::ResetPlayer.call(player: Player.find(params[:id]))
-    redirect_to admin_players_path
+    player = Player.find(params[:id])
+    Commands::ResetPlayer.call(player: player)
+    redirect_to admin_players_path, notice: "Player #{player.name} reset"
   end
 end

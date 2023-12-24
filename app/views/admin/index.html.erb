@@ -58,7 +58,9 @@
             <tr>
               <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3">Email</th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Last signed in</th>
-              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Players</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                <%= link_to "Players", admin_players_path, class: "hover:font-bold text-cyan-600" %>
+              </th>
               <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Order</th>
               <th scope="col" class="hidden relative py-3.5 pl-3 pr-4 sm:pr-3">
                 <span class="sr-only">Edit</span>
@@ -68,27 +70,29 @@
           <% @teams.each do |team| %>
             <tbody class="bg-white">
               <tr class="border-t border-gray-200">
-                <th colspan="5" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3">
-                  <%= team.name %>
+                <th colspan="5" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold hover:font-bold text-gray-900 sm:pl-3">
+                  <%= link_to team.name, edit_admin_team_path(team) %>
                   <span class="whitespace-nowrap px-3 py-4 font-light text-sm text-gray-500">created <%= time_ago_in_words(team.created_at) %> ago</span>
-                </th>
-              </tr>
-              <% team.users.each do |user| %>
-                <tr class="border-t border-gray-300">
-                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3"><%= user.email %></td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= time_ago_in_words(user.last_sign_in_at) %></td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= team.players.count %></td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                    <% if Order.where(user: user).exists? %>
-                      <span class="inline-flex items-center rounded-full bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-700">Paid</span>
-                    <% end %>
-                  </td>
+                  <th colspan="5" scope="colgroup" class="bg-gray-50 py-2 pl-4 pr-3 text-left text-sm font-semibold text-gray-600 hover:text-gray-900 sm:pl-3">
+                    <%= link_to "Delete", admin_team_path(team), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete #{team.name}?"}, class: "" %>
+                  </th>
                 </tr>
+                <% team.users.each do |user| %>
+                  <tr class="border-t border-gray-300">
+                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3"><%= user.email %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= time_ago_in_words(user.last_sign_in_at) %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= team.players.count %></td>
+                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <% if Order.where(user: user).exists? %>
+                        <span class="inline-flex items-center rounded-full bg-green-100 px-1.5 py-0.5 text-xs font-medium text-green-700">Paid</span>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>

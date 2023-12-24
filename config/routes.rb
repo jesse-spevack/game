@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "stripe-login" => "backdoor_logins#create", :as => :backdoor_login
 
   # Invites
-  resources :invites, only: [:index, :new, :create, :show, :destroy]
+  resources :invites, only: [:new, :create, :destroy]
   resource :accept_invite, only: [:show]
 
   # Admin
@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     resources :players, only: [:index]
 
     resource :relevels, only: [:update]
-    put "reset_players/:id", to: "reset_players#update", as: :reset_player
+    post "reset_players/:id", to: "reset_players#update", as: :reset_player
+
+    resources :teams, only: [:edit, :update, :show, :destroy]
   end
 
   # Game
@@ -38,6 +40,9 @@ Rails.application.routes.draw do
   resource :responses, only: [:create, :new], path: "game"
   resources :sessions, only: [:create, :destroy]
   resources :scores, only: [:show]
+
+  # Settings
+  resource :team, only: [:show, :edit, :update]
 
   # Stripe
   resources :orders, only: [:new]

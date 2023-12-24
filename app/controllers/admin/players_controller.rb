@@ -1,5 +1,5 @@
 class Admin::PlayersController < AdminBaseController
   def index
-    @players = Player.order(name: :desc)
+    @players = Player.includes(:team).order(created_at: :desc)
   end
 end

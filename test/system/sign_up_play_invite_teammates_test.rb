@@ -72,7 +72,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     assert_text("We've sent an invite to #{teammate_email}.")
     assert_equal(1, Invite.count)
-    assert_text("Team #{user.team.name} invites")
+    assert_text("Team")
+    assert_text(user.team.name)
 
     invite = Invite.first
     assert_equal(teammate_email, invite.email)

@@ -59,7 +59,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     assert_text("Sorry, only real users get to send invites.")
     assert_equal(0, Invite.count)
-    assert_text("Team #{team_name} invites")
+    assert_text("Team")
+    assert_text(team_name)
 
     click_on "Logout"
     assert_text("Your account has been successfully logged out.")

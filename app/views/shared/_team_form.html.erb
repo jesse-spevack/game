@@ -1,0 +1,17 @@
+<div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
+  <%= render "shared/form_header", title: "Edit your team name", subtitle: "Teamwork makes the dream work", description: "Your team is a group of adult users who can login. Players are shared across the team. When a user on your team logs in, they can have any player on the team practice their math fluency." %>
+  <%= form_with model: team, url: form_path do |form| %>
+    <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
+      <div class="sm:col-span-3">
+        <%= form.label :name, class: "block text-sm font-medium leading-6 text-gray-900" %>
+        <div class="mt-2">
+          <%= form.text_field :name, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <%= render "shared/cancel_button", path: cancel_path %>
+      <%= form.submit "Update", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+    </div>
+  <% end %>
+</div>

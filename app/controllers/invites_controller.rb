@@ -1,9 +1,4 @@
 class InvitesController < ApplicationController
-  def index
-    @team = @current_user.team
-    @invites = Invite.where(team: @team)
-  end
-
   def new
     @invite = Invite.new
   end
@@ -11,13 +6,13 @@ class InvitesController < ApplicationController
   def create
     # Todo get rid of this after the event is over.
     if @current_user.temp_user?
-      redirect_to invites_path, notice: "Sorry, only real users get to send invites."
+      redirect_to team_path, notice: "Sorry, only real users get to send invites."
     else
 
       @invite = Invite.new(invite_params)
       if @invite.save
         Commands::SendInvite.call(invite: @invite)
-        redirect_to invites_path, notice: "We've sent an invite to #{invite_params[:email]}."
+        redirect_to team_path, notice: "We've sent an invite to #{invite_params[:email]}."
       else
         redirect_to new_invite_path, error: @invite.errors.to_s
       end

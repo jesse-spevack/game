@@ -1,13 +1,5 @@
 <div class="px-4 sm:px-6 lg:px-8">
-  <div class="sm:flex sm:items-center">
-    <div class="sm:flex-auto">
-      <h1 class="text-base font-semibold leading-6 text-gray-900">Team <%= @team.name %> invites</h1>
-      <p class="mt-2 text-sm text-gray-700">A list of all the email addresses that have been invited to your team. Each person that accepts an invitation to your team has access to your players.</p>
-    </div>
-    <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-      <%= link_to "Invite", new_invite_path, class: "block rounded-md bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
-    </div>
-  </div>
+  <%= render "shared/header_with_primary_secondary_buttons", title: @team.name, subtitle: "Team", description: "A list of all the email addresses that have been invited to your team. Each person that accepts an invitation to your team has access to all the same players.", secondary_text: "Edit", secondary_path: edit_team_path(@team), primary_text: "Invite", primary_path: new_invite_path, button: false %>
   <div class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">

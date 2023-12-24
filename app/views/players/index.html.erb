@@ -1,8 +1,7 @@
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-base font-semibold leading-6 text-gray-900">Players</h1>
-      <p class="mt-2 text-sm text-gray-700">A list of all the players in your account.</p>
+      <%= render "shared/form_header", title: "Players", subtitle: "Team: #{@current_user.team.name}'s", description: "Players are most likely your kids, but can be anyone who wants to play the DoMath.io game. Your user can have many players. All stats and settings are player specific." %>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
       <%= link_to "Add player", new_player_path, class: "block rounded-md bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
