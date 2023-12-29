@@ -10,11 +10,19 @@ module Commands
     def call(player:, level: nil)
       level ||= player.level
 
-      player_problem_aggregate = T.let(
-        PlayerProblemAggregate.joins(:problem)
+      updated_at = PlayerProblemAggregate.where(player: player).maximum(:updated_at)
+
+      priority = PlayerProblemAggregate.joins(:problem)
         .where(player: player, retired: false)
         .where("problems.level = ?", level)
-        .order(priority: :asc)
+        .minimum(:priority)
+
+      player_problem_aggregate = T.let(
+        PlayerProblemAggregate.joins(:problem)
+        .where(player: player, retired: false, priority: priority)
+        .where("problems.level = ?", level)
+        .where.not(updated_at: updated_at)
+        .order("RANDOM()")
         .limit(1)
         .first,
         PlayerProblemAggregate
