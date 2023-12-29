@@ -7,6 +7,7 @@ class Problem < ApplicationRecord
   include Logable
 
   has_many :responses, dependent: :destroy
+  has_many :player_problem_aggregates, dependent: :destroy
 
   scope :level, ->(level) { where(level: level) }
   scope :random_leveled, ->(level) { where(level: level).order("RANDOM()") }

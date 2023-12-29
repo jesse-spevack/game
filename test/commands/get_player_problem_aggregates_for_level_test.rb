@@ -2,8 +2,7 @@ require "test_helper"
 
 class Commands::GetPlayerProblemAggregatesForLevelTest < ActiveSupport::TestCase
   test "returns player problem aggregates for a specific level" do
-    input = ActionController::Parameters.new(name: "name", team_id: teams(:one).id)
-    player = Commands::CreatePlayer.call(input: input)
+    player = Player.create(name: "testy_test_face", team: teams(:one), level: 1)
 
     aggregate1 = PlayerProblemAggregate.create(
       player: player,

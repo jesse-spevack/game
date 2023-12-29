@@ -27,16 +27,31 @@ module GeneratedPathHelpersModule
   def admin_reset_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def alpha_announcement_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_admin_team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_settings_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_team_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def invites_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def learn_more_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def login_path(*args); end
@@ -168,7 +183,13 @@ module GeneratedPathHelpersModule
   def sessions_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def settings_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def success_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def team_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end

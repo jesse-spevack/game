@@ -24,19 +24,34 @@ module GeneratedUrlHelpersModule
   def admin_reset_player_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def alpha_announcement_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_admin_team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_settings_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_team_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def invites_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def learn_more_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def login_request_url(*args); end
@@ -168,7 +183,13 @@ module GeneratedUrlHelpersModule
   def sessions_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def settings_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def success_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def team_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end

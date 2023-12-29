@@ -5,11 +5,12 @@ module Commands
     extend T::Sig
 
     sig do
-      params(player: Player)
-        .returns(T::Boolean)
+      params(player: Player).void
     end
     def call(player:)
       T.let(player.update(level: player.level + 1), T::Boolean)
+
+      CreatePlayerProblemAggregatesJob.perform_later(player_id: player.id)
     end
   end
 end

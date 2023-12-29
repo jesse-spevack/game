@@ -221,6 +221,20 @@ class Team
 
   module GeneratedAssociationMethods
     sig { returns(T::Array[T.untyped]) }
+    def player_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def player_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Team` class because it declared `has_many :players`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::Player::PrivateCollectionProxy) }
+    def players; end
+
+    sig { params(value: T::Enumerable[::Player]).void }
+    def players=(value); end
+
+    sig { returns(T::Array[T.untyped]) }
     def user_ids; end
 
     sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }

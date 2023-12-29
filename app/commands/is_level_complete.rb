@@ -16,14 +16,7 @@ module Commands
         ActiveRecord::Relation
       )
 
-      active_problem_ids = T.let(Problem.level(level).pluck(:id), T::Array[Integer])
-      problem_ids_with_aggregates = T.let(player_problem_aggregates.pluck(:problem_id), T::Array[Integer])
-
-      satisfactorily_meets_expectations = player_problem_aggregates.all? do |player_problem_aggregate|
-        T.let(player_problem_aggregate, PlayerProblemAggregate).satisfactorily_meets_expectations?
-      end
-
-      satisfactorily_meets_expectations && (active_problem_ids - problem_ids_with_aggregates).empty?
+      player_problem_aggregates.all?(&:retired?)
     end
   end
 end

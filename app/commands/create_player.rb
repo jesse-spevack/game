@@ -1,4 +1,4 @@
-# # typed: strict
+# typed: strict
 
 module Commands
   class CreatePlayer < Commands::Base
@@ -11,7 +11,9 @@ module Commands
         .returns(Player)
     end
     def call(input:)
-      Player.create(team_id: input[:team_id], name: input[:name], level: STARTING_LEVEL)
+      player = Player.create(team_id: input[:team_id], name: input[:name], level: STARTING_LEVEL)
+      CreatePlayerProblemAggregatesJob.perform_later(player_id: player.id)
+      player
     end
   end
 end

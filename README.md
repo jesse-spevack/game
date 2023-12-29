@@ -73,9 +73,7 @@ fly deploy
 
 ## Next Steps
 
-- P1 Bias problem selection algo to less seen problems
-- P1 User Settings table
+- P0 free user mode - FreeTrial table?
 - P1 User timezone :/ - see `get_consecutive_days_played.rb`
-- P2 Users should be able to see their invoice
 - P2 Admin should be able to see orders
 - P2 Admin should be able to see players

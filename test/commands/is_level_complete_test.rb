@@ -13,7 +13,8 @@ class Commands::IsLevelCompleteTest < ActiveSupport::TestCase
       correct: 3,
       min_time: 5,
       max_time: 5,
-      average_time: 5
+      average_time: 5,
+      retired: true
     )
 
     PlayerProblemAggregate.create(
@@ -23,7 +24,8 @@ class Commands::IsLevelCompleteTest < ActiveSupport::TestCase
       correct: 3,
       min_time: 5,
       max_time: 5,
-      average_time: 5
+      average_time: 5,
+      retired: true
     )
 
     assert(Commands::IsLevelComplete.call(player: player))
@@ -41,7 +43,8 @@ class Commands::IsLevelCompleteTest < ActiveSupport::TestCase
       correct: 1,
       min_time: 5,
       max_time: 5,
-      average_time: 5
+      average_time: 5,
+      retired: false
     )
 
     PlayerProblemAggregate.create(
@@ -51,25 +54,8 @@ class Commands::IsLevelCompleteTest < ActiveSupport::TestCase
       correct: 3,
       min_time: 5,
       max_time: 5,
-      average_time: 5
-    )
-
-    refute(Commands::IsLevelComplete.call(player: player))
-  end
-
-  test "returns false when player satisfactorily meets expectations for every problem at its current level, but missing problems" do
-    player = Player.create(name: "Test Player", level: 5, team: teams(:one))
-    problem1 = Problem.create(x: 900, y: 1, operation: "addition", solution: 2, level: 5)
-    Problem.create(x: 900, y: 2, operation: "addition", solution: 2, level: 5)
-
-    PlayerProblemAggregate.create(
-      player: player,
-      problem: problem1,
-      attempts: 3,
-      correct: 3,
-      min_time: 5,
-      max_time: 5,
-      average_time: 5
+      average_time: 5,
+      retired: true
     )
 
     refute(Commands::IsLevelComplete.call(player: player))

@@ -21,6 +21,41 @@ two_plus_two:
   solution: 4
   level: 1
 
+two_plus_three:
+  operation: "addition"
+  x: 2
+  y: 3
+  solution: 5
+  level: 1
+
+three_plus_two:
+  operation: "addition"
+  x: 3
+  y: 2
+  solution: 5
+  level: 1
+
+zero_plus_one:
+  operation: "addition"
+  x: 0
+  y: 1
+  solution: 1
+  level: 1
+
+zero_plus_two:
+  operation: "addition"
+  x: 0
+  y: 2
+  solution: 2
+  level: 1
+
+zero_plus_three:
+  operation: "addition"
+  x: 0
+  y: 3
+  solution: 3
+  level: 1
+
 four_plus_six:
   operation: "addition"
   x: 4

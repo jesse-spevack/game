@@ -24,7 +24,7 @@ module Commands
 
       Commands::CreateOrUpdatePlayerProblemAggregate.call(player: input.player, problem: input.problem)
 
-      if Commands::IsLevelComplete.call(player: input.player)
+      if T.let(Commands::IsLevelComplete.call(player: input.player), T::Boolean)
         Commands::LevelUpPlayer.call(player: input.player)
       end
 
