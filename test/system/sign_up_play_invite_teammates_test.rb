@@ -73,6 +73,43 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     assert_text("1\nproblems solved")
     assert_text("1\nday in a row")
 
+    click_on "Play"
+
+    x_element = find(:xpath, "/html/body/main/div/div/div[1]/div[2]/p")
+    x_text = x_element.text
+    x = x_text.to_i
+
+    y_element = find(:xpath, "/html/body/main/div/div/div[1]/div[3]/p")
+    y_text = y_element.text
+    y = y_text.to_i
+
+    this_problem = Problem.find_by(x: x, y: y)
+
+    take_screenshot
+    click_button((x + y).to_s)
+    click_button "☑"
+
+    click_on "#{name}!'s scores"
+    take_screenshot
+    click_button "Play"
+
+    take_screenshot
+    x_element = find(:xpath, "/html/body/main/div/div/div[1]/div[2]/p")
+    x_text = x_element.text
+    new_x = x_text.to_i
+
+    y_element = find(:xpath, "/html/body/main/div/div/div[1]/div[3]/p")
+    y_text = y_element.text
+    new_y = y_text.to_i
+
+    this_new_problem = Problem.find_by(x: new_x, y: new_y)
+
+    assert_not_equal(this_problem, this_new_problem)
+
+    click_on "#{name}!'s scores"
+    assert_text("2\nproblems solved")
+    assert_text("1\nday in a row")
+
     assert_equal(0, Invite.count)
 
     # Invite a teammate

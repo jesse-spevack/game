@@ -15,6 +15,7 @@ module Commands
       priority = PlayerProblemAggregate.joins(:problem)
         .where(player: player, retired: false)
         .where("problems.level = ?", level)
+        .where.not(updated_at: updated_at)
         .minimum(:priority)
 
       player_problem_aggregate = T.let(
