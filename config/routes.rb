@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
     resource :relevels, only: [:update]
     post "reset_players/:id", to: "reset_players#update", as: :reset_player
+    post "player_problem_aggregates", to: "player_problem_aggregates#create"
+    get "player_problem_aggregates", to: "player_problem_aggregates#index"
 
     resources :teams, only: [:edit, :update, :show, :destroy]
   end

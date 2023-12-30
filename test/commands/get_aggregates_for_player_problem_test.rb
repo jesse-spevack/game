@@ -19,5 +19,10 @@ class Commands::GetAggregatesForPlayerProblemTest < ActiveSupport::TestCase
     assert_equal(5, result.min_time)
     assert_equal(20, result.max_time)
     assert_equal(11, result.average_time)
+    assert_equal(3, result.priority)
+    refute(result.proficient)
+    refute(result.fast)
+    refute(result.fast_enough)
+    refute(result.retired)
   end
 end

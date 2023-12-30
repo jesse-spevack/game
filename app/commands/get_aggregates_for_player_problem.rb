@@ -7,6 +7,8 @@ module Commands
 
     # An aggregate is a data structure that contains the following:
     class Aggregate < T::Struct
+      extend T::Sig
+
       const :player, Player
       const :problem, Problem
       const :attempts, Integer
@@ -14,6 +16,11 @@ module Commands
       const :min_time, Integer
       const :max_time, Integer
       const :average_time, Integer
+      const :priority, Integer
+      const :proficient, T::Boolean
+      const :fast, T::Boolean
+      const :fast_enough, T::Boolean
+      const :retired, T::Boolean
     end
 
     sig { params(player: Player, problem: Problem).returns(Aggregate) }
@@ -47,15 +54,37 @@ module Commands
       SQL
 
       result = T.let(ActiveRecord::Base.connection.execute(sql).first, T::Hash[String, T.untyped])
+      attempts = T.let(result["attempts"], Integer)
+      correct = T.let(result["correct"], Integer)
+      min_time = T.let(result["min_time"], Integer)
+      max_time = T.let(result["max_time"], Integer)
+      average_time = T.let(result["average_time"], BigDecimal).to_i
+
+      proficient = T.let(Commands::IsProficient.call(attempts: attempts, correct: correct), T::Boolean)
+      fast = T.let(Commands::IsFast.call(average_time: average_time, attempts: attempts), T::Boolean)
+      fast_enough = T.let(Commands::IsFastEnough.call(min_time: min_time, average_time: average_time, attempts: attempts), T::Boolean)
+      retired = T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough), T::Boolean)
+      priority = T.let(Commands::GetPriority.call(
+        attempts: attempts,
+        correct: correct,
+        proficient: proficient,
+        fast: fast,
+        fast_enough: fast_enough
+      ), Integer)
 
       Aggregate.new(
         player: player,
         problem: problem,
-        attempts: T.let(result["attempts"], Integer),
-        correct: T.let(result["correct"], Integer),
-        min_time: T.let(result["min_time"], Integer),
-        max_time: T.let(result["max_time"], Integer),
-        average_time: T.let(result["average_time"], BigDecimal).to_i
+        attempts: attempts,
+        correct: correct,
+        min_time: min_time,
+        max_time: max_time,
+        average_time: average_time,
+        priority: priority,
+        proficient: proficient,
+        fast: fast,
+        fast_enough: fast_enough,
+        retired: retired
       )
     end
   end

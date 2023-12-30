@@ -15,39 +15,31 @@ class PlayerProblemAggregate < ApplicationRecord
 
   sig { returns(Integer) }
   def percent_correct
-    return DEFAULT if attempts.zero?
-
-    ((correct.to_f / attempts) * 100).to_i
+    T.let(Commands::GetPercentCorrect.call(attempts: attempts, correct: correct), Integer)
   end
 
   sig { returns(T::Boolean) }
   def proficient?
-    return false if insufficient_attempts?
-
-    percent_correct >= PROFICIENCY_THRESHOLD
+    T.let(Commands::IsProficient.call(attempts: attempts, correct: correct), T::Boolean)
   end
 
   sig { returns(T::Boolean) }
   def fast?
-    return false if insufficient_attempts?
-
-    average_time <= FAST_THRESHOLD
+    T.let(Commands::IsFast.call(average_time: average_time, attempts: attempts), T::Boolean)
   end
 
   sig { returns(T::Boolean) }
   def fast_enough?
-    return false if insufficient_attempts?
-
-    average_time < FAST_ENOUGH_THRESHOLD && min_time <= FAST_THRESHOLD
+    T.let(Commands::IsFastEnough.call(average_time: average_time, attempts: attempts, min_time: min_time), T::Boolean)
   end
 
   sig { returns(T::Boolean) }
   def satisfactorily_meets_expectations?
-    proficient? && fast_enough?
+    T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough), T::Boolean)
   end
 
   sig { returns(T::Boolean) }
   def insufficient_attempts?
-    attempts < MINIMUM_ATTEMPT_THRESHOLD
+    !T.let(Commands::IsAttemptsSufficient.call(attempts: attempts), T::Boolean)
   end
 end

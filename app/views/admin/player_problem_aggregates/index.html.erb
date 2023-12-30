@@ -1,0 +1,91 @@
+<div class="px-4 sm:px-6 lg:px-8">
+  <%= render "shared/header_with_primary_secondary_buttons", title: "Player Problem Aggregates", subtitle: "Aggregates", description: "Player problem aggregates are where we store how a player is performing on a particular problem", secondary_text: "Back", secondary_path: admin_path, primary_text: "Create", primary_path: admin_player_problem_aggregates_path, button: true %>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead>
+            <tr>
+              <th scope="col" class="w-full sm:w-auto py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Player</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Problem</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Attempts</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Correct</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Minimum time</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Maximum time</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Average time</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Priority</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Proficient</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fast</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fast enough</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created</th>
+              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Updated</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @player_problem_aggregates.each do |player_problem_aggregate| %>
+              <tr>
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                  <%= player_problem_aggregate.player.name %>
+                </td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.problem.display %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.attempts %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.correct %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.min_time %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.max_time %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= player_problem_aggregate.average_time %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <% if player_problem_aggregate.priority.zero? %>
+                    <%= render "shared/red_bubble", text: player_problem_aggregate.priority %>
+                  <% elsif player_problem_aggregate.priority == 1 %>
+                    <%= render "shared/yellow_bubble", text: player_problem_aggregate.priority %>
+                  <% else %>
+                    <%= render "shared/green_bubble", text: player_problem_aggregate.priority %>
+                  <% end %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <% if player_problem_aggregate.proficient %>
+                    <%= render "shared/green_bubble", text: "Yes" %>
+                  <% else %>
+                    <%= render "shared/red_bubble", text: "No" %>
+                  <% end %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <% if player_problem_aggregate.fast %>
+                    <%= render "shared/green_bubble", text: "Yes" %>
+                  <% else %>
+                    <%= render "shared/red_bubble", text: "No" %>
+                  <% end %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <% if player_problem_aggregate.fast_enough %>
+                    <%= render "shared/green_bubble", text: "Yes" %>
+                  <% else %>
+                    <%= render "shared/red_bubble", text: "No" %>
+                  <% end %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= time_ago_in_words(player_problem_aggregate.created_at) %>
+                </td>
+                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                  <%= time_ago_in_words(player_problem_aggregate.updated_at) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

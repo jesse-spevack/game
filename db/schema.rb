@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_24_193452) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_031408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_193452) do
     t.integer "average_time", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "priority", default: 0
+    t.boolean "proficient", default: false
+    t.boolean "fast", default: false
+    t.boolean "fast_enough", default: false
+    t.boolean "retired", default: false
     t.index ["player_id", "problem_id"], name: "index_player_problem_aggregates_on_player_id_and_problem_id", unique: true
     t.index ["player_id"], name: "index_player_problem_aggregates_on_player_id"
     t.index ["problem_id"], name: "index_player_problem_aggregates_on_problem_id"

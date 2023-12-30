@@ -26,9 +26,8 @@ class PlayerProblemAggregateTest < ActiveSupport::TestCase
     fast = PlayerProblemAggregate::FAST_THRESHOLD
     fast_enough = PlayerProblemAggregate::FAST_ENOUGH_THRESHOLD
     refute(PlayerProblemAggregate.new(attempts: min_attempts - 1, average_time: fast_enough).fast_enough?)
-    refute(PlayerProblemAggregate.new(attempts: min_attempts, average_time: fast_enough).fast_enough?)
-    refute(PlayerProblemAggregate.new(attempts: min_attempts, average_time: fast_enough - 1, min_time: fast + 1).fast_enough?)
-    assert(PlayerProblemAggregate.new(attempts: min_attempts, average_time: fast_enough - 1, min_time: fast).fast_enough?)
+    assert(PlayerProblemAggregate.new(attempts: min_attempts, average_time: fast_enough, min_time: fast).fast_enough?)
+    refute(PlayerProblemAggregate.new(attempts: min_attempts, average_time: fast_enough, min_time: fast + 1).fast_enough?)
   end
 
   test "#satisfactorily_meets_expectations?" do

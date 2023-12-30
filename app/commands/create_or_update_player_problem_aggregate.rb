@@ -28,7 +28,12 @@ module Commands
           correct: aggregate.correct,
           min_time: aggregate.min_time,
           max_time: aggregate.max_time,
-          average_time: aggregate.average_time
+          average_time: aggregate.average_time,
+          priority: aggregate.priority,
+          proficient: aggregate.proficient,
+          fast: aggregate.fast,
+          fast_enough: aggregate.fast_enough,
+          retired: aggregate.retired
         )
         player_problem_aggregate
       else
@@ -39,7 +44,12 @@ module Commands
           correct: aggregate.correct,
           min_time: aggregate.min_time,
           max_time: aggregate.max_time,
-          average_time: aggregate.average_time
+          average_time: aggregate.average_time,
+          priority: aggregate.priority,
+          proficient: aggregate.proficient,
+          fast: aggregate.fast,
+          fast_enough: aggregate.fast_enough,
+          retired: aggregate.retired
         )
       end
     end

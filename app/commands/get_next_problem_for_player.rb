@@ -32,22 +32,10 @@ module Commands
           problem = T.let(ambiguously_typed_problem, Problem)
           aggregate = aggregates.find_by(problem: problem)
 
-          Rails.logger.info("Analyzed #{problem.to_log}")
-          Rails.logger.info(player.to_log)
+          if T.let(Commands::IsSuitableNextProblem.call(player_problem_aggregate: aggregate), T::Boolean)
+            Rails.logger.info("Analyzed #{problem.to_log}")
+            Rails.logger.info(player.to_log)
 
-          # TODO encapsulate this in a command that takes in an aggregate and returns a boolean
-          if aggregate.nil?
-            Rails.logger.info("FINISHED FINDING PROBLEM do to player inexperience with #{next_problem.to_log}")
-            next_problem = problem
-            break
-          elsif !aggregate.proficient?
-            Rails.logger.info("Fast: #{aggregate.fast?}")
-            Rails.logger.info("FINISHED FINDING PROBLEM. Player is not yet proficient at #{next_problem.to_log}")
-            next_problem = problem
-            break
-          elsif !aggregate.fast?
-            Rails.logger.info("Fast: #{aggregate.fast?}")
-            Rails.logger.info("FINISHED FINDING PROBLEM. Player is not yet fast at #{next_problem.to_log}")
             next_problem = problem
             break
           end

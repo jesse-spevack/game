@@ -229,6 +229,20 @@ class Player
     sig { params(args: T.untyped, blk: T.untyped).returns(::Team) }
     def create_team!(*args, &blk); end
 
+    sig { returns(T::Array[T.untyped]) }
+    def player_problem_aggregate_ids; end
+
+    sig { params(ids: T::Array[T.untyped]).returns(T::Array[T.untyped]) }
+    def player_problem_aggregate_ids=(ids); end
+
+    # This method is created by ActiveRecord on the `Player` class because it declared `has_many :player_problem_aggregates`.
+    # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+    sig { returns(::PlayerProblemAggregate::PrivateCollectionProxy) }
+    def player_problem_aggregates; end
+
+    sig { params(value: T::Enumerable[::PlayerProblemAggregate]).void }
+    def player_problem_aggregates=(value); end
+
     sig { returns(T.nilable(::Team)) }
     def reload_team; end
 

@@ -2,7 +2,7 @@ class ResponsesController < ApplicationController
   before_action :set_current_player
 
   def new
-    @problem = Commands::GetNextProblemForPlayer.call(player: @current_player)
+    @problem = Commands::GetNextProblemForPlayerV2.call(player: @current_player)
     @correct = session[:correct]
     session[:correct] = nil
   end

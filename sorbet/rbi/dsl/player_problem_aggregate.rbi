@@ -688,6 +688,96 @@ class PlayerProblemAggregate
     sig { void }
     def created_at_will_change!; end
 
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast; end
+
+    sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+    def fast=(value); end
+
+    sig { returns(T::Boolean) }
+    def fast?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def fast_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def fast_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_change; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_change_to_be_saved; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def fast_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_enough; end
+
+    sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+    def fast_enough=(value); end
+
+    sig { returns(T::Boolean) }
+    def fast_enough?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_enough_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def fast_enough_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def fast_enough_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_enough_change; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_enough_change_to_be_saved; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def fast_enough_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_enough_in_database; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_enough_previous_change; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def fast_enough_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_enough_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_enough_was; end
+
+    sig { void }
+    def fast_enough_will_change!; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_in_database; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def fast_previous_change; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def fast_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def fast_was; end
+
+    sig { void }
+    def fast_will_change!; end
+
     sig { returns(T.nilable(::Integer)) }
     def id; end
 
@@ -913,6 +1003,51 @@ class PlayerProblemAggregate
     sig { void }
     def player_id_will_change!; end
 
+    sig { returns(T.nilable(::Integer)) }
+    def priority; end
+
+    sig { params(value: T.nilable(::Integer)).returns(T.nilable(::Integer)) }
+    def priority=(value); end
+
+    sig { returns(T::Boolean) }
+    def priority?; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def priority_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def priority_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def priority_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def priority_change; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def priority_change_to_be_saved; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def priority_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def priority_in_database; end
+
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def priority_previous_change; end
+
+    sig { params(from: T.nilable(::Integer), to: T.nilable(::Integer)).returns(T::Boolean) }
+    def priority_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(::Integer)) }
+    def priority_previously_was; end
+
+    sig { returns(T.nilable(::Integer)) }
+    def priority_was; end
+
+    sig { void }
+    def priority_will_change!; end
+
     sig { returns(::Integer) }
     def problem_id; end
 
@@ -958,6 +1093,51 @@ class PlayerProblemAggregate
     sig { void }
     def problem_id_will_change!; end
 
+    sig { returns(T.nilable(T::Boolean)) }
+    def proficient; end
+
+    sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+    def proficient=(value); end
+
+    sig { returns(T::Boolean) }
+    def proficient?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def proficient_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def proficient_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def proficient_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def proficient_change; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def proficient_change_to_be_saved; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def proficient_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def proficient_in_database; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def proficient_previous_change; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def proficient_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def proficient_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def proficient_was; end
+
+    sig { void }
+    def proficient_will_change!; end
+
     sig { void }
     def restore_attempts!; end
 
@@ -969,6 +1149,12 @@ class PlayerProblemAggregate
 
     sig { void }
     def restore_created_at!; end
+
+    sig { void }
+    def restore_fast!; end
+
+    sig { void }
+    def restore_fast_enough!; end
 
     sig { void }
     def restore_id!; end
@@ -986,10 +1172,64 @@ class PlayerProblemAggregate
     def restore_player_id!; end
 
     sig { void }
+    def restore_priority!; end
+
+    sig { void }
     def restore_problem_id!; end
 
     sig { void }
+    def restore_proficient!; end
+
+    sig { void }
+    def restore_retired!; end
+
+    sig { void }
     def restore_updated_at!; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def retired; end
+
+    sig { params(value: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+    def retired=(value); end
+
+    sig { returns(T::Boolean) }
+    def retired?; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def retired_before_last_save; end
+
+    sig { returns(T.untyped) }
+    def retired_before_type_cast; end
+
+    sig { returns(T::Boolean) }
+    def retired_came_from_user?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def retired_change; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def retired_change_to_be_saved; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def retired_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def retired_in_database; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def retired_previous_change; end
+
+    sig { params(from: T.nilable(T::Boolean), to: T.nilable(T::Boolean)).returns(T::Boolean) }
+    def retired_previously_changed?(from: T.unsafe(nil), to: T.unsafe(nil)); end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def retired_previously_was; end
+
+    sig { returns(T.nilable(T::Boolean)) }
+    def retired_was; end
+
+    sig { void }
+    def retired_will_change!; end
 
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_attempts; end
@@ -1014,6 +1254,18 @@ class PlayerProblemAggregate
 
     sig { returns(T::Boolean) }
     def saved_change_to_created_at?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def saved_change_to_fast; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_fast?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def saved_change_to_fast_enough; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_fast_enough?; end
 
     sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
     def saved_change_to_id; end
@@ -1045,11 +1297,29 @@ class PlayerProblemAggregate
     sig { returns(T::Boolean) }
     def saved_change_to_player_id?; end
 
+    sig { returns(T.nilable([T.nilable(::Integer), T.nilable(::Integer)])) }
+    def saved_change_to_priority; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_priority?; end
+
     sig { returns(T.nilable([::Integer, ::Integer])) }
     def saved_change_to_problem_id; end
 
     sig { returns(T::Boolean) }
     def saved_change_to_problem_id?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def saved_change_to_proficient; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_proficient?; end
+
+    sig { returns(T.nilable([T.nilable(T::Boolean), T.nilable(T::Boolean)])) }
+    def saved_change_to_retired; end
+
+    sig { returns(T::Boolean) }
+    def saved_change_to_retired?; end
 
     sig { returns(T.nilable([T.nilable(::ActiveSupport::TimeWithZone), T.nilable(::ActiveSupport::TimeWithZone)])) }
     def saved_change_to_updated_at; end
@@ -1115,6 +1385,12 @@ class PlayerProblemAggregate
     def will_save_change_to_created_at?; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_fast?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_fast_enough?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_id?; end
 
     sig { returns(T::Boolean) }
@@ -1130,7 +1406,16 @@ class PlayerProblemAggregate
     def will_save_change_to_player_id?; end
 
     sig { returns(T::Boolean) }
+    def will_save_change_to_priority?; end
+
+    sig { returns(T::Boolean) }
     def will_save_change_to_problem_id?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_proficient?; end
+
+    sig { returns(T::Boolean) }
+    def will_save_change_to_retired?; end
 
     sig { returns(T::Boolean) }
     def will_save_change_to_updated_at?; end

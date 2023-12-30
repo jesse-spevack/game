@@ -7,7 +7,8 @@ class Player < ApplicationRecord
   include Logable
   include Teamable
 
-  has_many :responses
+  has_many :responses, dependent: :destroy
+  has_many :player_problem_aggregates, dependent: :destroy
 
   sig { returns(T::Boolean) }
   def has_played?
