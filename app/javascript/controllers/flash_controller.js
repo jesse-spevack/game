@@ -8,6 +8,6 @@ export default class extends Controller {
   connect() {
     setTimeout(() => {
       this.messageTarget.classList.add(this.hiddenClass);
-    }, 3000);
+    }, 4000);
   }
 }
