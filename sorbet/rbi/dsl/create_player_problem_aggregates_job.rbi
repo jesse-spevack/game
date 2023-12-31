@@ -6,10 +6,10 @@
 
 class CreatePlayerProblemAggregatesJob
   class << self
-    sig { params(player_id: T.untyped).returns(T.any(CreatePlayerProblemAggregatesJob, FalseClass)) }
-    def perform_later(player_id); end
+    sig { params(player_id: ::Integer).returns(T.any(CreatePlayerProblemAggregatesJob, FalseClass)) }
+    def perform_later(player_id:); end
 
-    sig { params(player_id: T.untyped).returns(T.untyped) }
-    def perform_now(player_id); end
+    sig { params(player_id: ::Integer).void }
+    def perform_now(player_id:); end
   end
 end

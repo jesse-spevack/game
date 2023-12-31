@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "alpha_announcement" => "home#alpha_announcement", :as => :alpha_announcement
   get "learn-more" => "home#learn_more", :as => :learn_more
+  get "privacy-policy" => "home#privacy_policy", :as => :privacy_policy
+  get "tos" => "home#tos", :as => :tos
 
   # Authentication
   resource :login, only: [:new, :show, :create, :destroy]
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
   resource :responses, only: [:create, :new], path: "game"
   resources :sessions, only: [:create, :destroy]
   resources :scores, only: [:show]
+  resources :trial_memberships, only: [:create]
 
   # Settings
   resource :team, only: [:show, :edit, :update]

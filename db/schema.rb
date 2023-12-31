@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_031408) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_30_230111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -194,6 +194,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_031408) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trial_memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trial_memberships_on_user_id"
+  end
+
   create_table "user_settings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "time_zone", default: "Mountain Time (US & Canada)"
@@ -226,6 +234,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_031408) do
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "trial_memberships", "users"
   add_foreign_key "user_settings", "users"
   add_foreign_key "users", "teams"
 end

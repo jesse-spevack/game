@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
-  Result = Struct.new(:url)
   test "a new user can sign up, setup a player, play, and invite a new teammate" do
     email = "jesse@domath.io"
 

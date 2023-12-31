@@ -2,7 +2,9 @@
   <%= render "shared/form_header", title: "Invite a teammate", subtitle: "It takes a village", description: "Add your spouse, your mother, or any other cellphone wielding adult in your child's life to your team. Your players will be able to play and make progress on their goals logged in as another user on your team." %>
   <%= form_with model: @invite do |form| %>
     <div class="space-y-4">
-      <%= render "shared/email_field", form: form, model: @invite, placeholder: "teammate@example.com", description: "Add your spouse, grandparent or other cellphone wielding adult in your child's life." %>
+      <%= render "shared/email_field", form: form, model: @invite, placeholder: "teammate@example.com" do %>
+        Add your spouse, grandparent or other cellphone wielding adult in your child's life.
+      <% end%>
       <div class="mt-6 flex items-center justify-end gap-x-6">
         <%= form.submit "Send invite", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
       </div>

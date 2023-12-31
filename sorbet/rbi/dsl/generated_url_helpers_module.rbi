@@ -12,6 +12,9 @@ module GeneratedUrlHelpersModule
   def accept_invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_player_problem_aggregates_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -85,6 +88,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def players_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def privacy_policy_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def problem_url(*args); end
@@ -190,6 +196,12 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def tos_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def trial_memberships_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_url(*args); end

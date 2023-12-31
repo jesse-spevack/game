@@ -6,10 +6,7 @@ module Commands
 
     sig { params(user: User).returns(T::Boolean) }
     def call(user:)
-      user_orders = Order.where(user: user).where("created_at >= ?", 1.year.ago)
-      team_orders = Order.where(team: user.team).where("created_at >= ?", 1.year.ago)
-      orders = user_orders.or(team_orders)
-      !orders.exists?
+      !T.let(Commands::IsUserFreeMember.call(user: user), T::Boolean) && !T.let(Commands::IsUserPaidMember.call(user: user), T::Boolean)
     end
   end
 end
