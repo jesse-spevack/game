@@ -82,6 +82,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "mocktail", require: "mocktail/sorbet"
+  gem "mocha"
 end
 
 gem "tailwindcss-rails", "~> 2.0"

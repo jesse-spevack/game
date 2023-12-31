@@ -15,6 +15,9 @@ module GeneratedPathHelpersModule
   def admin_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_player_problem_aggregates_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_players_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -85,6 +88,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def players_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def privacy_policy_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def problem_path(*args); end
@@ -190,6 +196,12 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def tos_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def trial_memberships_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def turbo_recede_historical_location_path(*args); end

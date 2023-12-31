@@ -34,7 +34,9 @@
         <p class="mt-2 text-sm text-red-600" id="email-error"><%= message %></p>
       <% end %>
     <% else %>
-      <p class="mt-2 text-sm text-gray-500"><%= description %></p>
+      <p class="mt-2 text-sm text-gray-500">
+        <%= yield %>
+      </p>
     <% end %>
   </div>
 </div>

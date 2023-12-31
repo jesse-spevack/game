@@ -10,4 +10,10 @@ class HomeController < ApplicationController
 
   def learn_more
   end
+
+  def privacy_policy
+  end
+
+  def tos
+  end
 end
