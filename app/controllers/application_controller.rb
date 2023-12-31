@@ -42,6 +42,13 @@ class ApplicationController < ActionController::Base
     pending_order_at && (Time.at(pending_order_at) + 5.minutes).future?
   end
 
+  def paid_membership_required!
+    if Commands::IsUserFreeMember.call(user: @current_user)
+      flash[:error] = "This feature is not available. Consider upgrading to a paid membership to get access and support the development of DoMath.io."
+      redirect_to new_order_path
+    end
+  end
+
   def self.logged_out_users_welcome!
     skip_before_action :require_login
   end

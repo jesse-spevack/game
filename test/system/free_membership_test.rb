@@ -20,7 +20,7 @@ class FreeMembershipTest < ApplicationSystemTestCase
     assert(user.last_sign_in_at)
     assert(user.team_id)
 
-    Commands::CreateStripeCheckoutSession.expects(:call).returns("http://example.com/checkout")
+    Commands::CreateStripeCheckoutSession.expects(:call).returns("http://example.com/checkout").twice
 
     token = user.generate_token_for(:magic_link)
 
@@ -31,5 +31,8 @@ class FreeMembershipTest < ApplicationSystemTestCase
 
     click_on "Temporary access"
     assert_text("Your trial membership expires on #{7.days.from_now.to_date.to_formatted_s(:long)}.")
+
+    click_on "Team"
+    assert_text("This feature is not available. Consider upgrading to a paid membership to get access and support the development of DoMath.io.")
   end
 end

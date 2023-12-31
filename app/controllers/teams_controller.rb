@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team
+  before_action :set_team, :paid_membership_required!
 
   def show
     @team = @current_user.team
