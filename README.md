@@ -74,7 +74,6 @@ fly deploy
 ## Next Steps
 
 - P0 Code review and clean up
-- P0 TOS & privacy policy
 - P1 User timezone :/ - see `get_consecutive_days_played.rb`
 - P1 Change team name
 - P1 Email campaigns
