@@ -79,8 +79,14 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
+    better_errors (2.10.1)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
+      rouge (>= 1.0.0)
     bigdecimal (3.1.4)
     bindex (0.8.1)
+    binding_of_caller (1.0.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
@@ -93,7 +99,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -101,6 +106,7 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    debug_inspector (1.2.0)
     dockerfile-rails (1.5.12)
       rails (>= 3.0.0)
     dotenv (2.8.1)
@@ -143,7 +149,6 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
-    method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     mocha (2.1.0)
@@ -177,9 +182,6 @@ GEM
     pg (1.5.4)
     prettier_print (1.2.1)
     prism (0.17.1)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -234,6 +236,7 @@ GEM
     reline (0.4.0)
       io-console (~> 0.5)
     rexml (3.2.6)
+    rouge (4.2.0)
     rubocop (1.57.2)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -360,6 +363,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootsnap
   capybara
   debug
@@ -372,7 +377,6 @@ DEPENDENCIES
   mocha
   mocktail
   pg (~> 1.1)
-  pry
   puma (>= 5.0)
   rails (~> 7.1.2)
   selenium-webdriver
