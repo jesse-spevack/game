@@ -9,6 +9,7 @@ class Response < ApplicationRecord
 
   validates :completed_at, presence: true
   validates :started_at, presence: true
+  validates :value, numericality: {only_integer: true, less_than: 1000}
 
   sig { returns(Integer) }
   def time

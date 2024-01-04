@@ -59,8 +59,6 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
   gem "standard"
   gem "standard-rails"
-  gem "pry"
-  gem "pry-byebug"
   gem "htmlbeautifier"
   gem "dotenv-rails"
 end

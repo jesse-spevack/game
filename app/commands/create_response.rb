@@ -8,13 +8,15 @@ module Commands
   class CreateResponse < Commands::Base
     extend T::Sig
 
+    BIGGEST_NUMBER = T.let(999, Integer)
+
     sig do
       params(input: ResponseInput)
         .returns(Response)
     end
     def call(input:)
-      response = Response.create(
-        value: input.response,
+      response = Response.new(
+        value: [input.response, BIGGEST_NUMBER].min,
         correct: input.solution == input.response,
         problem: input.problem,
         player: input.player,
@@ -22,10 +24,12 @@ module Commands
         completed_at: input.completed_at
       )
 
-      Commands::CreateOrUpdatePlayerProblemAggregate.call(player: input.player, problem: input.problem)
+      if T.let(response.save, T::Boolean)
+        Commands::CreateOrUpdatePlayerProblemAggregate.call(player: input.player, problem: input.problem)
 
-      if T.let(Commands::IsLevelComplete.call(player: input.player), T::Boolean)
-        Commands::LevelUpPlayer.call(player: input.player)
+        if T.let(Commands::IsLevelComplete.call(player: input.player), T::Boolean)
+          Commands::LevelUpPlayer.call(player: input.player)
+        end
       end
 
       response

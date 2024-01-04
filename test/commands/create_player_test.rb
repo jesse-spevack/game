@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Commands::CreateResponseTest < ActiveSupport::TestCase
+class Commands::CreatePlayerTest < ActiveSupport::TestCase
   include ActiveJob::TestHelper
 
   test "it creates a player" do
