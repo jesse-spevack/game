@@ -183,7 +183,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     click_button(0.to_s)
     click_button(1.to_s)
     find(:xpath, "/html/body/main/div/div/form/div/input").click
-    assert_text("Try again")
+    assert_text("can't be that big.")
 
     # Check score
     take_screenshot

@@ -14,9 +14,10 @@
     </div>
   </div>
   <div class="xl:mx-96 lg:mx-80 mx-auto mb-4 grid grid-cols-3 grid-rows-1 gap-1">
+    <p data-hidden-input-target="bigError" class="hidden mt-2 text-red-600 col-span-3 text-center">🤨 <%= @problem.display %> can't be that big.</p>
     <div class="col-start-2 text-center h-6">
       <% if @current_player.was_just_wrong? %>
-        <p class="mt-2 text-red-600" id="email-error">💪 Try again.</p>
+        <p class="mt-2 text-red-600">💪 Try again.</p>
       <% end %>
     </div>
   </div>
