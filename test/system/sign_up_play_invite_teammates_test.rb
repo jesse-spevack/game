@@ -93,6 +93,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     # Invites can't be accepted more than once
     click_on "Logout"
+    sleep 0.1
+
     visit accept_invite_path(token: token)
     assert_text("We were unable to accept your invite. Please try again.")
     assert_text("Login or create an account")
@@ -113,8 +115,6 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     assert_text("Logout")
     assert_text("Players")
-
-    take_screenshot
   end
 
   def assert_game_plays_as_expected(player:)
@@ -134,7 +134,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
       # Find submit button and click it.
       find(:xpath, "/html/body/main/div/div/form/div/input").click
-      take_screenshot
+
+      sleep 0.1
 
       last_response = Response.where(player: player).order(created_at: :desc).first
       assert_equal(this_problem, last_response.problem)
@@ -163,7 +164,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
       click_button((new_x + new_y).to_s)
 
       find(:xpath, "/html/body/main/div/div/form/div/input").click
-      take_screenshot
+
+      sleep 0.1
 
       player.reload
       last_response = player.responses.last
@@ -185,9 +187,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     find(:xpath, "/html/body/main/div/div/form/div/input").click
     assert_text("can't be that big.")
 
-    # Check score
-    take_screenshot
-    # find(:xpath, "/html/body/main/nav/div/div/div/div/a[6]").click
+    sleep 0.1
     click_link "#{player.name}'s scores"
     assert_text("6\nproblems solved")
     assert_text("1\nday in a row")
