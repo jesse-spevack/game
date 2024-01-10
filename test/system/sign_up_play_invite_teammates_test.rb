@@ -13,7 +13,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     click_on "Send Login Link"
 
     assert_text("We've sent a login link to #{email}. Please check your email.")
-    assert_text("We just sent an email to #{email} (no gaurantees 😉) with a link that will log you in!")
+    assert_text("We just sent an email to #{email} (no guarantees 😉) with a link that will log you in!")
 
     user = User.last
     assert_equal(email, user.email)

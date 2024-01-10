@@ -11,7 +11,8 @@ class InvitesController < ApplicationController
       Commands::SendInvite.call(invite: @invite)
       redirect_to team_path, notice: "We've sent an invite to #{invite_params[:email]}."
     else
-      redirect_to new_invite_path, error: @invite.errors.to_s
+      flash[:error] = @invite.errors.to_s
+      redirect_to new_invite_path
     end
   end
 
