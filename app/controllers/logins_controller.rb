@@ -3,7 +3,11 @@ class LoginsController < ApplicationController
   free_loaders_welcome!
 
   def new
-    @redirect_path = redirect_path
+    if logged_in?
+      redirect_to players_path
+    else
+      @redirect_path = redirect_path
+    end
   end
 
   def create
