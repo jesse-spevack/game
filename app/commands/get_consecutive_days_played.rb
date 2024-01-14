@@ -13,10 +13,6 @@ module Commands
     # It uses the GROUPING constant to construct the query.
     ORDERING = T.let(Arel.sql("#{GROUPING} DESC"), Arel::Nodes::SqlLiteral)
 
-    # The TIMEZONE constant represents the timezone that the player is in.
-    # TODO - This should be a user / player attribute.
-    TIMEZONE = T.let("Mountain Time (US & Canada)", String)
-
     sig { params(player: Player).returns(Integer) }
     def call(player:)
       responses = player.responses
@@ -31,7 +27,8 @@ module Commands
 
       # [DATE, DATE, ...]
       responses_dates = responses_grouped_by_created_at.keys
-      today = today_at_timezone(timezone: TIMEZONE)
+      timezone = T.let(Commands::GetPlayerTimeZone.call(player: player), String)
+      today = today_at_timezone(timezone: timezone)
 
       consecutive_days_played = 0
 

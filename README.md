@@ -75,7 +75,6 @@ fly deploy
 
 - P0 Code review and clean up
 - P0 CDN
-- P1 User timezone :/ - see `get_consecutive_days_played.rb`
 - P1 Change team name
 - P1 Email campaigns
 - P2 Admin should be able to see orders

@@ -10,7 +10,7 @@ class Commands::GetConsecutiveDaysPlayedTest < ActiveSupport::TestCase
     assert_equal(0, result)
 
     freeze_time do
-      now = Time.now.in_time_zone(Commands::GetConsecutiveDaysPlayed::TIMEZONE).beginning_of_day
+      now = Time.now.in_time_zone("Mountain Time (US & Canada)").beginning_of_day
 
       Response.create(
         problem: problems(:one_plus_one),
