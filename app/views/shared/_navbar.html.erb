@@ -4,19 +4,19 @@
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="sm:ml-6 sm:flex sm:space-x-8">
           <% if @current_user %>
-            <%= link_to "Players", players_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
-            <%= link_to "Team", team_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
-            <%= link_to "Settings", settings_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+            <%= render "shared/navbar_link", title: "Players", path: players_path %>
+            <%= render "shared/navbar_link", title: "Team", path: team_path %>
+            <%= render "shared/navbar_link", title: "Settings", path: settings_path %>
             <% if @current_user.admin? %>
-              <%= link_to "Admin", admin_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+              <%= render "shared/navbar_link", title: "Admin", path: admin_path %>
             <% end %>
             <%= link_to "Logout", login_path, data: { "turbo-method": :delete }, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
             <% if @current_player %>
-              <%= link_to "#{@current_player.name}'s scores", player_path(@current_player), class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+              <%= render "shared/navbar_link", title: "#{@current_player.name}'s scores", path: player_path(@current_player) %>
             <% end %>
           <% else %>
-            <%= link_to "Home", root_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
-            <%= link_to "Login", new_login_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+            <%= render "shared/navbar_link", title: "Home", path: root_path %>
+            <%= render "shared/navbar_link", title: "Login", path: new_login_path %>
           <% end %>
         </div>
       </div>

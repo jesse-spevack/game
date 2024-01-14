@@ -80,3 +80,4 @@ fly deploy
 - P1 Email campaigns
 - P2 Admin should be able to see orders
 - P2 Admin should be able to see players
+- investigate https://loops.so/pricing
