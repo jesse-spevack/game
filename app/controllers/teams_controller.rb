@@ -4,6 +4,9 @@ class TeamsController < ApplicationController
   def show
     @team = @current_user.team
     @invites = Invite.where(team: @team)
+    if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
+      @notification = Notification.new(title: "Click 'Invite' to add another adult user to your team.", description: "Click 'Edit' to change your team name.")
+    end
   end
 
   def edit

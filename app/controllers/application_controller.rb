@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user, :require_login, :verify_debts_are_satisfied
+  after_action :record_request
 
   def set_current_user
     return unless session[:user_id]
@@ -81,5 +82,20 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin
     @current_user.admin? || redirect_to(root_path)
+  end
+
+  def record_request
+    return unless @current_user
+
+    CreateRequestJob.perform_later(
+      user_id: @current_user.id,
+      controller: controller_name,
+      action: action_name,
+      query_parameters: request.query_parameters.present? ? request.query_parameters.to_json : nil,
+      request_parameters: request.request_parameters.present? ? request.request_parameters.to_json : nil,
+      method: request.method,
+      uuid: request.uuid,
+      referer: request.referer
+    )
   end
 end

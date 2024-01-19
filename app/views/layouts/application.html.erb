@@ -20,6 +20,9 @@
         <%= yield %>
       </div>
       <%= render "shared/footer" %>
+      <% if @notification %>
+        <%= render "shared/simple_notification", title: @notification.title, description: @notification.description %>
+      <% end %>
     </main>
   </body>
 </html>

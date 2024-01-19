@@ -27,6 +27,9 @@ module GeneratedPathHelpersModule
   def admin_relevels_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_requests_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_reset_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }

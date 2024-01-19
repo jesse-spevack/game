@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_30_230111) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_16_010304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_230111) do
     t.integer "level", null: false
     t.index ["level"], name: "index_problems_on_level"
     t.index ["x", "y", "operation"], name: "index_problems_on_x_and_y_and_operation", unique: true
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "controller"
+    t.string "action"
+    t.jsonb "query_parameters"
+    t.jsonb "request_parameters"
+    t.string "method"
+    t.string "uuid"
+    t.string "referer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -227,6 +241,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_30_230111) do
   add_foreign_key "player_problem_aggregates", "players"
   add_foreign_key "player_problem_aggregates", "problems"
   add_foreign_key "players", "teams"
+  add_foreign_key "requests", "users"
   add_foreign_key "responses", "players"
   add_foreign_key "responses", "problems"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
