@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :problems, only: [:index, :create]
+    resources :requests, only: [:index]
     resources :players, only: [:index]
 
     resource :relevels, only: [:update]

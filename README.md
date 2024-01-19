@@ -80,3 +80,11 @@ fly deploy
 - P2 Admin should be able to see orders
 - P2 Admin should be able to see players
 - investigate https://loops.so/pricing
+
+- Admin -> players -> player 500s, rethink how we set current_player
+- no bad words for player names
+- Timzone edit more obvious
+- Turn sound off option
+- Delete account
+- Pagevies - Consider Data Retention Policies: Implement policies for how long you'll retain this data, and consider periodic cleanup routines.
+- Pagination for admin/requests

@@ -2,6 +2,9 @@ class SettingsController < ApplicationController
   before_action :set_user_setting
 
   def index
+    if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
+      @notification = Notification.new(title: "Welcome to your user settings", description: "You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
+    end
     @orders = Order.where(user: @current_user)
   end
 

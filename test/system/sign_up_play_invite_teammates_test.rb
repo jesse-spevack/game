@@ -26,18 +26,22 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     token = user.generate_token_for(:magic_link)
     visit login_path(token: token)
     assert_text("Logout")
+    assert_text("Welcome! Click the 'Add player' button.")
 
     click_on "Settings"
     assert_text("Invoice")
     assert_text("Paid")
+    assert_text("You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
 
     click_on "Edit"
     select("Pacific Time (US & Canada)", from: "Time zone")
     click_on "Update"
 
     assert_text("Your settings have been updated.")
+    refute_text("You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
 
     click_on "Players"
+    refute_text("Welcome! Click the 'Add player' button.")
 
     # Create a new player
     name = "Jessssssseeeeeee"
@@ -45,8 +49,11 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     fill_in "Name", with: name
     click_on "Submit"
 
+    assert_text("You")
     assert_text("Player #{name} created")
     assert_text("#{name}'s progress")
+    assert_text("Click 'Play' to start practicing.")
+    assert_text("If you haven't done so already, make sure #{name} is holding your phone or is at the keyboard.")
 
     player = Player.last
     assert_equal(name, player.name)
@@ -58,6 +65,8 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     click_on "Submit"
 
     assert_text("#{name}!'s progress")
+    refute_text("Click play to start practicing.")
+    refute_text("If you haven't done so already, make sure #{name} is holding your phone or is at the keyboard.")
 
     assert_game_plays_as_expected(player: player)
 
@@ -66,6 +75,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     # Invite a teammate
     teammate_email = "jessica@domath.io"
     click_on "Team"
+    assert_text("Click 'Invite' to add another adult user to your team.")
     click_on "Invite"
     fill_in "Email", with: teammate_email
     click_on "Send invite"
@@ -74,6 +84,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     assert_equal(1, Invite.count)
     assert_text("Team")
     assert_text(user.team.name)
+    refute_text("Click 'Invite' to add another adult user to your team.")
 
     invite = Invite.first
     assert_equal(teammate_email, invite.email)

@@ -1,5 +1,8 @@
 class PlayersController < ApplicationController
   def index
+    if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
+      @notification = Notification.new(title: "Welcome! Click the 'Add player' button.", description: "The player is the person who will be playing the game. You can add as many players as you like.")
+    end
     @players = user_players
     session[:player_id] = nil
   end
@@ -7,6 +10,9 @@ class PlayersController < ApplicationController
   def show
     @player = user_players.find_by(id: params[:id])
     session[:player_id] = @player.id
+    if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
+      @notification = Notification.new(title: "Click 'Play' to start practicing.", description: "If you haven't done so already, make sure #{@player.name} is holding your phone or is at the keyboard.")
+    end
     @active_problem_groups = Commands::GetActiveProblemGroupings.call(player: @player)
     @retired_problem_groups = Commands::GetRetiredProblemGroupings.call(player: @player)
     @score = Commands::GetPlayerScore.call(player: @player)
