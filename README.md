@@ -81,10 +81,12 @@ fly deploy
 - P2 Admin should be able to see players
 - investigate https://loops.so/pricing
 
+Actual user feedback:
+
 - Admin -> players -> player 500s, rethink how we set current_player
 - no bad words for player names
+  - find a list of bad words and validate player name against the list
 - Timzone edit more obvious
-- Turn sound off option
+- Turn sound off option in settings
 - Delete account
-- Pagevies - Consider Data Retention Policies: Implement policies for how long you'll retain this data, and consider periodic cleanup routines.
 - Pagination for admin/requests
