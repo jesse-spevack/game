@@ -89,6 +89,14 @@ fly deploy
 - Pagination for admin/requests
 - Better admin tooling
 - User should be able to set the level of the player
-- Indicate progress when a player levels
-- Possible bug? When I hit a number on the screen's keypad, but then hit enter on my computer, it repeated the number before entering it. It still marked it correct, but my "5" showed "55" before advancing me.
--
+
+# Changelog 🎉
+
+## 2024-01-23
+
+- When a player hit a number on the screen and then enter, the number repeated. - bug with the submission via enter
+- Added an encouraging message when player levels up
+- Delete requests after 14 days
+- Admin view of players not belonging to the admin bug fix
+- Fixed addition typo
+- Fixed a bug where algorithm for finding next problem short circuits for player that just leveled up
