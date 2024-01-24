@@ -88,3 +88,7 @@ fly deploy
 - Pagevies - Consider Data Retention Policies: Implement policies for how long you'll retain this data, and consider periodic cleanup routines.
 - Pagination for admin/requests
 - Better admin tooling
+- User should be able to set the level of the player
+- Indicate progress when a player levels
+- Possible bug? When I hit a number on the screen's keypad, but then hit enter on my computer, it repeated the number before entering it. It still marked it correct, but my "5" showed "55" before advancing me.
+-

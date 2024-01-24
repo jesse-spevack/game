@@ -7,7 +7,6 @@ class Commands::FindProblemForPlayerTest < ActiveSupport::TestCase
     freeze_time do
       player = players(:no_responses)
       high_priority_1 = problems(:zero_plus_one)
-      high_priority_2 = problems(:two_plus_two)
       updated_at = 1.minute.ago
 
       PlayerProblemAggregate.create(
