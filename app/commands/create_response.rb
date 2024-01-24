@@ -10,9 +10,15 @@ module Commands
 
     BIGGEST_NUMBER = T.let(999, Integer)
 
+    class ResponseResult < T::Struct
+      prop :correct, T::Boolean
+      prop :leveled, T::Boolean
+      prop :response, Response
+    end
+
     sig do
       params(input: ResponseInput)
-        .returns(Response)
+        .returns(ResponseResult)
     end
     def call(input:)
       response = Response.new(
@@ -24,15 +30,22 @@ module Commands
         completed_at: input.completed_at
       )
 
+      response_result = ResponseResult.new(
+        correct: T.must(response.correct),
+        response: response,
+        leveled: false
+      )
+
       if T.let(response.save, T::Boolean)
         Commands::CreateOrUpdatePlayerProblemAggregate.call(player: input.player, problem: input.problem)
 
         if T.let(Commands::IsLevelComplete.call(player: input.player), T::Boolean)
+          response_result.leveled = true
           Commands::LevelUpPlayer.call(player: input.player)
         end
       end
 
-      response
+      response_result
     end
   end
 end

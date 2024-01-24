@@ -12,6 +12,11 @@ module Commands
 
       updated_at = PlayerProblemAggregate.where(player: player).maximum(:updated_at)
 
+      if !PlayerProblemAggregate.joins(:problem).where(player: player).where("problems.level = ?", level).exists?
+        # If the aggregates for the new level were not created asynchronously, create them now.
+        CreatePlayerProblemAggregatesForLevel.call(player: player, level: level)
+      end
+
       player_problem_aggregate_updated_at_timestamps = T.let(PlayerProblemAggregate.joins(:problem)
         .where(player: player, retired: false)
         .where("problems.level = ?", level)

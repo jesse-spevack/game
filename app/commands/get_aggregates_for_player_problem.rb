@@ -63,7 +63,7 @@ module Commands
       proficient = T.let(Commands::IsProficient.call(attempts: attempts, correct: correct), T::Boolean)
       fast = T.let(Commands::IsFast.call(average_time: average_time, attempts: attempts), T::Boolean)
       fast_enough = T.let(Commands::IsFastEnough.call(min_time: min_time, average_time: average_time, attempts: attempts), T::Boolean)
-      retired = T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough), T::Boolean)
+      retired = T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough, correct: correct), T::Boolean)
       priority = T.let(Commands::GetPriority.call(
         attempts: attempts,
         correct: correct,

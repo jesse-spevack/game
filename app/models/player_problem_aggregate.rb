@@ -35,7 +35,7 @@ class PlayerProblemAggregate < ApplicationRecord
 
   sig { returns(T::Boolean) }
   def satisfactorily_meets_expectations?
-    T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough), T::Boolean)
+    T.let(Commands::IsRetired.call(proficient: proficient, fast: fast, fast_enough: fast_enough, correct: correct), T::Boolean)
   end
 
   sig { returns(T::Boolean) }

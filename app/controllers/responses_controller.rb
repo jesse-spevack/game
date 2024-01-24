@@ -4,12 +4,15 @@ class ResponsesController < ApplicationController
   def new
     @problem = Commands::GetNextProblemForPlayerV2.call(player: @current_player)
     @correct = session[:correct]
+    @leveled = session[:leveled]
     session[:correct] = nil
+    session[:leveled] = nil
   end
 
   def create
-    response = Commands::CreateResponse.call(input: response_input)
-    session[:correct] = response.correct?
+    response_result = Commands::CreateResponse.call(input: response_input)
+    session[:correct] = response_result.correct
+    session[:leveled] = response_result.leveled
     redirect_to new_responses_path
   end
 

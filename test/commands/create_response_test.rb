@@ -23,12 +23,53 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
       assert_changes -> { PlayerProblemAggregate.count } do
         result = Commands::CreateResponse.call(input: input)
 
-        assert_kind_of(Response, result)
-        assert_equal(problem.solution, result.value)
+        refute(result.leveled)
         assert(result.correct)
-        assert_equal(problem, result.problem)
-        assert_equal(started_at, result.started_at)
-        assert_equal(started_at + simulated_delay.to_i, result.completed_at)
+
+        response = result.response
+        assert_kind_of(Response, response)
+        assert_equal(problem.solution, response.value)
+        assert(response.correct)
+        assert_equal(problem, response.problem)
+        assert_equal(started_at, response.started_at)
+        assert_equal(started_at + simulated_delay.to_i, response.completed_at)
+      end
+    end
+  end
+
+  test "it creates a correct response when leveled up" do
+    problem = problems(:one_plus_one)
+    player = Player.create(name: "hello", level: 1, team: teams(:one))
+    started_at = Time.now.to_i
+    params = ActionController::Parameters.new(
+      game: {
+        problem_id: problem.id,
+        player_id: player.id,
+        response: problem.solution.to_s,
+        started_at: started_at.to_s
+      }
+    )
+
+    Mocktail.replace(Commands::IsLevelComplete)
+    stubs { Commands::IsLevelComplete.call(player: player) }.with { true }
+
+    simulated_delay = 30.seconds
+    travel simulated_delay do
+      input = ResponseInput.new_from_params(params: params.require(:game).permit(:problem_id, :response, :started_at, :player_id))
+
+      assert_changes -> { PlayerProblemAggregate.count } do
+        result = Commands::CreateResponse.call(input: input)
+
+        assert(result.leveled)
+        assert(result.correct)
+
+        response = result.response
+        assert_kind_of(Response, response)
+        assert_equal(problem.solution, response.value)
+        assert(response.correct)
+        assert_equal(problem, response.problem)
+        assert_equal(started_at, response.started_at)
+        assert_equal(started_at + simulated_delay.to_i, response.completed_at)
       end
     end
   end
@@ -54,12 +95,16 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
       assert_changes -> { PlayerProblemAggregate.count } do
         result = Commands::CreateResponse.call(input: input)
 
-        assert_kind_of(Response, result)
-        assert_equal(incorrect_response, result.value)
+        refute(result.leveled)
         refute(result.correct)
-        assert_equal(problem, result.problem)
-        assert_equal(started_at, result.started_at)
-        assert_equal(started_at + simulated_delay.to_i, result.completed_at)
+
+        response = result.response
+        assert_kind_of(Response, response)
+        assert_equal(incorrect_response, response.value)
+        refute(response.correct)
+        assert_equal(problem, response.problem)
+        assert_equal(started_at, response.started_at)
+        assert_equal(started_at + simulated_delay.to_i, response.completed_at)
       end
     end
   end
@@ -84,13 +129,16 @@ class Commands::CreateResponseTest < ActiveSupport::TestCase
 
       result = Commands::CreateResponse.call(input: input)
 
-      assert_kind_of(Response, result)
-      assert_equal(Commands::CreateResponse::BIGGEST_NUMBER, result.value)
+      refute(result.leveled)
       refute(result.correct)
-      assert_equal(problem, result.problem)
-      assert_equal(started_at, result.started_at)
-      assert_equal(started_at + simulated_delay.to_i, result.completed_at)
-      assert(result.persisted?)
+
+      response = result.response
+      assert_kind_of(Response, response)
+      assert_equal(Commands::CreateResponse::BIGGEST_NUMBER, response.value)
+      refute(result.correct)
+      assert_equal(problem, response.problem)
+      assert_equal(started_at, response.started_at)
+      assert_equal(started_at + simulated_delay.to_i, response.completed_at)
     end
   end
 end

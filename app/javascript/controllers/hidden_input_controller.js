@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["bigError", "display", "field", "submit"]
   static values = {
     response: { type: String, default: "" },
+    timeToSubmit: Boolean
   }
 
   connect() {
@@ -17,12 +18,13 @@ export default class extends Controller {
     } else if (event.key === "Backspace") {
       this.updateDisplay(null, "delete");
     } else if (event.key === "Enter") {
+      this.timeToSubmitValue = true;
       this.submitTarget.click();
     }
   }
 
   updateDisplay(userInput, operation) {
-    if (operation === "append") {
+    if (operation === "append" && this.timeToSubmitValue === false) {
       this.appendInput(this.responseValue, userInput);
     } else if (operation === "delete") {
       this.responseValue = this.responseValue.slice(0, -1);
@@ -46,7 +48,7 @@ export default class extends Controller {
   keyPress(event) {
     const userInput = event.target.innerText;
     const operation = event.target.dataset.operation;
-  
+
     this.updateDisplay(userInput, operation);
   }
 
