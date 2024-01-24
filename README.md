@@ -73,22 +73,29 @@ fly deploy
 
 ## Next Steps
 
-- P0 Code review and clean up
-- P0 CDN
-- P1 Change team name
-- P1 Email campaigns
-- P2 Admin should be able to see orders
-- P2 Admin should be able to see players
-- investigate https://loops.so/pricing
+### 🔥 P0
 
-- no bad words for player names
-- Timzone edit more obvious
-- Turn sound off option
+- Admin improvements
+- Make it easier to make tables
+- No bad words for player names
 - Delete account
-- Pagevies - Consider Data Retention Policies: Implement policies for how long you'll retain this data, and consider periodic cleanup routines.
-- Pagination for admin/requests
-- Better admin tooling
+- Turn sound off option
+
+### 🤨 P1
+
+- Admin improvements
+  - See orders
+
+### ✨ P2
+
+- Email campaigns
+  - investigate https://loops.so/pricing
+- https://redstapler.co/how-to-create-confetti-button-effect/ - add confetti
 - User should be able to set the level of the player
+- Change team name
+- Timzone edit more obvious
+
+### 🌤️ P3
 
 # Changelog 🎉
 
