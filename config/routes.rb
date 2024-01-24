@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :problems, only: [:index, :create]
     resources :requests, only: [:index]
-    resources :players, only: [:index]
+    resources :players, only: [:index, :show]
 
     resource :relevels, only: [:update]
     post "reset_players/:id", to: "reset_players#update", as: :reset_player

@@ -8,7 +8,8 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = user_players.find_by(id: params[:id])
+    # TODO this is likely not perfomant and we should consider a better approach
+    @player = user_player
     session[:player_id] = @player.id
     if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
       @notification = Notification.new(title: "Click 'Play' to start practicing.", description: "If you haven't done so already, make sure #{@player.name} is holding your phone or is at the keyboard.")
