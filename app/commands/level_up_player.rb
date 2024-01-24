@@ -1,4 +1,4 @@
-# # typed: strict
+# typed: strict
 
 module Commands
   class LevelUpPlayer < Commands::Base
@@ -10,7 +10,7 @@ module Commands
     def call(player:)
       T.let(player.update(level: player.level + 1), T::Boolean)
 
-      CreatePlayerProblemAggregatesJob.perform_later(player_id: player.id)
+      CreatePlayerProblemAggregatesJob.perform_later(player_id: T.must(player.id))
     end
   end
 end

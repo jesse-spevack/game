@@ -3,6 +3,34 @@
 require "test_helper"
 
 class Commands::FindProblemForPlayerTest < ActiveSupport::TestCase
+  test "it returns a reasonable problem when a player has just leveled" do
+    freeze_time do
+      player = players(:no_responses)
+      high_priority_1 = problems(:zero_plus_one)
+      high_priority_2 = problems(:two_plus_two)
+      updated_at = 1.minute.ago
+
+      PlayerProblemAggregate.create(
+        player: player,
+        problem: high_priority_1,
+        attempts: 1,
+        correct: 1,
+        min_time: 3,
+        max_time: 3,
+        average_time: 3,
+        retired: false,
+        priority: 1,
+        updated_at: updated_at
+      )
+
+      assert_equal(1, PlayerProblemAggregate.where(player: player).count)
+
+      result = Commands::FindProblemForPlayer.call(player: player)
+
+      assert_equal(high_priority_1, result)
+    end
+  end
+
   test "it returns problems that are at a players level and the player is not yet proficient" do
     freeze_time do
       player = players(:no_responses)
