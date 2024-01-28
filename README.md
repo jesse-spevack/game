@@ -90,14 +90,22 @@ fly deploy
 
 - Email campaigns
   - investigate https://loops.so/pricing
-- https://redstapler.co/how-to-create-confetti-button-effect/ - add confetti
 - User should be able to set the level of the player
 - Change team name
 - Timzone edit more obvious
+- More in game feedback
+  - score
+  - progress bar
 
 ### 🌤️ P3
 
+- Player customizations based on points
+
 # Changelog 🎉
+
+## 2024-01-27
+
+- Add level up sound fx + confetti explosion
 
 ## 2024-01-23
 

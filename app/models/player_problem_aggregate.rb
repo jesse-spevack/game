@@ -8,7 +8,7 @@ class PlayerProblemAggregate < ApplicationRecord
   belongs_to :problem
 
   DEFAULT = T.let(0, Integer)
-  MINIMUM_ATTEMPT_THRESHOLD = T.let(3, Integer)
+  MINIMUM_ATTEMPT_THRESHOLD = T.let(1, Integer)
   PROFICIENCY_THRESHOLD = T.let(85, Integer)
   FAST_THRESHOLD = T.let(5, Integer)
   FAST_ENOUGH_THRESHOLD = T.let(10, Integer)

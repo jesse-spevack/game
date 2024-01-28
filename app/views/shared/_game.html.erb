@@ -22,7 +22,9 @@
     </div>
     <div class="col-span-3 text-center h-6">
       <% if @leveled %>
-        <p class="mt-2 text-gray-600">🎉 Let's go! You just leveled up. 🎉</p>
+        <div data-controller="confetti">
+          <p class="mt-2 text-gray-600">🎉 Let's go! You just leveled up. 🎉</p>
+        </div>
       <% end %>
     </div>
   </div>
@@ -46,6 +48,10 @@
       <%= form.submit "☑", data: { hidden_input_target: "submit", operation: "submit" }, disabled: true, class: "cursor-auto h-20 w-20 sm:h-24 sm:w-24 overflow-hidden rounded-full border border-transparent bg-cyan-600 text-white text-4xl sm:text-5xl text-center shadow-sm enabled:active:bg-cyan-700 enabled:focus:outline-none enabled:focus:ring-0 enabled:active:ring-2 enabled:active:ring-cyan-500 enabled:active:ring-offset-2 disabled:opacity-75" %>
     </div>
   <% end %>
-  <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>
+  <% if @leveled %>
+    <%= audio_tag "level.mp3", controls: false, data: { sfx_target: "sound" } %>
+  <% else %>
+    <%= audio_tag "correct.mp3", controls: false, data: { sfx_target: "sound" } %>
+  <% end %>
   <div data-action="keydown@document->hidden-input#handleKeyboardInput" class="hidden"></div>
 </div>
