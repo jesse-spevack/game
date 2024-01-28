@@ -3,6 +3,7 @@ class ResponsesController < ApplicationController
 
   def new
     @problem = Commands::GetNextProblemForPlayerV2.call(player: @current_player)
+    @progress = Commands::GetPlayerProgress.call(player: @current_player)
     @correct = session[:correct]
     @leveled = session[:leveled]
     session[:correct] = nil

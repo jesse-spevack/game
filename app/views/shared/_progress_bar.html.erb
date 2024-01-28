@@ -1,0 +1,10 @@
+<%# app/views/shared/_progress_bar.html.erb %>
+<%# locals: (player:, progress:) %>
+<div class="ml-2 mb-1 text-xs font-bold text-gray-600 text-left">Level <%= player.level %> progress</div>
+<div class="relative w-full h-6 bg-gray-600 rounded-full">
+  <div class="absolute top-0 mt-1 ml-2 text-center text-white text-xs font-bold">
+    <%= progress %> %
+  </div>
+  <div class="h-6 bg-cyan-600 rounded-full" style="width: <%= progress %>%">
+  </div>
+</div>

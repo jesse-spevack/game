@@ -95,7 +95,6 @@ fly deploy
 - Timzone edit more obvious
 - More in game feedback
   - score
-  - progress bar
 
 ### 🌤️ P3
 
@@ -103,9 +102,14 @@ fly deploy
 
 # Changelog 🎉
 
+## 2024-01-28
+
+- Add progress bar
+
 ## 2024-01-27
 
 - Add level up sound fx + confetti explosion
+- Shorten levels by decreasing number of times a player must see a problem
 
 ## 2024-01-23
 

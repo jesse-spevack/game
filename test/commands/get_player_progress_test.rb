@@ -9,12 +9,12 @@ class GetPlayerProgressTest < ActiveSupport::TestCase
     PlayerProblemAggregate.create(
       player: player,
       problem: problem_1,
-      proficient: false
+      retired: false
     )
     PlayerProblemAggregate.create(
       player: player,
       problem: problem_2,
-      proficient: true
+      retired: true
     )
 
     result = Commands::GetPlayerProgress.call(player: player)

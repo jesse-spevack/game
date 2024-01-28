@@ -6,9 +6,9 @@ module Commands
 
     sig { params(player: Player).returns(Integer) }
     def call(player:)
-      proficient_count = T.let(PlayerProblemAggregate.joins(:problem)
+      retired_count = T.let(PlayerProblemAggregate.joins(:problem)
         .where(player: player)
-        .where(proficient: true)
+        .where(retired: true)
         .where("problems.level = ?", player.level).count, Integer)
 
       total_count = T.let(PlayerProblemAggregate.joins(:problem)
@@ -16,7 +16,7 @@ module Commands
         .where("problems.level = ?", player.level)
         .count, Integer)
 
-      (proficient_count * 100.0 / total_count * 100.0).to_i / 100
+      (retired_count * 100.0 / total_count * 100.0).to_i / 100
     end
   end
 end
