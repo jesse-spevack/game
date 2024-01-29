@@ -15,6 +15,9 @@ module GeneratedPathHelpersModule
   def admin_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_player_problem_aggregates_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -91,6 +94,12 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def players_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def preview_view_component_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def preview_view_components_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def privacy_policy_path(*args); end

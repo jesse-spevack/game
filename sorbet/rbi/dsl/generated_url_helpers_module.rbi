@@ -15,6 +15,9 @@ module GeneratedUrlHelpersModule
   def admin_player_problem_aggregates_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -91,6 +94,12 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def players_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def preview_view_component_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def preview_view_components_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def privacy_policy_url(*args); end

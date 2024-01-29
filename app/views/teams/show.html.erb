@@ -3,36 +3,32 @@
   <div class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-        <table class="min-w-full divide-y divide-gray-300">
+        <%= render(TableComponent.new) do %>
           <thead>
             <tr>
-              <th scope="col" class="w-full sm:w-auto py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Email</th>
-              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Invited By</th>
-              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+              <%= render(TableHeaderFirstColumnComponent.new(text: "Email")) %>
+              <%= render(TableHeaderComponent.new(text: "Invited by")) %>
+              <%= render(TableHeaderComponent.new(text: "Status")) %>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200">
+          <%= render(TableBodyComponent.new) do %>
             <% @invites.each do |invite| %>
               <tr>
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                  <%= invite.email %>
-                </td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <%= invite.user_email %>
-                </td>
-                <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= render(TableDataBoldComponent.new(data: invite.email)) %>
+                <%= render(TableDataComponent.new(data: invite.user_email)) %>
+                <%= render(TableDataComponent.new(data: "")) do %>
                   <% if invite.accepted? %>
-                    <span class="inline-flex items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Accepted</span>
+                    <%= render(GreenBubbleComponent.new(text: "Accepted")) %>
                   <% elsif invite.expired? %>
-                    <span class="inline-flex items-center rounded-full bg-red-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Expired</span>
+                    <%= render(RedBubbleComponent.new(text: "Expired")) %>
                   <% else %>
-                    <span class="inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">Pending</span>
+                    <%= render(YellowBubbleComponent.new(text: "Pending")) %>
                   <% end %>
-                </td>
+                <% end %>
               </tr>
             <% end %>
-          </tbody>
-        </table>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
