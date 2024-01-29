@@ -12,7 +12,7 @@ module Commands
     end
     def call(input:)
       player = Player.create(team_id: input[:team_id], name: input[:name], level: STARTING_LEVEL)
-      CreatePlayerProblemAggregatesJob.perform_later(player_id: player.id)
+      Commands::CreatePlayerProblemAggregatesForLevel.call(player: player, level: player.level)
       player
     end
   end
