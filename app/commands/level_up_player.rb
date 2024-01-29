@@ -10,7 +10,7 @@ module Commands
     def call(player:)
       T.let(player.update(level: player.level + 1), T::Boolean)
 
-      CreatePlayerProblemAggregatesJob.perform_later(player_id: T.must(player.id))
+      Commands::CreatePlayerProblemAggregatesForLevel.call(player: player, level: player.level)
     end
   end
 end
