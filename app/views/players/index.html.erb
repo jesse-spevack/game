@@ -10,12 +10,12 @@
   <div class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-        <table class="min-w-full divide-y divide-gray-300">
+        <%= render(TableComponent.new) do %>
           <thead>
             <tr>
-              <th scope="col" class="w-full sm:w-auto py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
-              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Problems solved</th>
-              <th scope="col" class="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Consecutive days played</th>
+              <%= render(TableHeaderFirstColumnComponent.new(text: "Name")) %>
+              <%= render(TableHeaderComponent.new(text: "Problems solved")) %>
+              <%= render(TableHeaderComponent.new(text: "Consecutive days played")) %>
               <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
                 <span class="sr-only">Play</span>
               </th>
@@ -30,8 +30,8 @@
                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                   <%= link_to player.name, player_path(player) %>
                   <dl class="sm:hidden">
-                    <%= render "shared/data_list_for_tiny_table", key: "Problems solved", value: Commands::GetTotalProblemsSolved.call(player: player).problems_solved %>
-                    <%= render "shared/data_list_for_tiny_table", key: "Consecutive days played", value: Commands::GetConsecutiveDaysPlayed.call(player: player) %>
+                    <%= render(TinyTableDatumComponent.new(title: "Problems solved", value: Commands::GetTotalProblemsSolved.call(player: player).problems_solved)) %>
+                    <%= render(TinyTableDatumComponent.new(title: "Consecutive days played", value: Commands::GetConsecutiveDaysPlayed.call(player: player))) %>
                   </dl>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -49,7 +49,7 @@
               </tr>
             <% end %>
           </tbody>
-        </table>
+        <% end %>
       </div>
     </div>
   </div>
