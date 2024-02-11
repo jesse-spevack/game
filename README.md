@@ -76,7 +76,6 @@ fly deploy
 ### 🔥 P0
 
 - Admin improvements
-- Make it easier to make tables
 - No bad words for player names
 - Delete account
 - Turn sound off option

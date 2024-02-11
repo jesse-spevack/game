@@ -1,11 +1,11 @@
 <div class="md:flex md:items-center md:justify-between">
   <%= render "shared/form_header", title: title, description: description, subtitle: subtitle %>
-  <div class="mt-4 flex md:ml-4 md:mt-0">
-    <%= link_to secondary_text, secondary_path, class: "inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+  <div class="mt-5 sm:ml-10 sm:mt-4 sm:flex sm:pl-4 space-x-2">
+    <%= render(SecondaryLinkButtonComponent.new(text: secondary_text, path: secondary_path)) %>
     <% if button %>
       <%= button_to primary_text, primary_path, method: :post, class: 'ml-3 inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600' %>
     <% else %>
-      <%= link_to primary_text, primary_path, class: 'ml-3 inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600' %>
+      <%= render(PrimaryLinkButtonComponent.new(text: primary_text, path: primary_path)) %>
     <% end %>
   </div>
 </div>

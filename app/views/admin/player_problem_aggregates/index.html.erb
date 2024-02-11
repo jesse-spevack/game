@@ -47,32 +47,32 @@
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.priority.zero? %>
-                    <%= render "shared/red_bubble", text: player_problem_aggregate.priority %>
+                    <%= render(RedBubbleComponent.new(text: player_problem_aggregate.priority)) %>
                   <% elsif player_problem_aggregate.priority == 1 %>
-                    <%= render "shared/yellow_bubble", text: player_problem_aggregate.priority %>
+                    <%= render(YellowBubbleComponent.new(text: player_problem_aggregate.priority)) %>
                   <% else %>
-                    <%= render "shared/green_bubble", text: player_problem_aggregate.priority %>
+                    <%= render(GreenBubbleComponent.new(text: player_problem_aggregate.priority)) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.proficient %>
-                    <%= render "shared/green_bubble", text: "Yes" %>
+                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
                   <% else %>
-                    <%= render "shared/red_bubble", text: "No" %>
+                    <%= render(RedBubbleComponent.new(text: "No")) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.fast %>
-                    <%= render "shared/green_bubble", text: "Yes" %>
+                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
                   <% else %>
-                    <%= render "shared/red_bubble", text: "No" %>
+                    <%= render(RedBubbleComponent.new(text: "No")) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.fast_enough %>
-                    <%= render "shared/green_bubble", text: "Yes" %>
+                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
                   <% else %>
-                    <%= render "shared/red_bubble", text: "No" %>
+                    <%= render(RedBubbleComponent.new(text: "No")) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">

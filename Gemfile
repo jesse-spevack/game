@@ -53,6 +53,8 @@ gem "stripe"
 
 gem "strong_migrations"
 
+gem "view_component"
+
 group :development, :test do
   gem "tapioca", require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
