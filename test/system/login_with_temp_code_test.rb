@@ -10,7 +10,7 @@ class LoginWithTempCodeTest < ApplicationSystemTestCase
 
     click_on "Login"
     fill_in "email", with: email
-    click_on "Send Login Link"
+    click_on "Send login link"
 
     assert_text("We've sent a login link to #{email}. Please check your email.")
     assert_text("We just sent an email to #{email} (no guarantees 😉) with a link that will log you in!")
@@ -33,17 +33,20 @@ class LoginWithTempCodeTest < ApplicationSystemTestCase
     assert_text("Your one time password is valid for five minutes")
 
     click_on "Logout"
+    assert_text("Login")
 
     click_on "Login"
+    assert_text("Login with code")
     click_on "Login with code"
     fill_in "email", with: user.email
     code = OneTimePasswordRequest.find_by(user: user).code
 
+    assert_text("Login")
+
+    # Fill in otp
     all(".test-otp-input").each_with_index do |input, index|
       input.set(code[index])
     end
-
-    click_on "Login"
 
     assert_text("Logout")
   end
