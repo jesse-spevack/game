@@ -75,6 +75,9 @@ module GeneratedPathHelpersModule
   def new_login_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_one_time_password_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_order_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -88,6 +91,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_responses_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_temporary_code_login_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def player_path(*args); end
@@ -208,6 +214,9 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def temporary_code_login_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def tos_path(*args); end

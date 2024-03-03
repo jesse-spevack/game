@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_010304) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_03_214114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_010304) do
     t.datetime "accepted_at"
     t.index ["team_id"], name: "index_invites_on_team_id"
     t.index ["user_id"], name: "index_invites_on_user_id"
+  end
+
+  create_table "one_time_password_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_one_time_password_requests_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -236,6 +244,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_010304) do
 
   add_foreign_key "invites", "teams"
   add_foreign_key "invites", "users"
+  add_foreign_key "one_time_password_requests", "users"
   add_foreign_key "orders", "teams"
   add_foreign_key "orders", "users"
   add_foreign_key "player_problem_aggregates", "players"

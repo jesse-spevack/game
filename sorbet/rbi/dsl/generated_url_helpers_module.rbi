@@ -75,6 +75,9 @@ module GeneratedUrlHelpersModule
   def new_login_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def new_one_time_password_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def new_order_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
@@ -88,6 +91,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def new_responses_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_temporary_code_login_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def player_url(*args); end
@@ -208,6 +214,9 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def temporary_code_login_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def tos_url(*args); end

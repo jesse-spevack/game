@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # Authentication
   resource :login, only: [:new, :show, :create, :destroy]
   resource :login_request, only: [:show]
+  resource :one_time_password, only: [:new]
+  resource :temporary_code_login, only: [:new, :create]
 
   # Invites
   resources :invites, only: [:new, :create, :destroy]
