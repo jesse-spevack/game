@@ -1,0 +1,5 @@
+<div class="flex gap-3">
+  <% 6.times do |i| %>
+    <%= render(OtpFieldComponent.new(autofocus: i == 0)) %>
+  <% end %>
+</div>

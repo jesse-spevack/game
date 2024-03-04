@@ -7,7 +7,8 @@
         By signing up you agree to our <%= link_to "Privacy Policy", privacy_policy_path, class: "font-semibold" %> and our <%= link_to "Terms of Service", tos_path, class: "font-semibold" %>
       <% end %>
       <div class="mt-6 flex items-center justify-end gap-x-6">
-        <%= f.submit "Send Login Link", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+        <%= render(SecondaryLinkComponent.new(text: "Login with code", path: new_temporary_code_login_path)) %>
+        <%= f.submit "Send login link", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
       </div>
     <% end %>
   </div>

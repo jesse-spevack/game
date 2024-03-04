@@ -1,10 +1,7 @@
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <%= render "shared/form_header", title: @current_user.email, subtitle: "User settings", description: "All of your settings." %>
-    </div>
-    <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-      <%= link_to "Edit", edit_settings_path, class: "block rounded-md bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+      <%= render "shared/header_with_primary_secondary_buttons", title: @current_user.email, subtitle: "User settings", description: "All of your settings.", secondary_text: "One time password", secondary_path: new_one_time_password_path, primary_text: "Edit", primary_path: edit_settings_path, button: false %>
     </div>
   </div>
   <div class="mt-8 flow-root">

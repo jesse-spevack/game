@@ -10,7 +10,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
 
     click_on "Login"
     fill_in "email", with: email
-    click_on "Send Login Link"
+    click_on "Send login link"
 
     assert_text("We've sent a login link to #{email}. Please check your email.")
     assert_text("We just sent an email to #{email} (no guarantees 😉) with a link that will log you in!")

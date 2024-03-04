@@ -1,0 +1,10 @@
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <%= render "shared/form_header", title: @one_time_password.code, subtitle: "Your one time password is valid for five minutes", description: "On your child's devise, go to domath.io, click 'Login', click 'Login with code' and enter this code and your email." %>
+    </div>
+    <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+      <%= link_to "New one time password", new_one_time_password_path, class: "block rounded-md bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+    </div>
+  </div>
+</div>
