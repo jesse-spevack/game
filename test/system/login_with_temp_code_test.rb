@@ -30,7 +30,7 @@ class LoginWithTempCodeTest < ApplicationSystemTestCase
 
     click_on "Settings"
     click_on "One time code"
-    assert_text("Your one time code is valid for five minutes")
+    assert_text("One time code valid for 5 minutes")
 
     click_on "Logout"
     assert_text("Login")
