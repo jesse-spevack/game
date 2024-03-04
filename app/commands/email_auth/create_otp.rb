@@ -23,7 +23,7 @@ module Commands::EmailAuth
         Result.new(
           success: false,
           user: user,
-          error_message: "One time password expired."
+          error_message: "One time code expired."
         )
       end
     end

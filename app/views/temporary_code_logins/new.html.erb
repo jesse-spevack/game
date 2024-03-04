@@ -1,8 +1,8 @@
 <div data-controller="otp" class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Login", subtitle: "Secondary device", description: "Use the code we sent you to login on a secondary device, like your child's tablet. If you need a code, when you are logged in click 'Settings' and then 'One time password.'" %>
+  <%= render "shared/form_header", title: "Login", subtitle: "One time code", description: "Use the code we sent you to login. You can find your code in 'Settings' and 'One time code.'" %>
   <%= form_with url: temporary_code_login_path do |f| %>
     <%= render "shared/email_field", form: f, model: @user, placeholder: "you@example.com" %>
-    <%= f.label :otp, "One time password", class: "block text-sm font-medium leading-6 text-gray-900"  %>
+    <%= f.label :otp, "One time code", class: "block text-sm font-medium leading-6 text-gray-900"  %>
     <%= render(OtpComponent.new) %>
     <div data-otp-target="error" class="flex hidden">
       <div class="flex-shrink-0">
@@ -12,7 +12,7 @@
       </div>
       <div class="ml-3">
         <div class="text-sm text-red-700">
-          <p>Invalid paste input: One time password must be six digits.</p>
+          <p>One time code must be six digits.</p>
         </div>
       </div>
     </div>
