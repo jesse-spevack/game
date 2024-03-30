@@ -4,7 +4,7 @@
       <%= render "shared/form_header", title: "Players", subtitle: "Team: #{@current_user.team.name}'s", description: "Players are most likely your kids, but can be anyone who wants to play the DoMath.io game. Your user can have many players. All stats and settings are player specific." %>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-      <%= link_to "Add player", new_player_path, class: "block rounded-md bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+      <%= render(PrimaryLinkButtonComponent.new(text: "Add player", path: new_player_path)) %>
     </div>
   </div>
   <div class="mt-8 flow-root">
@@ -41,10 +41,10 @@
                   <%= Commands::GetConsecutiveDaysPlayed.call(player: player) %>
                 </td>
                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                  <%= link_to "Edit", edit_player_path(player), class: "irounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+                  <%= render(SmallButtonComponent.new(label: "Edit", primary: false, path: edit_player_path(player), method: :get)) %>
                 </td>
                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                  <%= button_to "Play", sessions_path(player_id: player.id), method: :post, class: "rounded bg-cyan-500 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-cyan-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500" %>
+                  <%= render(SmallButtonComponent.new(label: "Play", primary: true, path: sessions_path(player_id: player.id), method: :post)) %>
                 </td>
               </tr>
             <% end %>

@@ -18,11 +18,11 @@
                 <%= render(TableDataComponent.new(data: invite.user_email)) %>
                 <%= render(TableDataComponent.new(data: "")) do %>
                   <% if invite.accepted? %>
-                    <%= render(GreenBubbleComponent.new(text: "Accepted")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Accepted", color: Colors::Green)) %>
                   <% elsif invite.expired? %>
-                    <%= render(RedBubbleComponent.new(text: "Expired")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Expired", color: Colors::Red)) %>
                   <% else %>
-                    <%= render(YellowBubbleComponent.new(text: "Pending")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Pending", color: Colors::Yellow)) %>
                   <% end %>
                 <% end %>
               </tr>
