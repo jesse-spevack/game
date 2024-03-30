@@ -47,32 +47,32 @@
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.priority.zero? %>
-                    <%= render(RedBubbleComponent.new(text: player_problem_aggregate.priority)) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: player_problem_aggregate.priority, color: Colors::Red)) %>
                   <% elsif player_problem_aggregate.priority == 1 %>
-                    <%= render(YellowBubbleComponent.new(text: player_problem_aggregate.priority)) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: player_problem_aggregate.priority, color: Colors::Yellow)) %>
                   <% else %>
-                    <%= render(GreenBubbleComponent.new(text: player_problem_aggregate.priority)) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: player_problem_aggregate.priority, color: Colors::Green)) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.proficient %>
-                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Yes", color: Colors::Green)) %>
                   <% else %>
-                    <%= render(RedBubbleComponent.new(text: "No")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "No", color: Colors::Red)) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.fast %>
-                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Yes", color: Colors::Green)) %>
                   <% else %>
-                    <%= render(RedBubbleComponent.new(text: "No")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "No", color: Colors::Red)) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <% if player_problem_aggregate.fast_enough %>
-                    <%= render(GreenBubbleComponent.new(text: "Yes")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "Yes", color: Colors::Green)) %>
                   <% else %>
-                    <%= render(RedBubbleComponent.new(text: "No")) %>
+                    <%= render(SmallBadgeBorderComponent.new(label: "No", color: Colors::Red)) %>
                   <% end %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">

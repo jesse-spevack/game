@@ -5,5 +5,4 @@ class SecondaryLinkComponent < ViewComponent::Base
     @text = text
     @path = path
   end
-
 end
