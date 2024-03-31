@@ -34,6 +34,7 @@ class PlayersController < ApplicationController
 
   def update
     @player = user_player
+    Rails.logger.info(player_params)
     @player.update(player_params)
     redirect_to player_path(@player), notice: "Player #{@player.name} updated."
   end
@@ -47,7 +48,7 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name).merge(team_id: @current_user.team_id)
+    params.require(:player).permit(:name, :level).merge(team_id: @current_user.team_id)
   end
 
   def user_players

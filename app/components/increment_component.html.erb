@@ -1,0 +1,16 @@
+<div data-controller="increment">
+  <h2 class="block text-sm font-medium leading-6 text-gray-900">
+    <%= @title.capitalize %>
+  </h2>
+  <p class="mt-1 text-sm font-light leading-6 text-gray-600">
+    <%= @description %>
+  </p>
+  <div class="mt-1 flex flex-wrap items-center gap-x-4">
+    <%= render(SmallButtonComponent.new(label: "-", primary: true, path: nil, method: :get, data: {action: "increment#down"})) %>
+    <span data-increment-target="display" class="block text-sm w-3 font-medium leading-6 text-gray-900">
+      <%= @default_value %>
+    </span>
+    <%= render(SmallButtonComponent.new(label: "+", primary: true, path: nil, method: :get, data: {action: "increment#up"})) %>
+  </div>
+  <%= @form.hidden_field @title, value: @default_value, data: { increment_target: "value" } %>
+</div>

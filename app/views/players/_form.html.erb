@@ -24,11 +24,14 @@
           <% end %>
         </div>
       </div>
+      <% if action_name == 'edit' %>
+        <%= render(IncrementComponent.new(title: :level, description: "Increase or decrease the difficulty of problems we show #{@player.name}", default_value: @player.level, form: f)) %>
+      <% end  %>
       <div class="mt-6 flex items-center justify-end gap-x-6">
         <%= render(SecondaryLinkComponent.new(text: "Cancel", path: players_path)) %>
-        <%= f.submit "Submit", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
+        <%= f.submit "Save", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
         <% if @player.persisted? %>
-          <%= link_to "Delete", @player, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete #{@player.name}?"}, class: "rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
+          <%= link_to "Delete", @player, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to permanently delete #{@player.name}?"}, class: "rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 active:bg-red-600 hover:bg-red-500 focus:ring-red-800" %>
         <% end %>
       </div>
     <% end %>
