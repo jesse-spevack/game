@@ -47,7 +47,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     name = "Jessssssseeeeeee"
     click_on "Add player"
     fill_in "Name", with: name
-    click_on "Submit"
+    click_on "Save"
 
     assert_text("You")
     assert_text("Player #{name} created")
@@ -62,7 +62,7 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     # Edit player
     click_on "Edit"
     fill_in "Name", with: name + "!"
-    click_on "Submit"
+    click_on "Save"
 
     assert_text("#{name}!'s progress")
     refute_text("Click play to start practicing.")
