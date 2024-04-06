@@ -12,7 +12,16 @@ module GeneratedUrlHelpersModule
   def accept_invite_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def admin_player_problem_aggregates_url(*args); end
+  def admin_invoice_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_invoices_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_order_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_orders_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def admin_player_url(*args); end
@@ -21,28 +30,46 @@ module GeneratedUrlHelpersModule
   def admin_players_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_problem_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_problems_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def admin_relevels_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def admin_requests_url(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def admin_reset_player_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def admin_team_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_teams_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_user_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_users_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def alpha_announcement_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_admin_invoice_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_order_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_problem_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_admin_team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_user_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_url(*args); end
@@ -67,6 +94,24 @@ module GeneratedUrlHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def login_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_invoice_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_order_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_player_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_problem_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_team_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_user_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_invite_url(*args); end

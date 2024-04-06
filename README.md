@@ -115,7 +115,7 @@ fly deploy
 
 # Changelog 🎉
 
-## 2024-03-30
+## 2024-04-06
 
 - Complete overhaul of admin ui and functionality.
 

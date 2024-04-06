@@ -12,37 +12,64 @@ module GeneratedPathHelpersModule
   def accept_invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_invoice_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_invoices_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_order_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_orders_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def admin_player_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def admin_player_problem_aggregates_path(*args); end
+  def admin_players_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def admin_players_path(*args); end
+  def admin_problem_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def admin_problems_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
-  def admin_relevels_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def admin_requests_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
-  def admin_reset_player_path(*args); end
-
-  sig { params(args: T.untyped).returns(String) }
   def admin_team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_teams_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_user_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_users_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def alpha_announcement_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def edit_admin_invoice_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_order_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_problem_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def edit_admin_team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def edit_admin_user_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def edit_player_path(*args); end
@@ -67,6 +94,24 @@ module GeneratedPathHelpersModule
 
   sig { params(args: T.untyped).returns(String) }
   def login_request_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_invoice_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_order_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_player_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_problem_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_team_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def new_admin_user_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
   def new_invite_path(*args); end
