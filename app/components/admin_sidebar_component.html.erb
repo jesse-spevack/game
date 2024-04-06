@@ -1,0 +1,22 @@
+<div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+  <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+    <div class="flex h-16 shrink-0 items-center">
+      <%= image_tag("domath-logo.png", class: "h-8 w-auto", alt: "DoMath.io") %>
+    </div>
+    <nav class="flex flex-1 flex-col">
+      <ul role="list" class="flex flex-1 flex-col gap-y-7">
+        <li>
+          <ul role="list" class="-mx-2 space-y-1">
+            <%= render(AdminLinkComponent.new(title: "Home", path: players_path, current_path: request.path, icon_name: :home)) %>
+            <%= render(AdminLinkComponent.new(title: "Dashboard", path: admin_path, current_path: request.path, icon_name: :dashboard)) %>
+            <%= render(AdminLinkComponent.new(title: "Users", path: admin_users_path, current_path: request.path, icon_name: :user)) %>
+            <%= render(AdminLinkComponent.new(title: "Players", path: admin_players_path, current_path: request.path, icon_name: :players)) %>
+            <%= render(AdminLinkComponent.new(title: "Teams", path: admin_teams_path, current_path: request.path, icon_name: :team)) %>
+            <%= render(AdminLinkComponent.new(title: "Problems", path: admin_problems_path, current_path: request.path, icon_name: :problem)) %>
+            <%= render(AdminLinkComponent.new(title: "Orders", path: admin_orders_path, current_path: request.path, icon_name: :invoice)) %>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

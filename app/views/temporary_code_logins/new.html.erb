@@ -1,5 +1,5 @@
 <div data-controller="otp" class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Login", subtitle: "One time code", description: "Use the code we sent you to login. You can find your code in 'Settings' and 'One time code.'" %>
+  <%= render(FormHeaderComponent.new(title: "Login", subtitle: "One time code", description: "Use the code from your other devise found under 'Settings' and 'One time code'.")) %>
   <%= form_with url: temporary_code_login_path do |f| %>
     <%= render "shared/email_field", form: f, model: @user, placeholder: "you@example.com" %>
     <%= f.label :otp, "One time code", class: "block text-sm font-medium leading-6 text-gray-900"  %>

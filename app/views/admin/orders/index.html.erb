@@ -1,0 +1,55 @@
+<div class="sm:flex sm:items-center">
+  <div class="sm:flex-auto">
+    <%= render(FormHeaderComponent.new(title: "Orders", description: "A list of all orders in the app.", subtitle: "Admin")) %>
+  </div>
+</div>
+<div class="mt-8 flow-root">
+  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+      <table class="min-w-full divide-y divide-gray-300">
+        <thead>
+          <tr>
+            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Order</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">User</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Team</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Amount</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Status</th>
+            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Invoice</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                <%= link_to order.id, admin_order_path(order) %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= order.user.email %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= order.team.name %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= number_to_currency(order.amount_total) %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <%= time_ago_in_words(order.created_at) %> ago
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                <% if order.payment_status == 'paid' %>
+                  <%= render(SmallBadgeBorderComponent.new(label: order.payment_status, color: Colors::Green)) %>
+                <% else %>
+                  <%= render(SmallBadgeBorderComponent.new(label: order.payment_status, color: Colors::Red)) %>
+                <% end %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-cyan-700">
+                <%= link_to order.invoice_token, order.hosted_invoice_url %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -95,19 +95,16 @@ fly deploy
 
 - Turn sound off option
 - No bad words for player names
-- User should be able to set the level of the player
 - Delete account
 
 ### 🤨 P1
 
-- Admin improvements
-  - See orders
+- Admin tooling improvements
 
 ### ✨ P2
 
 - Email campaigns
   - investigate https://loops.so/pricing
-- Change team name
 - Timzone edit more obvious
 - More in game feedback
   - score
@@ -117,6 +114,10 @@ fly deploy
 - Player customizations based on points
 
 # Changelog 🎉
+
+## 2024-03-30
+
+- Complete overhaul of admin ui and functionality.
 
 ## 2024-03-30
 

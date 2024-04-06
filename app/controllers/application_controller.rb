@@ -81,7 +81,12 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    @current_user.admin? || redirect_to(root_path)
+    if @current_user.admin?
+      @admin = @current_user
+    else
+      @admin = nil
+      redirect_to(root_path)
+    end
   end
 
   def record_request

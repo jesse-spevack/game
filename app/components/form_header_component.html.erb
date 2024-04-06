@@ -1,0 +1,9 @@
+<div class="bg-white pt-6 sm:pt-12">
+  <div class="mx-auto max-w-2xl lg:mx-0">
+    <% if @subtitle %>
+      <%= render(SubtitleComponent.new(text: @subtitle)) %>
+    <% end %>
+    <%= render(TitleComponent.new(text: @title)) %>
+    <%= render(DescriptionComponent.new(text: @description)) %>
+  </div>
+</div>

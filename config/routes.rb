@@ -25,18 +25,13 @@ Rails.application.routes.draw do
 
   # Admin
   get "admin" => "admin#index", :as => :admin
-
   namespace :admin do
-    resources :problems, only: [:index, :create]
-    resources :requests, only: [:index]
-    resources :players, only: [:index, :show]
-
-    resource :relevels, only: [:update]
-    post "reset_players/:id", to: "reset_players#update", as: :reset_player
-    post "player_problem_aggregates", to: "player_problem_aggregates#create"
-    get "player_problem_aggregates", to: "player_problem_aggregates#index"
-
-    resources :teams, only: [:edit, :update, :show, :destroy]
+    resources :users
+    resources :players
+    resources :teams
+    resources :invoices
+    resources :orders
+    resources :problems
   end
 
   # Game

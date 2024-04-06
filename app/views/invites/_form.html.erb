@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Invite a teammate", subtitle: "It takes a village", description: "Add your spouse, your mother, or any other cellphone wielding adult in your child's life to your team. Your players will be able to play and make progress on their goals logged in as another user on your team." %>
+  <%= render(FormHeaderComponent.new(title: "Invite a teammate", subtitle: "It takes a village", description: "Add your spouse, your mother, or any other cellphone-wielding adult in your child's life to your team. Your players are shared across your team and will be able to make progress logged in as another user on your team.")) %>
   <%= form_with model: @invite do |form| %>
     <div class="space-y-4">
       <%= render "shared/email_field", form: form, model: @invite, placeholder: "teammate@example.com" do %>

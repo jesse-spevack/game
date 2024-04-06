@@ -1,7 +1,7 @@
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <%= render "shared/form_header", title: "Players", subtitle: "Team: #{@current_user.team.name}'s", description: "Players are most likely your kids, but can be anyone who wants to play the DoMath.io game. Your user can have many players. All stats and settings are player specific." %>
+      <%= render(FormHeaderComponent.new(title: "Players", subtitle: "Team: #{@current_user.team.name}'s", description: "Players are most likely your kids, but can be anyone who wants to play the DoMath.io game. Your user can have many players. All stats and settings are player specific.")) %>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
       <%= render(PrimaryLinkButtonComponent.new(text: "Add player", path: new_player_path)) %>
