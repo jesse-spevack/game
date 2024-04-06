@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Edit your team name", subtitle: "Teamwork makes the dream work", description: "Your team is a group of adult users who can login. Players are shared across the team. When a user on your team logs in, they can have any player on the team practice their math fluency." %>
+  <%= render(FormHeaderComponent.new(title: "Team", subtitle: "Teamwork makes the dream work", description: "Your team is a group of adult users who can login. Players are shared across the team.")) %>
   <%= form_with model: team, url: form_path do |form| %>
     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
       <div class="sm:col-span-3">

@@ -1,0 +1,13 @@
+<li>
+  <% if currently_selected? %>
+    <a href="<%= @path %>" class="text-cyan-600 bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+      <%= icon_svg %>
+      <%= @title %>
+    </a>
+  <% else %>
+    <a href="<%= @path %>" class="text-cyan-700 hover:text-cyan-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+      <%= icon_svg %>
+      <%= @title %>
+    </a>
+  <% end %>
+</li>

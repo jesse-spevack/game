@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Edit your settings", subtitle: "Settings", description: "Set your preferred timezone so that we can properly calculate player streaks. Streaks can be a great way to motivate players to practice consistently." %>
+  <%= render(FormHeaderComponent.new(title: "Settings", subtitle: "Edit", description: "Set your preferred timezone for accurate player streak calculation.")) %>
   <%= form_with model: @user_setting, url: settings_path do |form| %>
     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
       <div class="sm:col-span-3">

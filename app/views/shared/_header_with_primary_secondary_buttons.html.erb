@@ -1,5 +1,5 @@
 <div class="md:flex md:items-center md:justify-between">
-  <%= render "shared/form_header", title: title, description: description, subtitle: subtitle %>
+  <%= render(FormHeaderComponent.new(title: title, subtitle: subtitle, description: description)) %>
   <div class="mt-5 sm:ml-10 sm:mt-4 sm:flex sm:pl-4 space-x-2">
     <%= render(SecondaryLinkButtonComponent.new(text: secondary_text, path: secondary_path)) %>
     <% if button %>

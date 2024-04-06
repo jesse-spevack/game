@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Login or create an account", subtitle: "No passwords, just email and magic.", description: "If you have a registered account, enter your email address and a login link will be sent to you. If you do not have an account, one will be created for whatever email address you provide." %>
+  <%= render(FormHeaderComponent.new(title: "Login or create an account", subtitle: "No passwords, just email and magic.", description: "If you have a registered account, enter your email address and a login link will be sent to you. If you do not have an account, one will be created for whatever email address you provide.")) %>
   <%= form_with url: login_path do |f| %>
     <div class="space-y-4">
       <%= f.hidden_field :redirect_path, value: @redirect_path %>

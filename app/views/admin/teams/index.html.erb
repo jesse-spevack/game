@@ -1,0 +1,25 @@
+<%= render(FormHeaderComponent.new(title: "Teams", description: "A list of all teams in the app.", subtitle: "Admin")) %>
+<%= render(TableComponent.new) do %>
+  <thead>
+    <tr>
+      <%= render(TableHeaderFirstColumnComponent.new(text: "Name")) %>
+      <%= render(TableHeaderComponent.new(text: "User count")) %>
+      <%= render(TableHeaderComponent.new(text: "Player count")) %>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-200">
+    <% @teams.each do |team| %>
+      <tr class="hover:bg-gray-50">
+        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 hover:text-cyan-700 sm:pl-0">
+          <%= link_to team.name, admin_team_path(team) %>
+        </td>
+        <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+          <%= User.where(team: team).count %>
+        </td>
+        <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+          <%= Player.where(team: team).count %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+<% end %>

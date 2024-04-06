@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
-  <%= render "shared/form_header", title: "Player", subtitle: "Aka your child", description: "Players are most likely your kids, but can be anyone who wants to play the DoMath.io game. Your user can have many players. All stats and settings are player specific." %>
+  <%= render(FormHeaderComponent.new(title: "Player", subtitle: "Aka your child", description: "Players are most likely your kids, but can be anyone who wants to play DoMath.io. You can have many players. All stats are player specific.")) %>
   <%= form_for @player do |f| %>
     <div class="space-y-4">
       <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">

@@ -1,5 +1,7 @@
 class Admin::TeamsController < AdminBaseController
-  before_action :set_team
+  def index
+    @teams = Team.all
+  end
 
   def edit
   end

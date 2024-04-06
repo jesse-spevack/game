@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-white">
   <head>
     <title>Game</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,19 +9,28 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="h-full">
     <main class="mx-auto">
-      <%= render "shared/navbar" %>
-      <section>
-        <%= render partial: "shared/flash", locals: {category: :notice} %>
-        <%= render partial: "shared/flash", locals: {category: :error} %>
-      </section>
-      <div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
-        <%= yield %>
-      </div>
-      <%= render "shared/footer" %>
-      <% if @notification %>
-        <%= render "shared/simple_notification", title: @notification.title, description: @notification.description %>
+      <% if !@admin.nil? %>
+        <%= render(AdminSidebarComponent.new) %>
+        <main class="py-10 lg:pl-72">
+          <div class="px-4 sm:px-6 lg:px-8">
+            <%= yield %>
+          </div>
+        </main>
+      <% else %>
+        <%= render "shared/navbar" %>
+        <section>
+          <%= render partial: "shared/flash", locals: {category: :notice} %>
+          <%= render partial: "shared/flash", locals: {category: :error} %>
+        </section>
+        <div class="mx-auto max-w-7xl mt-4 px-4 sm:px-6 lg:px-8">
+          <%= yield %>
+        </div>
+        <%= render "shared/footer" %>
+        <% if @notification %>
+          <%= render "shared/simple_notification", title: @notification.title, description: @notification.description %>
+        <% end %>
       <% end %>
     </main>
   </body>

@@ -1,7 +1,7 @@
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <%= render "shared/form_header", title: @one_time_password.code, subtitle: "Valid for 5 minutes", description: "Visit domath.io on your secondary device. Click 'Login', click 'Login with code' to login with this code." %>
+      <%= render(FormHeaderComponent.new(title: @one_time_password.code, subtitle: "Your one time password:", description: "Visit domath.io on yoru secondary device. Click 'Login', and 'Login wiht code' to login wiht this code in the next 5 minutes.")) %>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
       <%= render(PrimaryLinkButtonComponent.new(text: "New one time code", path: new_one_time_password_path)) %>
