@@ -5,4 +5,9 @@ class Order < ApplicationRecord
 
   belongs_to :user
   belongs_to :team
+
+  sig { returns(Float) }
+  def in_dollars
+    amount_total / 100.0
+  end
 end

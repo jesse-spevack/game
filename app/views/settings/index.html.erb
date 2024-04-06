@@ -28,7 +28,7 @@
                   </div>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <%= number_to_currency(order.amount_total / 100.0) %>
+                  <%= number_to_currency(order.in_dollars) %>
                 </td>
                 <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <%= order.created_at.to_date.to_formatted_s(:long) %>

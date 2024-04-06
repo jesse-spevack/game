@@ -31,7 +31,7 @@
                 <%= order.team.name %>
               </td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                <%= number_to_currency(order.amount_total) %>
+                <%= number_to_currency(order.in_dollars) %>
               </td>
               <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                 <%= time_ago_in_words(order.created_at) %> ago
