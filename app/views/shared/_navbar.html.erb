@@ -4,6 +4,11 @@
       <div class="relative flex h-16 justify-between">
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="sm:ml-6 sm:flex sm:space-x-8">
+            <%= link_to root_path, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium hover:border-gray-300" do %>
+              <div class="flex flex-shrink-0 items-baseline">
+                <%= render(LogoComponent.new) %>
+              </div>
+            <% end %>
             <% if @current_user %>
               <%= render "shared/navbar_link", title: "Players", path: players_path %>
               <%= render "shared/navbar_link", title: "Team", path: team_path %>
@@ -16,7 +21,6 @@
                 <%= render "shared/navbar_link", title: "#{@current_player.name}'s scores", path: player_path(@current_player) %>
               <% end %>
             <% else %>
-              <%= render "shared/navbar_link", title: "Home", path: root_path %>
               <%= render "shared/navbar_link", title: "Login", path: new_login_path %>
             <% end %>
           </div>
