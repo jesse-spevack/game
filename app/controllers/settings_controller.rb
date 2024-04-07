@@ -23,6 +23,6 @@ class SettingsController < ApplicationController
   end
 
   def user_setting_params
-    params.require(:user_setting).permit(:time_zone)
+    params.require(:user_setting).permit(:time_zone, :sound_enabled)
   end
 end

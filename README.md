@@ -93,7 +93,6 @@ fly deploy
 
 ### 🔥 P0
 
-- Turn sound off option
 - No bad words for player names
 - Delete account
 
@@ -114,6 +113,10 @@ fly deploy
 - Player customizations based on points
 
 # Changelog 🎉
+
+## 2024-04-07
+
+- Users can disable sound by editing settings.
 
 ## 2024-04-06
 
