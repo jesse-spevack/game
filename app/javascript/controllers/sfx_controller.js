@@ -4,11 +4,13 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["sound"]
   static values = {
-    correct: Boolean 
+    correct: Boolean,
+    soundEnabled: Boolean 
   }
 
   connect() {
-    if (this.correctValue) {
+    console.log("soundEnabledValue:", this.soundEnabledValue)
+    if (this.correctValue && this.soundEnabledValue === true) {
       this.playCorrectSound();
     }
   }
