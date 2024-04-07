@@ -116,6 +116,7 @@ fly deploy
 
 ## 2024-04-07
 
+- Leveling down deletes previous progress at greater levels.
 - Users can disable sound by editing settings.
 
 ## 2024-04-06
