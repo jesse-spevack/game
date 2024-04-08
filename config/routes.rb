@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resource :responses, only: [:create, :new], path: "game"
   resources :sessions, only: [:create, :destroy]
   resources :scores, only: [:show]
+  resources :users, only: [:destroy]
   resources :trial_memberships, only: [:create]
 
   # Settings
