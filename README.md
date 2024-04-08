@@ -94,7 +94,6 @@ fly deploy
 ### 🔥 P0
 
 - No bad words for player names
-- Delete account
 
 ### 🤨 P1
 
@@ -116,6 +115,7 @@ fly deploy
 
 ## 2024-04-07
 
+- Users can delete their accounts in Settings.
 - Leveling down deletes previous progress at greater levels.
 - Users can disable sound by editing settings.
 
