@@ -5,7 +5,7 @@ require "test_helper"
 class Commands::UpdatePlayerTest < ActiveSupport::TestCase
   test "it updates a player name" do
     player = players(:jesse)
-    input = ActionController::Parameters.new(name: "new name").permit!
+    input = ActionController::Parameters.new(name: "new name", level: player.level.to_s, team: player.team).permit!
     result = Commands::UpdatePlayer.call(player: player, input: input)
 
     assert_equal("new name", result.player.name)
@@ -18,7 +18,7 @@ class Commands::UpdatePlayerTest < ActiveSupport::TestCase
       Commands::CreatePlayerProblemAggregatesForLevel.call(player: player, level: level)
     end
 
-    input = ActionController::Parameters.new(level: "1").permit!
+    input = ActionController::Parameters.new(name: player.name, team: player.team, level: "1").permit!
     result = Commands::UpdatePlayer.call(player: player, input: input)
 
     assert_equal(1, result.player.level)

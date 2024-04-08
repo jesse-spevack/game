@@ -33,11 +33,14 @@ class PlayersController < ApplicationController
   end
 
   def update
+    Rails.logger.info("player params")
+    Rails.logger.info(player_params)
     result = Commands::UpdatePlayer.call(player: user_player, input: player_params)
+
     if result.success
-      redirect_to player_path(user_player), notice: "Player #{user_player.name} updated."
+      redirect_to player_path(result.player), notice: "Player #{result.player.name} updated."
     else
-      redirect_to player_path(user_player), notice: "Player #{user_player.name} could not be updated. #{result.error}"
+      redirect_to player_path(user_player), error: "Player #{user_player.name} could not be updated. #{result.error}"
     end
   end
 
