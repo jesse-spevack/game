@@ -113,6 +113,10 @@ fly deploy
 
 # Changelog 🎉
 
+## 2024-04-13
+
+- Fix error experienced by users without user settings when playing game.
+
 ## 2024-04-07
 
 - Users can delete their accounts in Settings.
