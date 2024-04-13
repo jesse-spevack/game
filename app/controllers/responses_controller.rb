@@ -6,7 +6,7 @@ class ResponsesController < ApplicationController
     @progress = Commands::GetPlayerProgress.call(player: @current_player)
     @correct = session[:correct]
     @leveled = session[:leveled]
-    @sound_enabled = UserSetting.find_by(user: @current_user).sound_enabled
+    @sound_enabled = Commands::GetUserSoundSetting.call(user: @current_user)
     session[:correct] = nil
     session[:leveled] = nil
   end

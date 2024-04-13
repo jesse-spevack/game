@@ -1,6 +1,6 @@
 require "test_helper"
 
-class GetUserPlayersTest < ActiveSupport::TestCase
+class Commands::GetUserPlayersTest < ActiveSupport::TestCase
   test "returns players belonging to the user's team" do
     user = users(:one)
     team = teams(:two)
