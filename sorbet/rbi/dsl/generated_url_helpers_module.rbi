@@ -282,5 +282,8 @@ module GeneratedUrlHelpersModule
   def update_rails_disk_service_url(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def user_url(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def webhook_url(*args); end
 end
