@@ -1,0 +1,21 @@
+<div class="md:flex md:items-center md:justify-between">
+  <%= render(FormHeaderComponent.new(title: @user.email, description: "User details", subtitle: "Admin")) %>
+  <div class="mt-5 sm:ml-10 sm:mt-4 sm:flex sm:pl-4 space-x-2">
+    <%= render(PrimaryButtonComponent.new(text: "Login as", path: admin_impersonations_path(user_id: @user.id))) %>
+  </div>
+</div>
+<div>
+  <div class="mt-6 border-t border-gray-100">
+    <dl class="divide-y divide-gray-100">
+      <%= render(DescriptionListItemComponent.new(label: "Paid", value: @user.email)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Email", value: @user.email)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Team", value: @team.name)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Teammates", value: @teammate_count)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Players", value: @player_count)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Time zone", value: @user_setting.time_zone)) %>
+      <%= render(DescriptionListItemComponent.new(label: "Last signed in at", value: @user.last_sign_in_at && "#{time_ago_in_words(@user.last_sign_in_at)} ago")) %>
+      <%= render(DescriptionListItemComponent.new(label: "Created at", value: "#{time_ago_in_words(@user.created_at)} ago")) %>
+    </dl>
+  </div>
+  <%= render(OrderListComponent.new(orders: @orders)) %>
+</div>

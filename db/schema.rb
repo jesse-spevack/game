@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_06_201822) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_14_041806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "impersonations", force: :cascade do |t|
+    t.bigint "impersonator_id", null: false
+    t.bigint "impersonatee_id", null: false
+    t.datetime "completed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["impersonatee_id"], name: "index_impersonations_on_impersonatee_id"
+    t.index ["impersonator_id"], name: "index_impersonations_on_impersonator_id"
+  end
 
   create_table "invites", force: :cascade do |t|
     t.string "email", null: false
@@ -115,6 +125,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_201822) do
     t.bigint "player_id", null: false
     t.index ["player_id"], name: "index_responses_on_player_id"
     t.index ["problem_id"], name: "index_responses_on_problem_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
@@ -224,6 +240,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_201822) do
     t.index ["user_id"], name: "index_trial_memberships_on_user_id"
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
+    t.index ["user_id"], name: "index_user_roles_on_user_id"
+  end
+
   create_table "user_settings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "time_zone", default: "Mountain Time (US & Canada)"
@@ -243,6 +268,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_201822) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
+  add_foreign_key "impersonations", "users", column: "impersonatee_id"
+  add_foreign_key "impersonations", "users", column: "impersonator_id"
   add_foreign_key "invites", "teams"
   add_foreign_key "invites", "users"
   add_foreign_key "one_time_password_requests", "users"
@@ -260,6 +287,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_06_201822) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "trial_memberships", "users"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
   add_foreign_key "user_settings", "users"
   add_foreign_key "users", "teams"
 end

@@ -18,7 +18,7 @@
           <%= user.team.name %>
         </td>
         <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-          <%= time_ago_in_words(user.last_sign_in_at) %> ago
+          <%= user.last_sign_in_at && time_ago_in_words(user.last_sign_in_at) %> ago
         </td>
         <td class="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
           <%= time_ago_in_words(user.created_at) %> ago

@@ -12,6 +12,12 @@ module GeneratedPathHelpersModule
   def accept_invite_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }
+  def admin_impersonation_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
+  def admin_impersonations_path(*args); end
+
+  sig { params(args: T.untyped).returns(String) }
   def admin_invoice_path(*args); end
 
   sig { params(args: T.untyped).returns(String) }

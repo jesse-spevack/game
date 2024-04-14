@@ -6,11 +6,8 @@ module Commands
 
     sig { params(user: User).returns(T::Boolean) }
     def call(user:)
-      user_orders = Order.where(user: user).where("created_at >= ?", earliest_valid_creation_date)
-      team_orders = Order.where(team: user.team).where("created_at >= ?", earliest_valid_creation_date)
-      orders = user_orders.or(team_orders)
-
-      orders.exists?
+      orders = T.let(Commands::GetUserOrders.call(user: user, minimum_creation_date: earliest_valid_creation_date), ActiveRecord::Relation)
+      T.let(orders.exists?, T::Boolean)
     end
 
     private

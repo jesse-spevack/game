@@ -10,4 +10,9 @@ class Order < ApplicationRecord
   def in_dollars
     amount_total / 100.0
   end
+
+  sig { returns(T::Boolean) }
+  def paid?
+    payment_status == "paid"
+  end
 end

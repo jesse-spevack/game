@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :invoices
     resources :orders
     resources :problems
+    resources :impersonations, only: [:create, :destroy]
   end
 
   # Game

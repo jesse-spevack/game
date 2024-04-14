@@ -16,6 +16,9 @@
               <% if @current_user.admin? %>
                 <%= render "shared/navbar_link", title: "Admin", path: admin_path %>
               <% end %>
+              <% if @impersonation_in_progress %>
+                <%= link_to "Conclude impersonation", admin_impersonation_path(session[:impersonation_id]), data: { turbo_method: :delete }, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
+              <% end %>
               <%= link_to "Logout", login_path, data: { "turbo-method": :delete }, class: "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" %>
               <% if @current_player %>
                 <%= render "shared/navbar_link", title: "#{@current_player.name}'s scores", path: player_path(@current_player) %>

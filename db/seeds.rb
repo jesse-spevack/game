@@ -11,50 +11,52 @@
 #   end
 
 # Clear existing responses
-Response.delete_all
+# Response.delete_all
 # Clear existing problems
-Problem.delete_all
+# Problem.delete_all
 # Create addition problems
-problems = []
+if Problem.count.zero?
+  problems = []
 
-13.times do |x|
-  13.times do |y|
-    problems << {
-      x: x,
-      y: y,
-      solution: x + y,
-      operation: "addition",
-      level: Commands::GetAdditionProblemLevel.call(x: x, y: y)
-    }
-  end
-end
-
-13.times do |x|
-  13.times do |y|
-    difference = x - y
-    if !difference.negative?
-      subtraction_problems << {
+  13.times do |x|
+    13.times do |y|
+      problems << {
         x: x,
         y: y,
-        solution: difference,
-        operation: "subtraction",
-        level: Commands::GetSubtractionProblemLevel.call(x: x, y: y)
+        solution: x + y,
+        operation: "addition",
+        level: Commands::GetAdditionProblemLevel.call(x: x, y: y)
       }
     end
   end
-end
 
-13.times do |x|
-  13.times do |y|
-    problems << {
-      x: x,
-      y: y,
-      solution: x * y,
-      operation: "multiplication",
-      level: Commands::GetMultiplicationProblemLevel.call(x: x, y: y)
-    }
+  13.times do |x|
+    13.times do |y|
+      difference = x - y
+      if !difference.negative?
+        subtraction_problems << {
+          x: x,
+          y: y,
+          solution: difference,
+          operation: "subtraction",
+          level: Commands::GetSubtractionProblemLevel.call(x: x, y: y)
+        }
+      end
+    end
   end
-end
 
-# Insert addition problems
-Problem.insert_all(problems)
+  13.times do |x|
+    13.times do |y|
+      problems << {
+        x: x,
+        y: y,
+        solution: x * y,
+        operation: "multiplication",
+        level: Commands::GetMultiplicationProblemLevel.call(x: x, y: y)
+      }
+    end
+  end
+
+  # Insert addition problems
+  Problem.insert_all(problems)
+end

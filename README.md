@@ -97,8 +97,6 @@ fly deploy
 
 ### 🤨 P1
 
-- Admin tooling improvements
-
 ### ✨ P2
 
 - Email campaigns
@@ -112,6 +110,10 @@ fly deploy
 - Player customizations based on points
 
 # Changelog 🎉
+
+## 2024-04-14
+
+- Add login as user admin feature
 
 ## 2024-04-13
 
