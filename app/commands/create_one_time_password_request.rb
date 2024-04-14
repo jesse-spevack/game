@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 
 module Commands
   class CreateOneTimePasswordRequest < Commands::Base

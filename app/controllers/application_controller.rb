@@ -4,10 +4,29 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     return unless session[:user_id]
-    @current_user = User.find_by(id: session[:user_id])
+
+    if session[:impersonation_id].nil?
+      @current_user = User.find_by(id: session[:user_id])
+    else
+      impersonate_user
+    end
+  end
+
+  def impersonate_user
+    impersonation = Impersonation.find_by(id: session[:impersonation_id])
+    # Update the impersonation to show that the impersonator is still active
+    impersonation.touch
+
+    session[:user_id] = impersonation.impersonatee_id
+    session[:impersonation_id] = impersonation.id
+
+    @current_user = impersonation.impersonatee
+    @impersonation_in_progress = true
   end
 
   def require_login
+    return if impersonation_in_progress?
+
     redirect_to_login if no_current_user?
     relogin_if_required if logged_in?
   end
@@ -33,6 +52,8 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_debts_are_satisfied
+    return if impersonation_in_progress?
+
     if !pending_order_exists? && Commands::IsPaymentRequired.call(user: @current_user)
       redirect_to new_order_path
     end
@@ -81,12 +102,16 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    if @current_user.admin?
+    if impersonation_in_progress? || @current_user.admin?
       @admin = @current_user
     else
       @admin = nil
       redirect_to(root_path)
     end
+  end
+
+  def impersonation_in_progress?
+    @impersonation_in_progress.present?
   end
 
   def record_request

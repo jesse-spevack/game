@@ -1,0 +1,39 @@
+<div class="mt-8 flow-root">
+  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+      <%= render(TableComponent.new) do %>
+        <thead>
+          <tr>
+            <%= render(TableHeaderFirstColumnComponent.new(text: "Invoice")) %>
+            <%= render(TableHeaderComponent.new(text: "Amount")) %>
+            <%= render(TableHeaderComponent.new(text: "Date")) %>
+            <%= render(TableHeaderComponent.new(text: "Status")) %>
+          </tr>
+        </thead>
+        <%= render(TableBodyComponent.new) do %>
+          <% @orders.each do |order| %>
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-cyan-600 sm:pl-0">
+                <div class="flex">
+                  <%= link_to "Invoice", order.hosted_invoice_url, target: :_blank %>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                    <path fill-rule="evenodd" d="M4.22 11.78a.75.75 0 0 1 0-1.06L9.44 5.5H5.75a.75.75 0 0 1 0-1.5h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V6.56l-5.22 5.22a.75.75 0 0 1-1.06 0Z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </td>
+              <%= render(TableDataComponent.new(data: number_to_currency(order.in_dollars))) %>
+              <%= render(TableDataComponent.new(data: order.created_at.to_date.to_formatted_s(:long))) %>
+              <%= render(TableDataComponent.new(data: "")) do %>
+                <% if order.paid? %>
+                  <%= render(SmallBadgeBorderComponent.new(label: "Paid", color: Colors::Green)) %>
+                <% else %>
+                  <%= render(SmallBadgeBorderComponent.new(label: @order.payment_status.titlecase, color: Colors::Red)) %>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

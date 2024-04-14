@@ -3,7 +3,7 @@
   <div class="mt-5 sm:ml-10 sm:mt-4 sm:flex sm:pl-4 space-x-2">
     <%= render(SecondaryLinkButtonComponent.new(text: secondary_text, path: secondary_path)) %>
     <% if button %>
-      <%= button_to primary_text, primary_path, method: :post, class: 'ml-3 inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600' %>
+      <%= render(PrimaryButtonComponent.new(text: primary_text, path: primary_path)) %>
     <% else %>
       <%= render(PrimaryLinkButtonComponent.new(text: primary_text, path: primary_path)) %>
     <% end %>
