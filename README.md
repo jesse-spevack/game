@@ -113,6 +113,7 @@ fly deploy
 
 ## 2024-04-14
 
+- Add user roles
 - Add login as user admin feature
 
 ## 2024-04-13

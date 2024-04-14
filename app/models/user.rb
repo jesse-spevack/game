@@ -8,6 +8,6 @@ class User < ApplicationRecord
   end
 
   def admin?
-    email == "jspevack@gmail.com" || Commands::IsUserAdmin.call(user: self)
+    Commands::IsUserAdmin.call(user: self)
   end
 end
