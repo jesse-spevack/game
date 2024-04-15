@@ -111,11 +111,16 @@ fly deploy
 
 # Changelog 🎉
 
+## 2024-04-15
+
+- Players can't increase their level indefinitely.
+- Handle new edge cases in problem selection algorithm.
+
 ## 2024-04-14
 
-- "Settings" is now "My account"
-- Add user roles
-- Add login as user admin feature
+- "Settings" is now "My account".
+- Add user roles.
+- Add login as user admin feature.
 
 ## 2024-04-13
 
@@ -137,18 +142,18 @@ fly deploy
 
 ## 2024-01-28
 
-- Add progress bar
+- Add progress bar.
 
 ## 2024-01-27
 
-- Add level up sound fx + confetti explosion
-- Shorten levels by decreasing number of times a player must see a problem
+- Add level up sound fx + confetti explosion.
+- Shorten levels by decreasing number of times a player must see a problem.
 
 ## 2024-01-23
 
-- When a player hit a number on the screen and then enter, the number repeated. - bug with the submission via enter
-- Added an encouraging message when player levels up
-- Delete requests after 14 days
-- Admin view of players not belonging to the admin bug fix
-- Fixed addition typo
-- Fixed a bug where algorithm for finding next problem short circuits for player that just leveled up
+- When a player hit a number on the screen and then enter, the number repeated. - bug with the submission via enter.
+- Added an encouraging message when player levels up.
+- Delete requests after 14 days.
+- Admin view of players not belonging to the admin bug fix.
+- Fixed addition typo.
+- Fixed a bug where algorithm for finding next problem short circuits for player that just leveled up.
