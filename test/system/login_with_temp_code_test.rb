@@ -28,7 +28,7 @@ class LoginWithTempCodeTest < ApplicationSystemTestCase
     assert_text("Logout")
     assert_text("Welcome! Click the 'Add player' button.")
 
-    click_on "Settings"
+    click_on "My account"
     click_on "One time code"
     assert_text("One time code valid for 5 minutes")
 

@@ -28,17 +28,19 @@ class SignUpPlayInviteTeammatesTest < ApplicationSystemTestCase
     assert_text("Logout")
     assert_text("Welcome! Click the 'Add player' button.")
 
-    click_on "Settings"
+    click_on "My account"
     assert_text("Invoice")
     assert_text("Paid")
-    assert_text("You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
+    assert_text("You can view invoices associated with your account. You can update your user settings, such as timezone and other preferences, by pressing the 'Edit' button.")
 
     click_on "Edit"
     select("Pacific Time (US & Canada)", from: "Time zone")
+    # Disable sound :)
+    find(:xpath, "/html/body/main/div/div/form/div[1]/div/div[2]/div/div/button").click
     click_on "Update"
 
     assert_text("Your settings have been updated.")
-    refute_text("You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
+    refute_text("You can view invoices associated with your account. You can update your user settings, such as timezone and other preferences, by pressing the 'Edit' button.")
 
     click_on "Players"
     refute_text("Welcome! Click the 'Add player' button.")

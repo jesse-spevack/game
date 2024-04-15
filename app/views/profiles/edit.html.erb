@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-7xl mb-4 px-4 sm:px-6 lg:px-8">
   <%= render(FormHeaderComponent.new(title: "Settings", subtitle: "Edit", description: "Set your preferred timezone for accurate player streak calculation.")) %>
-  <%= form_with model: @user_setting, url: settings_path do |form| %>
+  <%= form_with model: @user_setting, url: profile_path do |form| %>
     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
       <div class="sm:col-span-3">
         <%= form.label :time_zone, class: "block text-sm font-medium leading-6 text-gray-900" %>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="mt-6 flex items-center justify-end gap-x-6">
-      <%= render(SecondaryLinkComponent.new(text: "Cancel", path: settings_path)) %>
+      <%= render(SecondaryLinkComponent.new(text: "Cancel", path: profile_path)) %>
       <%= form.submit "Update", class: "rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" %>
       <%= render(DeleteLinkComponent.new(model: user_path(@current_user), confirmation_message: "Are you sure you want to permanently delete your account? This cannot be undone.")) %>
     </div>

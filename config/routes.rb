@@ -46,9 +46,7 @@ Rails.application.routes.draw do
 
   # Settings
   resource :team, only: [:show, :edit, :update]
-  get "settings" => "settings#index", :as => :settings
-  get "settings/edit" => "settings#edit", :as => :edit_settings
-  patch "settings" => "settings#update"
+  resource :profile, only: [:show, :edit, :update]
 
   # Stripe
   resources :orders, only: [:new]

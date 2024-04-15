@@ -1,9 +1,9 @@
-class SettingsController < ApplicationController
+class ProfilesController < ApplicationController
   before_action :set_user_setting
 
-  def index
+  def show
     if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
-      @notification = Notification.new(title: "Welcome to your user settings", description: "You can view invoices associated with your account. You can update your user settings, such as timezone, by pressing the 'Edit' button.")
+      @notification = Notification.new(title: "Welcome to your account settings", description: "You can view invoices associated with your account. You can update your user settings, such as timezone and other preferences, by pressing the 'Edit' button.")
     end
     @orders = Order.where(user: @current_user)
   end
@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
 
   def update
     @user_setting.update(user_setting_params)
-    redirect_to settings_path, notice: "Your settings have been updated."
+    redirect_to profile_path, notice: "Your settings have been updated."
   end
 
   private

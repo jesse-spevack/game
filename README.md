@@ -113,6 +113,7 @@ fly deploy
 
 ## 2024-04-14
 
+- "Settings" is now "My account"
 - Add user roles
 - Add login as user admin feature
 

@@ -12,7 +12,7 @@
             <% if @current_user %>
               <%= render "shared/navbar_link", title: "Players", path: players_path %>
               <%= render "shared/navbar_link", title: "Team", path: team_path %>
-              <%= render "shared/navbar_link", title: "Settings", path: settings_path %>
+              <%= render "shared/navbar_link", title: "My account", path: profile_path %>
               <% if @current_user.admin? %>
                 <%= render "shared/navbar_link", title: "Admin", path: admin_path %>
               <% end %>
