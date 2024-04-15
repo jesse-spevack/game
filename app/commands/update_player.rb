@@ -13,6 +13,14 @@ module Commands
     def call(player:, input:)
       level_param = T.let(input[:level], String)
       new_level = level_param.to_i
+      max_level = Problem.maximum(:level)
+      if new_level > max_level
+        Result.new(
+          player: player,
+          success: false,
+          error: StandardError.new("Level #{new_level} is greater than the maximum level #{max_level}")
+        )
+      end
 
       changing_level_down = T.let(new_level < player.level, T::Boolean)
       changing_level_up = T.let(new_level > player.level, T::Boolean)

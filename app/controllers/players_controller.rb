@@ -33,8 +33,6 @@ class PlayersController < ApplicationController
   end
 
   def update
-    Rails.logger.info("player params")
-    Rails.logger.info(player_params)
     result = Commands::UpdatePlayer.call(player: user_player, input: player_params)
 
     if result.success

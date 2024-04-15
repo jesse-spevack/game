@@ -37,8 +37,14 @@ module Commands
           .order("RANDOM()")
           .limit(1)
           .first,
-          PlayerProblemAggregate
+          T.nilable(PlayerProblemAggregate)
         )
+
+        if player_problem_aggregate.nil?
+          Rails.logger.error("No problem found for player #{player.id} at level #{level}.")
+          Rails.logger.error("Picking a random problem to buy some time.")
+          player_problem_aggregate = T.let(PlayerProblemAggregate.where(player: player).order("RANDOM()").limit(1).first, PlayerProblemAggregate)
+        end
 
       else
         priority = PlayerProblemAggregate.joins(:problem)
@@ -59,7 +65,7 @@ module Commands
         )
       end
 
-      T.must(player_problem_aggregate.problem)
+      T.let(T.must(player_problem_aggregate.problem), Problem)
     end
   end
 end
