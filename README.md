@@ -115,6 +115,7 @@ fly deploy
 
 - Players can't increase their level indefinitely.
 - Handle new edge cases in problem selection algorithm.
+- Handle new edge cases in viewing a player's progress.
 
 ## 2024-04-14
 
