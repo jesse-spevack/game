@@ -10,6 +10,20 @@ class PlayersController < ApplicationController
   def show
     # TODO this is likely not perfomant and we should consider a better approach
     @player = user_player
+
+    if @player.nil?
+      Rails.logger.error(
+        "Player not found",
+        player_id: params[:id],
+        user_id: @current_user.id,
+        team_id: @current_user.team_id,
+        team_name: @current_user.team.name,
+        params: params
+      )
+      flash[:error] = "Player not found"
+      redirect_to players_path
+    end
+
     session[:player_id] = @player.id
     if Commands::IsFirstTimeUser.call(user: @current_user, request: request)
       @notification = Notification.new(title: "Click 'Play' to start practicing.", description: "If you haven't done so already, make sure #{@player.name} is holding your phone or is at the keyboard.")
