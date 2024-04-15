@@ -1,8 +1,0 @@
-<div class="px-4 sm:px-6 lg:px-8">
-  <div class="sm:flex sm:items-center">
-    <div class="sm:flex-auto">
-      <%= render "shared/header_with_primary_secondary_buttons", title: @current_user.email, subtitle: "User settings", description: "All of your settings.", secondary_text: "One time code", secondary_path: new_one_time_password_path, primary_text: "Edit", primary_path: edit_settings_path, button: false %>
-    </div>
-  </div>
-  <%= render(OrderListComponent.new(orders: @orders)) %>
-</div>
