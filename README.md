@@ -93,9 +93,11 @@ fly deploy
 
 ### 🔥 P0
 
-- No bad words for player names
+- Add a button in the problems show to generate a game starting with that problem
 
 ### 🤨 P1
+
+- Add error pages
 
 ### ✨ P2
 
@@ -108,6 +110,7 @@ fly deploy
 ### 🌤️ P3
 
 - Player customizations based on points
+- No bad words for player names
 
 # Changelog 🎉
 

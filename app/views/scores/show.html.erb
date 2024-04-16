@@ -17,7 +17,7 @@
     </ol>
   </nav>
   <h3 class="mt-5 text-base font-semibold leading-6 text-gray-900">
-    <%= link_to @aggregate.problem.display, problem_path(@aggregate.problem) %>
+    <%= @aggregate.problem.display %>
   </h3>
   <dl class="mt-5 grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
     <%= render "datum_display", title: "Attempts", number: @aggregate.attempts, subtitle: "Attempts at solving" %>
